@@ -1,0 +1,46 @@
+.section {
+  margin-top: 16px;
+}
+
+.title {
+  font-weight: 700;
+  margin-top: 16px;
+  margin-bottom: 4px;
+  text-transform: none;
+  text-align: center;
+}
+
+.description {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.6);
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+/* Row that holds description (left) and Pay Code (right) */
+.roster-meta-row {
+  /* Keep Pay Code visually aligned above the table's last column (Assignment). */
+  display: grid;
+  grid-template-columns: 18% 22% 12% 15% 33%;
+  align-items: center;
+  margin-bottom: 8px;
+  column-gap: 0px;
+}
+
+.roster-meta-row__description {
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+  text-align: left;
+  grid-column: 1 / span 4; /* columns 1-4 (Unit..Vehicle) */
+}
+
+.roster-paycode {
+  grid-column: 5 / 6; /* Assignment column */
+  justify-self: end;
+  padding-right: 12px; /* space from right edge of the dialog/table */
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+  text-align: right;
+}

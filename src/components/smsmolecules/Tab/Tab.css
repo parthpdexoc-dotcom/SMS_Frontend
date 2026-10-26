@@ -1,0 +1,71 @@
+.tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  position: relative;
+  white-space: nowrap;
+}
+
+.tab:hover:not(.tab--disabled) {
+  color: var(--primary-color);
+  background-color: var(--bg-secondary);
+}
+
+.tab--active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+  font-weight: 600;
+}
+
+.tab--active:hover {
+  background-color: var(--primary-light);
+}
+
+.tab--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tab--error {
+  color: var(--error-color, #dc2626);
+  border-bottom-color: var(--error-color, #dc2626);
+}
+
+.tab--error:hover:not(.tab--disabled) {
+  color: var(--error-color, #dc2626);
+  background-color: rgba(220, 38, 38, 0.08);
+}
+
+.tab__icon {
+  flex-shrink: 0;
+}
+
+.tab__label {
+  line-height: 1.5;
+}
+
+/* Focus state for accessibility */
+.tab:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .tab {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.875rem;
+  }
+}
+

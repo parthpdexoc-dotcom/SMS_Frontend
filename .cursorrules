@@ -1,0 +1,804 @@
+# Shift Management System - Development Context & Guidelines
+
+## Project Overview
+This is a React + TypeScript project for a Shift Management System built with Vite. The project follows **Atomic Design Pattern** for component organization and emphasizes code reusability, maintainability, and scalability.
+
+## Technology Stack
+- **Framework**: React 18.2+ with TypeScript
+- **Build Tool**: Vite 5.0+
+- **Styling**: CSS Modules (separate .css files for each component)
+- **Charts**: Recharts 2.10+
+- **State Management**: Redux Toolkit 2.2+ with React-Redux 9.1+
+- **Routing**: React Router DOM 6.20+ (ready for implementation)
+- **Package Manager**: npm
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── atoms/          # Basic UI building blocks (Button, Input, Card, Icon, Dropdown)
+│   ├── molecules/      # Simple combinations of atoms (FormField, StatCard, MenuItem)
+│   └── organisms/      # Complex components using molecules (Dashboard, Layout, Sidebar, Header)
+├── store/             # Redux store configuration and slices
+│   ├── index.ts        # Store setup
+│   ├── hooks.ts        # Typed Redux hooks
+│   └── slices/         # Redux slices (authSlice, skillSlice, etc.)
+├── services/           # API service functions (called by Redux slices only)
+├── styles/            # Global styles (variables.css, global.css)
+├── types/             # TypeScript type definitions
+├── utils/             # Utility functions
+├── constants/         # Static strings and constants (strings.ts)
+├── hooks/             # Custom React hooks
+├── App.tsx            # Main application component
+└── main.tsx           # Application entry point
+```
+
+## Atomic Design Pattern - Component Hierarchy
+
+### CRITICAL RULE: Always follow the hierarchy
+1. **Atoms** → Basic, indivisible UI elements
+2. **Molecules** → Combinations of 2-3 atoms
+3. **Organisms** → Complex components using multiple molecules
+
+### When to Create Components
+
+#### Create in ATOMS when:
+- It's a single, reusable UI element (Button, Input, Icon, Badge, Avatar, etc.)
+- It has no dependencies on other custom components
+- It can be used independently across the application
+- Examples: Button, Input, Card, Dropdown, Icon, SMSCheckbox (smsatoms), Radio, Switch, Textarea, Label
+
+#### Create in MOLECULES when:
+- It combines 2-3 atoms together
+- It represents a simple, reusable pattern
+- It's used in multiple places but not a complete feature
+- Examples: FormField (Input + Label), StatCard (Card + Icon + Button), SearchBar (Input + Button), Alert (Card + Icon + Text)
+
+#### Create in ORGANISMS when:
+- It combines multiple molecules
+- It represents a complete feature or section
+- It has complex logic or state management
+- Examples: Dashboard, Navigation, Sidebar, Header, Form, DataTable, Modal
+
+## Development Guidelines
+
+### 1. Component Creation Rules
+
+**BEFORE creating any new component:**
+1. ✅ Check if a similar component exists in atoms/molecules/organisms
+2. ✅ Check if you can compose existing components to achieve the goal
+3. ✅ Only create new component if absolutely necessary
+4. ✅ Follow the atomic design hierarchy strictly
+
+**Component Naming:**
+- Use PascalCase: `UserProfile.tsx`, `DataTable.tsx`
+- Be descriptive and specific
+- Match folder name with component name
+
+**File Structure for Each Component:**
+```
+ComponentName/
+├── ComponentName.tsx    # Component logic
+├── ComponentName.css    # Component styles
+└── index.ts            # Export file
+```
+
+### 2. Code Reusability Rules
+
+**NEVER:**
+- ❌ Duplicate component logic
+- ❌ Copy-paste styles from one component to another
+- ❌ Create similar components with slight variations
+- ❌ Hardcode values that should be props
+
+**ALWAYS:**
+- ✅ Reuse existing atoms/molecules/organisms
+- ✅ Use CSS variables from `styles/variables.css`
+- ✅ Make components configurable via props
+- ✅ Extract common logic to utils
+- ✅ Use TypeScript interfaces for props
+- ✅ **Use strings from `src/constants/strings.ts` for all static text** (see String Management section)
+
+### 3. TypeScript Best Practices
+
+**Type Definitions:**
+- All component props must be typed in `src/types/index.ts`
+- Use `BaseComponentProps` for common props (className, children)
+- Export types alongside components
+- Use union types for variants: `type ButtonVariant = 'primary' | 'secondary'`
+
+**Component Props Pattern:**
+```typescript
+// In types/index.ts
+export interface MyComponentProps extends BaseComponentProps {
+  title: string;
+  variant?: 'default' | 'highlighted';
+  onClick?: () => void;
+}
+
+// In component
+import { MyComponentProps } from '@/types';
+export const MyComponent: React.FC<MyComponentProps> = ({ ... }) => { ... }
+```
+
+### 4. Styling Conventions
+
+**CSS File Structure:**
+- One CSS file per component: `ComponentName.css`
+- Use CSS variables from `styles/variables.css`
+- Follow BEM-like naming: `.component-name__element--modifier`
+- Use CSS custom properties for dynamic values
+
+**CSS Variables Available:**
+- Colors: `--primary-color`, `--success-color`, `--warning-color`, etc.
+- Spacing: `--spacing-xs`, `--spacing-sm`, `--spacing-md`, etc.
+- Shadows: `--shadow-sm`, `--shadow-md`, `--shadow-lg`
+- Transitions: `--transition-base`, `--transition-slow`
+- Border radius: `--radius-sm`, `--radius-md`, `--radius-lg`
+
+**Responsive Design:**
+- Always make components responsive
+- Use mobile-first approach
+- Breakpoints: 480px, 768px, 1024px
+- Test on multiple screen sizes
+
+### 5. Import Paths
+
+**Use Path Aliases:**
+```typescript
+// ✅ Correct
+import { Button } from '@/atoms/Button';
+import { StatCard } from '@/molecules/StatCard';
+import { Dashboard } from '@/organisms/Dashboard';
+import { ButtonProps } from '@/types';
+
+// ❌ Wrong
+import { Button } from '../../atoms/Button';
+```
+
+**Available Aliases:**
+- `@/atoms/*` → `src/components/atoms/*`
+- `@/molecules/*` → `src/components/molecules/*`
+- `@/organisms/*` → `src/components/organisms/*`
+- `@/types/*` → `src/types/*`
+- `@/styles/*` → `src/styles/*`
+- `@/utils/*` → `src/utils/*`
+- `@/constants/*` → `src/constants/*`
+- `@/store/*` → `src/store/*`
+- `@/services/*` → `src/services/*`
+- `@/hooks/*` → `src/hooks/*`
+
+### 6. String Management (CRITICAL)
+
+**ALL static text, labels, messages, and constants MUST be defined in `src/constants/strings.ts`**
+
+**NEVER:**
+- ❌ Hardcode strings directly in components
+- ❌ Use inline text like `"Sign In"`, `"Welcome"`, `"Dashboard"` in JSX
+- ❌ Duplicate the same string in multiple components
+
+**ALWAYS:**
+- ✅ Import strings from `@/constants/strings`
+- ✅ Use string constants for all user-facing text
+- ✅ Group related strings logically (e.g., `LOGIN`, `HEADER`, `DASHBOARD`)
+- ✅ Add new strings to `strings.ts` when creating new components
+
+**Example:**
+```typescript
+// ❌ BAD - Hardcoded strings
+export const Login = () => {
+  return (
+    <div>
+      <h1>Login Screen</h1>
+      <button>Sign In</button>
+    </div>
+  );
+};
+
+// ✅ GOOD - Using string constants
+import { LOGIN } from '@/constants/strings';
+
+export const Login = () => {
+  return (
+    <div>
+      <h1>{LOGIN.TITLE}</h1>
+      <button>{LOGIN.SIGN_IN_BUTTON}</button>
+    </div>
+  );
+};
+```
+
+**String File Structure:**
+```typescript
+// src/constants/strings.ts
+export const LOGIN = {
+  TITLE: 'Login Screen',
+  SIGN_IN_BUTTON: 'Sign In',
+  ERRORS: {
+    EMAIL_REQUIRED: 'Email is required',
+  },
+};
+```
+
+**When to Add Strings:**
+- All button labels
+- All form labels and placeholders
+- All error messages
+- All page titles and headings
+- All menu item labels
+- All tooltips and help text
+- All validation messages
+- All status messages (loading, success, error)
+
+### 7. Component Export Pattern
+
+**Always create index.ts:**
+```typescript
+// atoms/Button/index.ts
+export { Button } from './Button';
+export type { ButtonProps } from './Button'; // if component exports type
+```
+
+**Then export from parent index:**
+```typescript
+// atoms/index.ts
+export { Button } from './Button';
+export { Input } from './Input';
+// ... etc
+```
+
+## Current Component Inventory
+
+### Atoms (5 components)
+- **Button**: Variants (primary, secondary, success, warning, danger, info), Sizes (sm, md, lg)
+- **Input**: Text inputs with label, error handling, various types
+- **Card**: Container with padding, shadow, hover effects
+- **Dropdown**: Select dropdown with options
+- **Icon**: SVG icon system with sizes (sm, md, lg, xl)
+
+### Molecules (4 components)
+- **FormField**: Input wrapper with label and error display
+- **StatCard**: Card with icon, title, and action button
+- **SMSChartCard** (`smsmolecules`): Card container for charts (uses `SMSCard`)
+- **MenuItem**: Navigation menu item with icon and label
+
+### Organisms (4 components)
+- **Dashboard**: Main dashboard with stat cards and charts
+- **Header**: Top navigation bar with title and user actions
+- **Sidebar**: Left navigation sidebar with menu items
+- **Layout**: Main layout wrapper combining Header, Sidebar, and content
+
+## Development Workflow for New Features
+
+### Step 1: Analyze Requirements
+- What UI elements are needed?
+- Can existing components be reused?
+- What's the component hierarchy?
+
+### Step 2: Create Missing Atoms First
+If a basic UI element is missing:
+1. Create in `src/components/atoms/ComponentName/`
+2. Add TypeScript types in `src/types/index.ts`
+3. Export from `atoms/index.ts`
+4. Use CSS variables for styling
+5. Make it responsive
+
+### Step 3: Compose Molecules
+If you need a combination:
+1. Use existing atoms
+2. Create in `src/components/molecules/ComponentName/`
+3. Export from `molecules/index.ts`
+
+### Step 4: Build Organisms
+For complex features:
+1. Use existing molecules and atoms
+2. Create in `src/components/organisms/ComponentName/`
+3. Handle state and logic here
+4. Export from `organisms/index.ts`
+
+### Step 5: Integration
+- Import using path aliases
+- Follow existing patterns
+- Test responsiveness
+- Ensure accessibility
+
+## AI Development Prompts
+
+When requesting new components or features, provide minimal context. The AI will:
+
+1. **Analyze existing components** to find reusable parts
+2. **Follow atomic design hierarchy** automatically
+3. **Create missing atoms first** if needed
+4. **Compose molecules** from atoms
+5. **Build organisms** from molecules
+6. **Use existing patterns** and conventions
+7. **Add TypeScript types** to `src/types/index.ts`
+8. **Follow styling conventions** with CSS variables
+9. **Make components responsive** by default
+10. **Export properly** with index.ts files
+11. **Create Redux slices** for API operations (if needed)
+12. **Use Redux hooks** instead of direct API calls
+
+### Example Minimal Prompts That Work:
+
+**Good Prompts (Minimal but Clear):**
+- "Add a search bar in the header"
+- "Create a user profile card component"
+- "Add a data table for employee list"
+- "Create a modal for editing user details"
+- "Add a notification toast component"
+- "Create a filter dropdown for the dashboard"
+
+**The AI Will:**
+- Check if Button, Input, Card, Dropdown exist (they do)
+- Create SearchBar molecule (Input + Button)
+- Create UserProfileCard molecule (Card + Icon + Text)
+- Create DataTable organism (Card + multiple molecules)
+- Create Modal organism (Card + Button + overlay)
+- Create Toast atom (if simple) or molecule (if complex)
+- Create FilterDropdown molecule (Dropdown + Label)
+- Create Redux slice if API operations are needed
+- Use Redux hooks (useAppDispatch, useAppSelector) in components
+
+## Scalability Considerations
+
+### Current State Analysis
+- **Small component library**: 13 components total
+- **Well-structured**: Clear atomic design pattern
+- **Type-safe**: TypeScript throughout
+- **Reusable**: Components are composable
+- **Responsive**: Mobile-first approach
+
+### Future Growth Strategy
+
+**As the project grows:**
+
+1. **Component Organization:**
+   - Keep atomic design hierarchy
+   - Group related atoms (e.g., form atoms together)
+   - Consider sub-folders if atoms exceed 15-20 components
+   - Maintain index.ts exports for easy imports
+
+2. **Type Management:**
+   - Keep all types in `src/types/index.ts` initially
+   - Split into multiple files when it exceeds 500 lines
+   - Group related types: `types/forms.ts`, `types/navigation.ts`
+
+3. **Style Management:**
+   - Continue using CSS variables
+   - Consider CSS-in-JS or styled-components if complexity grows
+   - Maintain design system consistency
+
+4. **State Management:**
+   - **Redux Toolkit** is used for global state management
+   - All business logic and API calls are handled through Redux slices
+   - Components should use Redux hooks instead of direct API calls
+   - See "Redux State Management" section below for detailed guidelines
+
+5. **Routing:**
+   - React Router is installed but not implemented
+   - Create pages in `src/pages/` when routing is added
+   - Use Layout organism for consistent page structure
+
+6. **API Integration:**
+   - Create `src/services/` for API service functions (used by Redux slices)
+   - Create `src/store/slices/` for Redux slices with async thunks
+   - Create `src/hooks/` for custom hooks
+   - Use `src/utils/` for helper functions
+   - **NEVER call services directly from components** - always use Redux slices
+
+7. **Testing:**
+   - Add tests in `__tests__/` folders
+   - Test atoms first, then molecules, then organisms
+   - Maintain high test coverage
+
+## Code Quality Standards
+
+### Must Follow:
+- ✅ TypeScript strict mode
+- ✅ ESLint rules (configured)
+- ✅ Consistent naming conventions
+- ✅ Proper prop typing
+- ✅ Responsive design
+- ✅ Accessibility (ARIA labels, keyboard navigation)
+- ✅ Error handling
+- ✅ Loading states where applicable
+
+### Code Review Checklist:
+- [ ] Follows atomic design hierarchy
+- [ ] No code duplication
+- [ ] Uses existing components where possible
+- [ ] TypeScript types defined
+- [ ] CSS uses variables
+- [ ] **All static strings imported from `@/constants/strings`**
+- [ ] Responsive design implemented
+- [ ] Proper exports in index.ts
+- [ ] Uses path aliases for imports
+- [ ] Component is reusable and configurable
+
+## Common Patterns
+
+### Component Template (Atom):
+```typescript
+import React from 'react';
+import { ComponentProps } from '@/types';
+import './Component.css';
+
+export const Component: React.FC<ComponentProps> = ({
+  // props
+  className = '',
+}) => {
+  return (
+    <div className={`component ${className}`}>
+      {/* content */}
+    </div>
+  );
+};
+```
+
+### Component Template (Molecule):
+```typescript
+import React from 'react';
+import { Atom1 } from '@/atoms/Atom1';
+import { Atom2 } from '@/atoms/Atom2';
+import { MoleculeProps } from '@/types';
+import './Molecule.css';
+
+export const Molecule: React.FC<MoleculeProps> = ({
+  // props
+  className = '',
+}) => {
+  return (
+    <div className={`molecule ${className}`}>
+      <Atom1 />
+      <Atom2 />
+    </div>
+  );
+};
+```
+
+### Component Template (Organism):
+```typescript
+import React, { useState, useEffect } from 'react';
+import { Molecule1 } from '@/molecules/Molecule1';
+import { Molecule2 } from '@/molecules/Molecule2';
+import { OrganismProps } from '@/types';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { fetchEntities } from '@/store/slices/entitySlice';
+import './Organism.css';
+
+export const Organism: React.FC<OrganismProps> = ({
+  // props
+  className = '',
+}) => {
+  const dispatch = useAppDispatch();
+  const { entities, isLoading } = useAppSelector((state) => state.entity);
+  const [localState, setLocalState] = useState();
+  
+  useEffect(() => {
+    dispatch(fetchEntities());
+  }, [dispatch]);
+  
+  return (
+    <div className={`organism ${className}`}>
+      <Molecule1 />
+      <Molecule2 />
+    </div>
+  );
+};
+```
+
+## Important Notes
+
+1. **Never skip the hierarchy**: Always check atoms → molecules → organisms
+2. **Reuse over create**: Check existing components first
+3. **Type everything**: All props must be typed
+4. **Style consistently**: Use CSS variables, follow patterns
+5. **Export properly**: Always create index.ts files
+6. **Keep it simple**: Don't over-engineer, start simple
+7. **Make it responsive**: Mobile-first always
+8. **Document complex logic**: Add comments for non-obvious code
+9. **Use Redux for API calls**: Never call services directly from components
+10. **Business logic in slices**: Keep components focused on UI, logic in Redux
+
+## Redux State Management
+
+### Overview
+This project uses **Redux Toolkit** for centralized state management. All business logic and API interactions are handled through Redux slices and thunks.
+
+### Architecture
+
+**Store Structure:**
+```
+src/store/
+├── index.ts              # Store configuration
+├── hooks.ts              # Typed Redux hooks (useAppDispatch, useAppSelector)
+└── slices/
+    ├── authSlice.ts      # Authentication state
+    ├── skillSlice.ts     # Skills state
+    ├── postTypeSlice.ts  # PostTypes state
+    ├── employeeSlice.ts  # Employees state
+    ├── requesterSlice.ts # Requesters state
+    └── requesterTypeSlice.ts # RequesterTypes state
+```
+
+### CRITICAL RULES
+
+**NEVER:**
+- ❌ Call service functions directly from components
+- ❌ Use `useState` for data fetched from APIs
+- ❌ Manage loading/error states locally in components
+- ❌ Duplicate business logic in multiple components
+
+**ALWAYS:**
+- ✅ Create/use Redux slices for all API operations
+- ✅ Use `useAppDispatch` and `useAppSelector` hooks
+- ✅ Dispatch thunks instead of calling services
+- ✅ Access loading/error states from Redux
+- ✅ Keep business logic in slices/reducers
+
+### Creating a New Slice
+
+**Step 1: Create the slice file**
+```typescript
+// src/store/slices/myEntitySlice.ts
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { getMyEntities, upsertMyEntity, deleteMyEntity } from '@/services/myEntityService';
+import { MyEntityResponse, CreateMyEntityRequest } from '@/types/myEntity';
+
+interface MyEntityState {
+  entities: MyEntityResponse[];
+  isLoading: boolean;
+  error: string | null;
+}
+
+const initialState: MyEntityState = {
+  entities: [],
+  isLoading: false,
+  error: null,
+};
+
+// Async thunks
+export const fetchMyEntities = createAsyncThunk(
+  'myEntity/fetchMyEntities',
+  async (params: MyEntityListParams | undefined, { rejectWithValue }) => {
+    try {
+      const data = await getMyEntities(params);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error instanceof Error ? error.message : 'Failed to fetch entities');
+    }
+  }
+);
+
+export const upsertMyEntityThunk = createAsyncThunk(
+  'myEntity/upsertMyEntity',
+  async (entityData: CreateMyEntityRequest, { rejectWithValue }) => {
+    try {
+      const data = await upsertMyEntity(entityData);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error instanceof Error ? error.message : 'Failed to save entity');
+    }
+  }
+);
+
+export const removeMyEntity = createAsyncThunk(
+  'myEntity/removeMyEntity',
+  async (entityId: number, { rejectWithValue }) => {
+    try {
+      await deleteMyEntity(entityId);
+      return entityId;
+    } catch (error) {
+      return rejectWithValue(error instanceof Error ? error.message : 'Failed to delete entity');
+    }
+  }
+);
+
+const myEntitySlice = createSlice({
+  name: 'myEntity',
+  initialState,
+  reducers: {
+    clearError: (state) => {
+      state.error = null;
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      // Fetch
+      .addCase(fetchMyEntities.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(fetchMyEntities.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.entities = action.payload;
+        state.error = null;
+      })
+      .addCase(fetchMyEntities.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload as string;
+      })
+      // Upsert
+      .addCase(upsertMyEntityThunk.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(upsertMyEntityThunk.fulfilled, (state, action) => {
+        state.isLoading = false;
+        const index = state.entities.findIndex(e => e.id === action.payload.id);
+        if (index >= 0) {
+          state.entities[index] = action.payload;
+        } else {
+          state.entities.push(action.payload);
+        }
+        state.error = null;
+      })
+      .addCase(upsertMyEntityThunk.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload as string;
+      })
+      // Delete
+      .addCase(removeMyEntity.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(removeMyEntity.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.entities = state.entities.filter(e => e.id !== action.payload);
+        state.error = null;
+      })
+      .addCase(removeMyEntity.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload as string;
+      });
+  },
+});
+
+export const { clearError } = myEntitySlice.actions;
+export default myEntitySlice.reducer;
+```
+
+**Step 2: Add to store**
+```typescript
+// src/store/index.ts
+import myEntityReducer from './slices/myEntitySlice';
+
+export const store = configureStore({
+  reducer: {
+    // ... existing reducers
+    myEntity: myEntityReducer,
+  },
+});
+```
+
+**Step 3: Use in components**
+```typescript
+// In component
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { fetchMyEntities, upsertMyEntityThunk, removeMyEntity } from '@/store/slices/myEntitySlice';
+
+export const MyEntityList: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const { entities, isLoading, error } = useAppSelector((state) => state.myEntity);
+
+  useEffect(() => {
+    dispatch(fetchMyEntities());
+  }, [dispatch]);
+
+  const handleSave = async (data: CreateMyEntityRequest) => {
+    try {
+      await dispatch(upsertMyEntityThunk(data)).unwrap();
+      // Success - refresh list
+      dispatch(fetchMyEntities());
+    } catch (error) {
+      // Error handled by Redux state
+      console.error('Failed to save:', error);
+    }
+  };
+
+  return (
+    <div>
+      {isLoading && <div>Loading...</div>}
+      {error && <div>Error: {error}</div>}
+      {/* Render entities */}
+    </div>
+  );
+};
+```
+
+### Slice Naming Conventions
+
+- **Slice files**: `entityNameSlice.ts` (e.g., `skillSlice.ts`, `postTypeSlice.ts`)
+- **Thunk names**: 
+  - Fetch: `fetchEntityName` (e.g., `fetchSkills`)
+  - Upsert: `upsertEntityNameThunk` (e.g., `upsertSkill`)
+  - Delete: `removeEntityName` (e.g., `removeSkill`)
+- **State property**: Use plural for arrays (e.g., `skills`, `postTypes`, `employees`)
+
+### State Structure Pattern
+
+Each slice should follow this structure:
+```typescript
+interface EntityState {
+  entities: EntityResponse[];  // Array of entities
+  isLoading: boolean;           // Loading state
+  error: string | null;         // Error message
+}
+```
+
+### Using Redux in Components
+
+**Pattern:**
+```typescript
+// 1. Import hooks and thunks
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { fetchEntities, upsertEntityThunk } from '@/store/slices/entitySlice';
+
+// 2. Get dispatch and state
+const dispatch = useAppDispatch();
+const { entities, isLoading, error } = useAppSelector((state) => state.entity);
+
+// 3. Dispatch actions
+useEffect(() => {
+  dispatch(fetchEntities());
+}, [dispatch]);
+
+// 4. Handle async operations
+const handleSave = async () => {
+  try {
+    await dispatch(upsertEntityThunk(data)).unwrap();
+    // Success - refresh or close modal
+    dispatch(fetchEntities());
+  } catch (error) {
+    // Error is in Redux state or can be caught here
+  }
+};
+```
+
+### Error Handling
+
+- Errors are automatically stored in slice state (`error` property)
+- Use `.unwrap()` on thunk dispatch to handle errors with try/catch
+- Access error from Redux state: `const { error } = useAppSelector((state) => state.entity)`
+- Clear errors using the `clearError` action when needed
+
+### Loading States
+
+- Loading state is automatically managed by Redux (`isLoading` property)
+- Access from Redux: `const { isLoading } = useAppSelector((state) => state.entity)`
+- No need to manage loading state locally in components
+
+### Service Functions
+
+- Service functions in `src/services/` are **only called from Redux slices**
+- Services handle API communication and response parsing
+- Components should **never** import or call services directly
+
+### Benefits of This Pattern
+
+1. **Centralized State**: All data in one place
+2. **Predictable Updates**: State changes through actions only
+3. **Reusability**: Same data accessible across components
+4. **Debugging**: Redux DevTools for state inspection
+5. **Testing**: Easy to test slices independently
+6. **Performance**: Optimized re-renders with selectors
+
+## Future Enhancements (When Needed)
+
+- Add Storybook for component documentation
+- Add unit tests with Vitest
+- Add E2E tests with Playwright
+- Add form validation library (React Hook Form)
+- Add date handling library (date-fns)
+- Add error boundary components
+- Add loading skeleton components
+- Add empty state components
+- Add pagination components
+- Add data table with sorting/filtering
+
+---
+
+**Remember**: This project is designed to scale. The atomic design pattern ensures components remain organized and reusable as the project grows. Always think in terms of composition and reusability.
+

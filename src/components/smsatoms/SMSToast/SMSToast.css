@@ -1,0 +1,131 @@
+.toast {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    min-width: 300px;
+    max-width: 500px;
+    animation: slideIn 0.3s ease-out;
+    position: relative;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+}
+
+.toast__content {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex: 1;
+}
+
+.toast__icon {
+    flex-shrink: 0;
+}
+
+.toast__message {
+    flex: 1;
+    font-size: var(--font-base);
+    line-height: var(--line-height-base);
+    color: var(--text-primary);
+    white-space: pre-line;
+    word-break: break-word;
+}
+
+.toast__close {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-base);
+}
+
+.toast__close:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+/* Toast variants */
+.toast--success {
+    border-left: 4px solid var(--success-color);
+    background-color: var(--bg-primary);
+}
+
+.toast--success .toast__icon {
+    color: var(--success-color);
+}
+
+.toast--error {
+    border-left: 4px solid var(--danger-color);
+    background-color: var(--bg-primary);
+}
+
+.toast--error .toast__icon {
+    color: var(--danger-color);
+}
+
+.toast--warning {
+    border-left: 4px solid var(--warning-color);
+    background-color: var(--bg-primary);
+}
+
+.toast--warning .toast__icon {
+    color: var(--warning-color);
+}
+
+.toast--info {
+    border-left: 4px solid var(--primary-color);
+    background-color: var(--bg-primary);
+}
+
+.toast--info .toast__icon {
+    color: var(--primary-color);
+}
+
+/* Animation */
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.toast--exiting {
+    animation: slideOut 0.3s ease-in forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .toast {
+        min-width: 280px;
+        max-width: calc(100vw - var(--spacing-xl) * 2);
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .toast__message {
+        font-size: var(--font-sm);
+    }
+}

@@ -1,0 +1,61 @@
+.sms-emp-assignment-filters {
+  display: block;
+  margin-bottom: var(--spacing-lg);
+}
+
+.sms-emp-assignment-filters__row {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.sms-emp-assignment-filters__item {
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+.sms-emp-assignment-filters__search {
+  flex: 0 0 160px;
+  width: 160px;
+  min-width: 140px;
+}
+
+.sms-emp-assignment-filters__employee {
+  flex: 0 0 170px;
+  width: 170px;
+  min-width: 150px;
+}
+
+.sms-emp-assignment-filters__requester {
+  flex: 0 0 170px;
+  width: 170px;
+  min-width: 150px;
+}
+
+.sms-emp-assignment-filters__date {
+  flex: 0 0 165px;
+  width: 165px;
+  min-width: 150px;
+}
+
+.sms-emp-assignment-filters__apply,
+.sms-emp-assignment-filters__clear {
+  min-width: unset;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 900px) {
+  .sms-emp-assignment-filters__search,
+  .sms-emp-assignment-filters__employee,
+  .sms-emp-assignment-filters__requester,
+  .sms-emp-assignment-filters__date {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .sms-emp-assignment-filters__apply,
+  .sms-emp-assignment-filters__clear {
+    flex: 1 1 auto;
+  }
+}

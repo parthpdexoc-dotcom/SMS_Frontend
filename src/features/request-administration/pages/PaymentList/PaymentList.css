@@ -1,0 +1,107 @@
+@import '../RequesterList/RequesterList.css';
+@import '../../../../components/smsorganisms/SMSFormPage/SMSFormPage.css';
+
+.payment-list__header {
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.payment-list__title {
+  flex: 1;
+  min-width: 0;
+}
+
+.payment-list__add-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* Payments grid — balanced columns (matches other admin list tables) */
+.payment-list .payment-list__data-table .data-table__table {
+  table-layout: auto;
+  width: 100%;
+  min-width: 58rem;
+}
+
+.payment-list .payment-list__data-table .data-table__col--requestername {
+  min-width: 11rem;
+  width: 22%;
+}
+
+.payment-list .payment-list__data-table .data-table__col--date {
+  min-width: 6.75rem;
+  width: 9%;
+  white-space: nowrap;
+}
+
+.payment-list .payment-list__data-table .data-table__col--amountpaid {
+  min-width: 7.5rem;
+  width: 11%;
+}
+
+.payment-list .payment-list__data-table .data-table__col--paymenttype {
+  min-width: 6.5rem;
+  width: 9%;
+  white-space: nowrap;
+}
+
+.payment-list .payment-list__data-table .data-table__col--paymentstatus {
+  min-width: 7.5rem;
+  width: 10%;
+}
+
+.payment-list .payment-list__data-table .data-table__col--referencenumber {
+  min-width: 9rem;
+  width: 14%;
+}
+
+.payment-list .payment-list__data-table .data-table__col--action {
+  width: 4.5rem;
+  min-width: 4.5rem;
+  max-width: 4.5rem;
+}
+
+.payment-list .payment-list__data-table .data-table__th.data-table__col--paymenttype,
+.payment-list .payment-list__data-table .data-table__th.data-table__col--paymentstatus,
+.payment-list .payment-list__data-table .data-table__th.data-table__col--referencenumber {
+  white-space: nowrap;
+}
+
+.payment-list .payment-list__data-table .data-table__th.data-table__col--paymentstatus,
+.payment-list .payment-list__data-table .data-table__td.data-table__col--paymentstatus {
+  text-align: left;
+}
+
+.payment-list .payment-list__data-table .data-table__th.data-table__col--paymentstatus .data-table__th-label,
+.payment-list .payment-list__data-table .data-table__td.data-table__col--paymentstatus .data-table__cell {
+  justify-content: flex-start;
+}
+
+.payment-list .payment-list__data-table .data-table__td.data-table__col--paymentstatus .data-table__cell {
+  overflow: visible;
+}
+
+.payment-list__amount {
+  display: inline-block;
+  width: 100%;
+  font-variant-numeric: tabular-nums;
+}
+
+.payment-list__status {
+  display: inline-flex;
+  align-items: center;
+}
+
+.payment-list__status .MuiChip-root {
+  max-width: none;
+}
+
+@media (max-width: 768px) {
+  .payment-list .requester-list__title {
+    font-size: 1.5rem;
+  }
+}

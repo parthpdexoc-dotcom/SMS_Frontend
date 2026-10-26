@@ -1,0 +1,293 @@
+/*
+ * SMSExpandableGroupList — generic "expandable rows with a nested grid" pattern.
+ *
+ * Visual contract:
+ *  - Each group is a card-like row with a chevron toggle, a primary heading,
+ *    optional label/value meta cells, and an optional count chip.
+ *  - When expanded, the row grows a nested SMSDataTableWrapper inside a panel
+ *    that visually merges into the header (single rounded outline, seam line).
+ *  - Per-list height cap on the nested grid keeps adjacent expanded rows from
+ *    fighting for vertical space (each scrolls independently).
+ */
+
+.sms-expandable-group-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  /* Outer cap for nested table area; consumers may override via inline style or
+   * a more specific selector if they need a different ceiling. */
+  --sms-egl-nested-max-height: min(42vh, 360px);
+}
+
+/* Per-group row — do not shrink when siblings expand */
+.sms-expandable-group-list__row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+/*
+ * Expanded: single border around header + seam + posts.
+ * Use --border-color (not --border-light): on white cards --border-light is nearly invisible.
+ */
+.sms-expandable-group-list .sms-expandable-group-list__row[data-expanded='true'] {
+  border: 3px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  background-color: var(--bg-card);
+  box-sizing: border-box;
+}
+
+/* Header — chevron + identity + meta + count chip */
+.sms-expandable-group-list .sms-expandable-group-list__header {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
+  min-height: 0;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (min-width: 1100px) {
+  .sms-expandable-group-list .sms-expandable-group-list__header {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+}
+
+.sms-expandable-group-list__header-main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-sm);
+  min-width: 0;
+  flex: 1 1 14rem;
+  width: 100%;
+}
+
+@media (max-width: 699px) {
+  .sms-expandable-group-list__header-main {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    row-gap: var(--spacing-sm);
+  }
+
+  .sms-expandable-group-list__count-chip {
+    margin-left: 0;
+    align-self: flex-start;
+  }
+}
+
+.sms-expandable-group-list__expand-btn {
+  flex-shrink: 0;
+}
+
+/* SMSIcon uses a span (Material Symbols), not svg — rotate the glyph span */
+.sms-expandable-group-list__expand-btn .sms-expandable-group-list__expand-icon {
+  display: inline-block;
+  transform-origin: center;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sms-expandable-group-list__row[data-expanded='false']
+  .sms-expandable-group-list__expand-btn
+  .sms-expandable-group-list__expand-icon {
+  transform: rotate(0deg);
+}
+
+.sms-expandable-group-list__row[data-expanded='true']
+  .sms-expandable-group-list__expand-btn
+  .sms-expandable-group-list__expand-icon {
+  transform: rotate(90deg);
+}
+
+.sms-expandable-group-list__identity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
+  flex: 1;
+}
+
+/*
+ * Meta grid: primary text + label/value cells.
+ *  - default: single column (phones)
+ *  - sm/md: 2 columns (primary spans full width)
+ *  - lg+: one row, primary takes ~3fr, meta cells share remaining space.
+ *
+ * Consumers can override grid-template-columns at >=900px with the
+ * `--sms-egl-meta-cols` CSS variable (set on the root list element).
+ */
+.sms-expandable-group-list .sms-expandable-group-list__meta {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  align-items: start;
+  column-gap: clamp(var(--spacing-sm), 2vw, var(--spacing-md));
+  row-gap: var(--spacing-sm);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+  .sms-expandable-group-list .sms-expandable-group-list__meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+  }
+
+  .sms-expandable-group-list .sms-expandable-group-list__meta > .sms-expandable-group-list__primary:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 900px) {
+  .sms-expandable-group-list .sms-expandable-group-list__meta {
+    grid-template-columns: var(--sms-egl-meta-cols, minmax(0, 3fr) repeat(auto-fit, minmax(0, 1fr)));
+    align-items: center;
+  }
+}
+
+.sms-expandable-group-list .sms-expandable-group-list__cell {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.sms-expandable-group-list .sms-expandable-group-list__primary.sms-expandable-group-list__cell {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sms-expandable-group-list .sms-expandable-group-list__ellipsis {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sms-expandable-group-list__count-chip {
+  flex-shrink: 0;
+  margin-left: auto;
+  font-weight: 600;
+}
+
+.sms-expandable-group-list__primary {
+  font-size: 1.3125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.sms-expandable-group-list .sms-expandable-group-list__cell-label {
+  font-size: 0.6875rem;
+  line-height: 1.25;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.sms-expandable-group-list .sms-expandable-group-list__cell-value {
+  font-size: 1rem;
+  line-height: 1.35;
+  font-weight: 500;
+  color: #000000;
+}
+
+.sms-expandable-group-list .sms-expandable-group-list__cell-stack {
+  gap: 0.125rem;
+}
+
+/* When expanded, neutralize the header's rounded corners/shadow so the row
+ * presents a single seamless outline around header + nested panel. */
+.sms-expandable-group-list__row[data-expanded='true'] .sms-expandable-group-list__header {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* MUI Collapse: allow nested overflow:auto (table body) to receive a bounded height */
+.sms-expandable-group-list__collapse {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.sms-expandable-group-list .sms-expandable-group-list__collapse .MuiCollapse-wrapper {
+  width: 100%;
+}
+
+.sms-expandable-group-list__collapse-region {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  min-height: 0;
+}
+
+.sms-expandable-group-list__seam {
+  flex-shrink: 0;
+  width: 100%;
+  margin: 0;
+  border-color: var(--border-color);
+}
+
+.sms-expandable-group-list__panel {
+  margin-top: 0;
+  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-md);
+  border: 1px solid var(--border-light);
+  border-top: none;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  flex: none;
+  min-height: 0;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+.sms-expandable-group-list__row[data-expanded='true'] .sms-expandable-group-list__panel {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.sms-expandable-group-list__panel-card {
+  border-color: var(--border-color) !important;
+  background: var(--bg-card) !important;
+  box-shadow: none !important;
+}
+
+/* Fixed max height: scroll inside table; independent of other expanded rows. */
+.sms-expandable-group-list__panel-scroll {
+  min-height: 0;
+  flex: none;
+  max-height: var(--sms-egl-nested-max-height);
+  overflow: hidden;
+}
+
+.sms-expandable-group-list__panel-scroll .data-table {
+  min-height: 0;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.sms-expandable-group-list__panel-scroll .data-table__container {
+  min-height: 0;
+  flex: 1 1 auto;
+}
+
+.sms-expandable-group-list__panel .sms-expandable-group-list__data-table {
+  border-radius: 0;
+}

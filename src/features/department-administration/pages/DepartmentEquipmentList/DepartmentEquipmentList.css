@@ -1,0 +1,2 @@
+/* Reuse SkillsList styling so master-data lists match the Skills UX exactly */
+@import '../SkillsList/SkillsList.css';

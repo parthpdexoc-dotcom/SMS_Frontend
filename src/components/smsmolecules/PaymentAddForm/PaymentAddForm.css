@@ -1,0 +1,37 @@
+.payment-add-form {
+  width: 100%;
+}
+
+.payment-add-form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  width: 100%;
+}
+
+.payment-add-form__row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+  width: 100%;
+}
+
+.payment-add-form__row > * {
+  min-width: 0;
+}
+
+.payment-add-form__fields .MuiFormControl-root,
+.payment-add-form__fields .dropdown-wrapper {
+  width: 100%;
+  max-width: 100%;
+}
+
+.payment-add-form__fields .MuiFormControl-root {
+  margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  .payment-add-form__row {
+    grid-template-columns: 1fr;
+  }
+}

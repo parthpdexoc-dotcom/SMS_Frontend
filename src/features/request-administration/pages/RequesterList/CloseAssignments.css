@@ -1,0 +1,60 @@
+.requester-list__content.close-assignments {
+  text-align: left;
+}
+
+.close-assignments .requester-list__section-title {
+  text-align: left;
+}
+
+.close-assignments__table {
+  width: 100%;
+}
+
+/*
+ * width: 100% → fits at 100% zoom (no x-scroll when the card is wide enough).
+ * min-width → when zoom shrinks the card below this, x-scroll appears.
+ */
+.close-assignments .data-table__container {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.close-assignments .data-table__table {
+  table-layout: fixed;
+  width: 100%;
+  min-width: 70rem;
+}
+
+.close-assignments .data-table__th,
+.close-assignments .data-table__cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.close-assignments .data-table__col--action {
+  width: 10.5rem;
+}
+
+.close-assignments .data-table__col--action .data-table__cell {
+  overflow: visible;
+}
+
+.close-assignments__actions {
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.125rem;
+}
+
+.close-assignments__actions .MuiButton-root {
+  min-width: auto;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  font-size: 0.75rem;
+}
+
+.close-assignments__error {
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--danger-color);
+  font-size: 0.875rem;
+}

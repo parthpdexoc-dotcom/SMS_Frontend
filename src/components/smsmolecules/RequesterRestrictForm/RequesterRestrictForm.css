@@ -1,0 +1,97 @@
+.requester-restrict-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  position: relative;
+  overflow: visible;
+}
+
+/* Grid: row 1 = 2 dropdowns (Requester, Employee), row 2 = 2 date inputs (Start, End) */
+.requester-restrict-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+  position: relative;
+  overflow: visible;
+}
+
+.requester-restrict-form__field {
+  position: relative;
+  overflow: visible;
+}
+
+/* Requester & Employee dropdowns – reference: RoutingGroupForm.css */
+.requester-restrict-form .dropdown-wrapper,
+.requester-restrict-form .dropdown {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible !important;
+}
+.requester-restrict-form .dropdown-trigger {
+  min-height: 38px;
+  box-sizing: border-box;
+}
+/* Menu: override inline maxHeight so all options show with scroll (same fix as BlockDateForm) */
+.requester-restrict-form .dropdown-menu,
+.requester-restrict-form .dropdown-menu--fixed {
+  box-sizing: border-box;
+  max-height: 220px !important;
+  min-height: 120px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  z-index: 10000;
+}
+
+.requester-restrict-form__audit {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--background-secondary, #f8f9fa);
+  border: 1px solid var(--border-color, #e9ecef);
+  border-radius: var(--radius-md);
+}
+
+.requester-restrict-form__audit-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  flex-wrap: wrap;
+}
+
+.requester-restrict-form__audit-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  white-space: nowrap;
+}
+
+.requester-restrict-form__audit-label {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.requester-restrict-form__audit-value {
+  color: var(--text-secondary);
+}
+
+.requester-restrict-form__audit-date {
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+}
+
+.requester-restrict-form__audit-separator {
+  color: var(--border-color);
+}
+
+.requester-restrict-form__actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: flex-end;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+}

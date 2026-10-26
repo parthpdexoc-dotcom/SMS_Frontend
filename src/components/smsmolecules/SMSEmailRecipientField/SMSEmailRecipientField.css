@@ -1,0 +1,64 @@
+.sms-email-recipient-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.sms-email-recipient-field__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+}
+
+.sms-email-recipient-field__add {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--primary-color, #1e4976);
+  white-space: nowrap;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+}
+
+.sms-email-recipient-field__add:disabled {
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.sms-email-recipient-field__box {
+  border: 1px solid var(--border-light, #cbd5e1);
+  border-radius: var(--radius-md, 8px);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: #fff;
+  min-height: 44px;
+}
+
+.sms-email-recipient-field__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.sms-email-recipient-field__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  background-color: #e5e7eb;
+  border: 1px solid #d1d5db;
+  font-size: 0.8125rem;
+}
+
+.sms-email-recipient-field__chip-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0 0.125rem;
+}

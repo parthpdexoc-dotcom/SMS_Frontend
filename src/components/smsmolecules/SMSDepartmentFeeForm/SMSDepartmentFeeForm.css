@@ -1,0 +1,124 @@
+.department-fee-form {
+	width: 100%;
+}
+
+.department-fee-form__form {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-lg);
+}
+
+.department-fee-form__form-row {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.department-fee-form__toggle {
+	margin-top: 0.25rem;
+}
+
+.department-fee-form__form-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+	.department-fee-form__form-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.department-fee-form__audit-info {
+	margin-top: var(--spacing-lg);
+	padding: var(--spacing-md);
+	background-color: var(--background-secondary, #f8f9fa);
+	border: 1px solid var(--border-color, #e9ecef);
+	border-radius: var(--radius-md);
+}
+
+.department-fee-form__audit-info-row {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-lg);
+	font-size: 0.875rem;
+	color: var(--text-secondary);
+	line-height: 1.4;
+	flex-wrap: wrap;
+}
+
+.department-fee-form__audit-item {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-xs);
+	white-space: nowrap;
+}
+
+.department-fee-form__audit-separator {
+	color: var(--text-tertiary);
+	font-weight: 400;
+	margin: 0 var(--spacing-sm);
+}
+
+.department-fee-form__audit-label {
+	font-weight: 600;
+	color: var(--text-primary);
+}
+
+.department-fee-form__audit-value {
+	color: var(--text-secondary);
+}
+
+.department-fee-form__audit-date {
+	color: var(--text-tertiary);
+	font-size: 0.8125rem;
+}
+
+.department-fee-form__actions {
+	display: flex;
+	gap: var(--spacing-md);
+	justify-content: flex-end;
+	margin-top: var(--spacing-xl);
+	padding-top: var(--spacing-xl);
+}
+
+.department-fee-form__actions .button {
+	min-width: 120px;
+	padding: 0.75rem 1rem;
+	font-size: 0.9375rem;
+	min-height: 42px;
+}
+
+/* Ensure primary button has correct color (matching BusinessType) */
+.department-fee-form__actions .button--primary {
+	background-color: var(--primary-color);
+	color: var(--text-inverse);
+}
+
+.department-fee-form__actions .button--primary:hover:not(.button--disabled) {
+	background-color: var(--primary-hover);
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@media (max-width: 768px) {
+	.department-fee-form__audit-item {
+		white-space: normal;
+	}
+
+	.department-fee-form__actions {
+		flex-direction: column;
+	}
+
+	.department-fee-form__actions .button {
+		width: 100%;
+	}
+}

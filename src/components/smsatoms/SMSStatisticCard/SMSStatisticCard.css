@@ -1,0 +1,5 @@
+.sms-statistic-card__label-tooltip-target {
+  display: inline-block;
+  max-width: 100%;
+  cursor: help;
+}

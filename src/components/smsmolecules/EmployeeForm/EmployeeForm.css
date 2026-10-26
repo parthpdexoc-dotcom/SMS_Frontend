@@ -1,0 +1,223 @@
+/* Employee Form Styles
+ * Common layout is handled by src/styles/forms.css (app-form classes).
+ * Use this file for EmployeeForm-specific spacing/layout overrides.
+ */
+
+/* Slightly tighter vertical spacing just for EmployeeForm */
+.employee-form .app-form__form {
+  gap: 0.5rem;
+}
+
+.employee-form .app-form__section {
+  padding: 0.75rem;
+  column-gap: 0.5rem;
+  row-gap: 0.5rem;
+}
+
+.employee-form .app-form__section-title {
+  margin-bottom: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.employee-form__skills-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #f8fafc;
+}
+
+.employee-form__notifications-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1.5rem 2rem;
+}
+
+.employee-form__notifications .app-form__form-checkbox {
+  min-width: 0;
+  flex: 1 1 0;
+}
+
+/* Region and SMS number share the first column. Consent sits in the second. */
+.employee-form__sms-consent-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  column-gap: 1.5rem;
+  margin-bottom: var(--spacing-md, 1rem);
+}
+
+.employee-form__sms-number-group {
+  min-width: 0;
+}
+
+.employee-form__sms-consent-row .employee-form__sms-telephone {
+  width: 100%;
+}
+
+.employee-form__notifications .employee-form__sms-consent-checkbox {
+  flex: 0 0 auto;
+  justify-self: start;
+}
+
+.employee-form__consent-link {
+  color: var(--color-primary);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.employee-form__consent-link:hover,
+.employee-form__consent-link:focus-visible {
+  text-decoration: none;
+}
+@media (max-width: 768px) {
+  .employee-form__sms-consent-row {
+    grid-template-columns: 1fr;
+    row-gap: 0.75rem;
+  }
+}
+
+.employee-form__skills-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.employee-form__skills-dropdown {
+  flex: 1;
+}
+
+.employee-form__skills-add {
+  flex-shrink: 0;
+}
+
+.employee-form__skills-list {
+  margin-top: 0.75rem;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.employee-form__skills-inline-dates {
+  flex: 0 0 180px;
+}
+
+.employee-form__skills-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.1rem;
+}
+
+.employee-form__skills-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.employee-form__skills-status-filter {
+  margin-left: auto;
+  margin-right: 0.75rem;
+}
+
+.employee-form__skills-error {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #b91c1c;
+}
+
+.employee-form__skills-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.employee-form__skills-modal-row {
+  width: 100%;
+}
+
+.employee-form__skills-modal-dates-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.employee-form__skills-modal-date-field {
+  flex: 1;
+  min-width: min(100%, 160px);
+}
+
+.employee-form__skills-modal-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+/* Reduce label-to-input spacing only inside EmployeeForm */
+.employee-form .input-wrapper {
+  gap: 0.05rem;
+}
+
+/* Profile photo upload (same pattern as department logo) */
+.employee-form__photo-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md, 1rem);
+  flex-wrap: wrap;
+}
+
+.employee-form__photo-label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-primary, #1e293b);
+}
+
+.employee-form__photo-input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.employee-form__photo-preview {
+  flex-shrink: 0;
+}
+
+.employee-form__photo-preview-img {
+  display: block;
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: cover;
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 4px;
+}
+
+.employee-form__photo-error {
+  font-size: 0.875rem;
+  color: var(--error-color, #b91c1c);
+}
+
+.employee-form__additional-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  padding-top: 0.75rem;
+  width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 1200px) {
+  .employee-form__additional-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .employee-form__additional-grid {
+    grid-template-columns: 1fr;
+  }
+}

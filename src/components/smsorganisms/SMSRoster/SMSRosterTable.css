@@ -1,0 +1,13 @@
+.tableContainer {
+  border: 1px solid #cfcfcf;
+  border-radius: 0;
+  box-shadow: none;
+  /* visible so thead position:sticky works with layout main scroll */
+  overflow: visible;
+}
+
+/* SMSRosterTable: left-align ONLY tbody cell data for Officer (col 2) and Assignment (col 5) */
+.tableContainer table tbody tr td:nth-child(2),
+.tableContainer table tbody tr td:nth-child(5) {
+  text-align: left !important;
+}

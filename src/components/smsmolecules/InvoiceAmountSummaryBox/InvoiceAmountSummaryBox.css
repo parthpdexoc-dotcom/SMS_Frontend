@@ -1,0 +1,79 @@
+.invoice-amount-summary {
+  --invoice-ink: #1a1a1a;
+  --invoice-border: #e0e0e0;
+  --invoice-amount-summary-bg: #fafafa;
+  --invoice-amount-summary-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  color: var(--invoice-ink);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+.invoice-amount-summary__box {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 260px;
+  max-width: var(--invoice-amount-summary-width);
+  border: 1px solid var(--invoice-border);
+  padding: 1rem 1.25rem;
+  background: var(--invoice-amount-summary-bg);
+  border-radius: 4px;
+}
+
+/* Override MUI theme h3 (#1E4976) — match invoice document summary ink */
+h3.invoice-amount-summary__title {
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--invoice-border);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: normal;
+  color: var(--invoice-ink);
+}
+
+.invoice-amount-summary__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  font-size: 0.8125rem;
+  padding: 0.25rem 0;
+  color: var(--invoice-ink);
+}
+
+.invoice-amount-summary__value {
+  flex-shrink: 0;
+  min-width: 6.5rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--invoice-ink);
+}
+
+.invoice-amount-summary__row--total {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 2px solid var(--invoice-border);
+}
+
+.invoice-amount-summary__row--total .invoice-amount-summary__value {
+  font-size: 1rem;
+}
+
+.invoice-amount-summary__row--error {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 2px solid var(--invoice-border);
+  color: #c62828;
+}
+
+.invoice-amount-summary__row--error .invoice-amount-summary__value {
+  font-size: 1rem;
+  color: #c62828;
+}

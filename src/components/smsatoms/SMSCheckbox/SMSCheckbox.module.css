@@ -1,0 +1,29 @@
+.checkbox :global(.MuiFormControlLabel-root) {
+  margin-left: 0;
+  margin-right: 0;
+  color: #000000;
+}
+
+.checkbox :global(.MuiFormControlLabel-label) {
+  font-size: var(--font-sm, 0.875rem);
+  color: #000000;
+}
+
+.checkbox :global(.MuiCheckbox-root) {
+  padding: 4px;
+}
+
+/* Fallback if sx order loses to MUI — checked uses globalStyles / theme --color-primary */
+.checkbox :global(.MuiCheckbox-root.Mui-checked) {
+  color: var(--color-primary) !important;
+}
+
+.checkbox :global(.MuiCheckbox-root.Mui-checked .MuiSvgIcon-root) {
+  color: inherit;
+}
+
+.checkbox :global(.MuiFormHelperText-root) {
+  margin-left: 28px;
+  margin-top: 4px;
+}
+

@@ -1,0 +1,278 @@
+.requester-manager-list {
+  width: 100%;
+  padding: var(--spacing-2xl);
+}
+
+.requester-manager-list__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-2xl);
+  gap: var(--spacing-lg);
+}
+
+/* Back button (same style as FormPage / add employee) */
+.requester-manager-list__back-button {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+.requester-manager-list__back-button:hover {
+  background-color: var(--bg-secondary);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.requester-manager-list__back-button:active {
+  transform: scale(0.95);
+}
+
+.requester-manager-list__title {
+  flex: 1;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.requester-manager-list__add-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  white-space: nowrap;
+}
+
+.requester-manager-list__table {
+  width: 100%;
+}
+
+.requester-manager-list__actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+  /* Center the action buttons within their column */
+  justify-content: center;
+}
+
+.requester-manager-list__edit-button,
+.requester-manager-list__delete-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  box-shadow: none !important;
+  padding: var(--spacing-xs);
+  min-width: 28px;
+  height: 28px;
+}
+
+.requester-manager-list__edit-button {
+  color: var(--primary-color) !important;
+}
+
+.requester-manager-list__delete-button {
+  color: var(--danger-color) !important;
+}
+
+/* Accordion layout (reference: RequesterList daily hierarchical view) */
+.requester-manager-list__accordion {
+  width: 100%;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+.requester-manager-list__group {
+  border-bottom: 1px solid var(--border-light);
+}
+.requester-manager-list__group:last-child {
+  border-bottom: none;
+}
+.requester-manager-list__group[data-expanded="true"] {
+  background: var(--bg-page);
+}
+
+.requester-manager-list__row {
+  display: grid;
+  /* expand icon + 6 data columns (Manager, Badge, Type, Emp Shared, Req Shared, Action) */
+  grid-template-columns: auto repeat(6, 1fr);
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  /* Match compact spacing used in request cards */
+  padding: var(--spacing-sm) var(--spacing-lg);
+  min-height: 48px;
+}
+
+.requester-manager-list__row--data {
+  background: var(--bg-card);
+}
+
+.requester-manager-list__expand-col {
+  width: 32px;
+}
+
+.requester-manager-list__header-cell {
+  white-space: nowrap;
+}
+
+.requester-manager-list__header-cell--actions {
+  text-align: right;
+}
+
+.requester-manager-list__expand-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+}
+.requester-manager-list__expand-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.requester-manager-list__cell {
+  min-width: 0;
+}
+
+.requester-manager-list__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.requester-manager-list__actions-label {
+  /* Center the "Action" label above the buttons */
+  text-align: center;
+}
+
+.requester-manager-list__employees {
+  padding-left: calc(32px + var(--spacing-md));
+  padding-right: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  background: var(--bg-subtle);
+  border-top: 1px solid var(--border-light);
+}
+
+.requester-manager-list__employees-loading,
+.requester-manager-list__employees-empty {
+  padding: var(--spacing-lg);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.requester-manager-list__employees-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: white;
+}
+
+.requester-manager-list__employees-header {
+  display: grid;
+  /* Six equal columns: Employee Name, Badge, Type, Preferred, Tenure, Action */
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--bg-subtle);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.requester-manager-list__employees-th--action {
+  text-align: center;
+}
+
+.requester-manager-list__employee-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--spacing-md);
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-top: 1px solid var(--border-light);
+  font-size: 0.9rem;
+}
+
+/* Highlight employee rows when their manager accordion is expanded (reference: Request accordion) */
+.requester-manager-list__group[data-expanded="true"] .requester-manager-list__employees-table {
+  background-color: #f0f7ff;
+  border-color: #cbd5e1;
+}
+
+.requester-manager-list__group[data-expanded="true"]
+  .requester-manager-list__employee-row {
+  background-color: #e6f0ff;
+}
+
+.requester-manager-list__group[data-expanded="true"]
+  .requester-manager-list__employee-row:nth-child(even) {
+  background-color: #f0f7ff;
+}
+
+.requester-manager-list__employees-td--action {
+  display: flex;
+  justify-content: center;
+}
+
+/* Accordion employee list: shared SMSPagination + section divider */
+.requester-manager-list__employees-pagination.sms-pagination {
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-light);
+}
+
+.requester-manager-list__error {
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  background: var(--danger-bg, #fde8e8);
+  color: var(--danger-color);
+  border-radius: var(--radius-sm);
+}
+
+.requester-manager-list__loading,
+.requester-manager-list__empty {
+  padding: var(--spacing-2xl);
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .requester-manager-list {
+    padding: var(--spacing-md);
+  }
+
+  .requester-manager-list__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .requester-manager-list__title {
+    font-size: 1.5rem;
+  }
+
+  .requester-manager-list__add-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

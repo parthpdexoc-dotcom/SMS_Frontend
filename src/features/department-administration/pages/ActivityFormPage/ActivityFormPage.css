@@ -1,0 +1,41 @@
+/* Centered title like DepartmentFormPage */
+.activity-form-page__form-page .form-page__header {
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.activity-form-page__form-page .form-page__back-button {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 15;
+}
+
+.activity-form-page__form-page .form-page__title-section {
+  text-align: center;
+  flex: none;
+}
+
+.activity-form-page__form-page .form-page__title {
+  font-size: 1.75rem;
+}
+
+.activity-form-page__loading,
+.activity-form-page__error {
+  margin: 0 0 var(--spacing-md);
+}
+
+.activity-form-page__error {
+  color: var(--danger-color);
+}
+
+.activity-form-page__back {
+  font: inherit;
+  color: var(--primary-color);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+}

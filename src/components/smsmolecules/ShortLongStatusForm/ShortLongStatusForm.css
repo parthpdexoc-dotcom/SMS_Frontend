@@ -1,0 +1,19 @@
+/* 
+ * Shared form modal styles
+ * Most styling is now handled by SMSFormContainer component using sx props
+ * This file only contains styles needed for specific form variants
+ */
+
+/* Employee Type form specific styles */
+.form-modal--employee-type .form-modal__extra-field--half {
+  flex: 1 1 calc(50% - var(--spacing-lg) / 2);
+  min-width: 0;
+}
+
+@media (max-width: 480px) {
+  .form-modal--employee-type .form-modal__extra-field--half {
+    flex: 1 1 100%;
+  }
+}
+
+

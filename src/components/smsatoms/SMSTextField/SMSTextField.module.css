@@ -1,0 +1,4 @@
+/* SMSTextField - relies on MUI TextField default design (outlined, size small) */
+.textField {
+  /* Optional: use only for layout/className hook; no overrides to MUI defaults */
+}

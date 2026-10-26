@@ -1,0 +1,755 @@
+/* SMSAvailablePostList.css (BEM: available-post-list__*) */
+
+.available-post-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    box-sizing: border-box;
+}
+
+/* Header stays fixed at top */
+.available-post-list__header {
+    flex-shrink: 0;
+    padding: var(--spacing-xl) var(--spacing-3xl) 0;
+    margin-bottom: var(--spacing-xl);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.available-post-list__title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin: 0;
+    letter-spacing: -0.025em;
+}
+
+.available-post-list__filter-container {
+    flex-shrink: 0;
+    padding: 0;
+    margin-bottom: var(--spacing-xl);
+}
+
+.available-post-list__content {
+    flex: 1;
+    display: flex;
+    padding: 0;
+    min-height: 0;
+    width: 100%;
+    /* overflow: visible so pagination "Rows per page" dropdown can show all options (match Skills list) */
+    overflow: visible;
+}
+
+.available-post-list__main {
+    flex: 1;
+    min-width: 0;
+    padding-right: var(--spacing-md);
+    padding-bottom: var(--spacing-3xl);
+    /* overflow: visible so DataTable pagination dropdown is not clipped (match Skills list) */
+    overflow: visible;
+}
+
+/* Ensure DataTable pagination "Rows per page" dropdown can show all options (match Skills) */
+.available-post-list__main .sms-pagination {
+    overflow: visible;
+}
+.available-post-list__main .sms-pagination__size {
+    overflow: visible;
+    z-index: 10;
+}
+
+.available-post-list__groups {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.available-post-list__date-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.available-post-list__date-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #475569;
+    margin: 0;
+    padding: 12px 16px;
+    border-bottom: 2px solid #e2e8f0;
+    position: sticky;
+    top: 0;
+    background-color: #f8fafc;
+    z-index: 10;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: 8px 8px 0 0;
+}
+
+.available-post-list__date-header:hover {
+    background-color: #f1f5f9;
+}
+
+.available-post-list__date-header .header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.expand-icon {
+    color: #94a3b8;
+    transition: transform 0.2s ease;
+}
+
+.available-post-list__table-container {
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+    overflow: hidden;
+}
+
+.available-post-list__table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.available-post-list__thead {
+    background-color: #f8fafc;
+}
+
+.available-post-list__th {
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border-light);
+}
+
+.available-post-list__tbody .available-post-list__tr {
+    border-bottom: 1px solid var(--border-light);
+    transition: background-color var(--transition-base);
+}
+
+.available-post-list__tbody .available-post-list__tr:hover {
+    background-color: #f8fafc;
+}
+
+.available-post-list__tbody .available-post-list__tr:last-child {
+    border-bottom: none;
+}
+
+.available-post-list__td {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 0.875rem;
+    color: var(--text-primary);
+}
+
+.available-post-list__td--action {
+    text-align: center;
+}
+
+.available-post-list__loading,
+.available-post-list__error,
+.available-post-list__empty {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-secondary);
+    font-size: var(--font-lg);
+    background: white;
+    border-radius: var(--radius-2xl);
+    border: 1px dashed var(--border-color);
+    margin-top: var(--spacing-xl);
+}
+
+.available-post-list__error {
+    color: var(--error-color);
+    border-color: var(--error-color);
+    background-color: var(--error-bg);
+}
+
+/* Modal Styles */
+:global(.modal--xl) {
+    max-width: 1200px !important;
+}
+
+.available-post-list__modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2xl);
+    padding: var(--spacing-md) 0;
+}
+
+.available-post-list__modal-header {
+    padding: var(--spacing-lg) 0;
+    border-bottom: 2px solid #e2e8f0;
+    margin-bottom: var(--spacing-md);
+}
+
+.available-post-list__modal-header-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+}
+
+.available-post-list__modal-bottom-row {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: var(--spacing-xl) !important;
+    align-items: start !important;
+}
+
+.available-post-list__modal-loading {
+    text-align: center;
+    padding: var(--spacing-2xl);
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.available-post-list__modal-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.available-post-list__modal-section--requester {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+}
+
+.available-post-list__modal-section--card {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.available-post-list__modal-section--card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-color: #cbd5e1;
+}
+
+.available-post-list__modal-section--post-details {
+    grid-column: 2 / 4 !important;
+    width: 100% !important;
+}
+
+.available-post-list__modal-bottom-row > .available-post-list__modal-section--card:first-child {
+    grid-column: 1;
+}
+
+.available-post-list__modal-bottom-row > .available-post-list__modal-section--post-details {
+    grid-column: 2 / 4 !important;
+}
+
+.available-post-list__modal-section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.available-post-list__modal-section-header .icon {
+    color: #64748b;
+    flex-shrink: 0;
+}
+
+.available-post-list__modal-section-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+.available-post-list__modal-section-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding-left: 0;
+}
+
+/* Post details content: stack distinct sections, each as a 3-column grid of cards */
+.available-post-list__modal-section-content--two-columns {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: var(--spacing-lg) var(--spacing-2xl) !important;
+    align-items: start !important;
+    padding-left: 0 !important;
+}
+
+/* Stack label over value for all post-detail items */
+.available-post-list__modal-section-content--two-columns .data-display {
+    width: 100% !important;
+    min-width: 0 !important;
+    grid-template-columns: 1fr !important;
+    grid-column: auto !important;
+    justify-items: center !important;
+    text-align: center !important;
+    padding-bottom: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+    border-bottom: 1px solid #e5e7eb !important;
+}
+
+.available-post-list__modal-section-content--two-columns .data-display__separator {
+    display: none !important;
+}
+
+.available-post-list__modal-section-content--two-columns .data-display__value {
+    grid-column: 1 !important;
+    text-align: center !important;
+}
+
+.available-post-list__modal-requester-horizontal {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg) var(--spacing-xl);
+    align-items: start;
+}
+
+.available-post-list__modal-requester-horizontal .data-display {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    gap: 0.5rem;
+    min-width: 0;
+}
+
+.available-post-list__modal-requester-horizontal .data-display__label-container {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-shrink: 0;
+}
+
+.available-post-list__modal-requester-horizontal .data-display__value {
+    flex: 1;
+    min-width: 0;
+}
+
+@media (max-width: 768px) {
+    .available-post-list__modal-bottom-row {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .available-post-list__modal-section--post-details {
+        grid-column: 1;
+    }
+    
+    .available-post-list__modal-requester-horizontal {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .available-post-list__modal-section-content--two-columns {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    :global(.available-post-list__modal--large.modal--xl) {
+        max-width: 95vw !important;
+        width: 95vw !important;
+    }
+}
+
+.available-post-list__modal-posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.available-post-list__modal-post-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: #f8fafc;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-light);
+}
+
+.available-post-list__modal-post-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 50%;
+    background-color: #d4af37;
+    color: white;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.available-post-list__modal-post-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    flex: 1;
+}
+
+.available-post-list__modal-post-location {
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+}
+
+.available-post-list__modal-post-assignment {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.available-post-list__modal-no-posts {
+    padding: var(--spacing-md);
+    text-align: center;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.available-post-list__modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-md);
+    padding-top: var(--spacing-xl);
+    margin-top: var(--spacing-md);
+    border-top: 1px solid #e2e8f0;
+}
+
+/* Top-right inline action row above request/post details section */
+.available-post-list__modal-top-action {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 5;
+    margin-top: calc(var(--spacing-md) * -1);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 1024px) {
+    .available-post-list {
+        height: auto;
+        overflow: visible;
+        padding: var(--spacing-lg);
+    }
+
+    .available-post-list__header {
+        padding: 0;
+    }
+
+    .available-post-list__filter-container {
+        padding: 0;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .available-post-list__content {
+        overflow: visible;
+        padding: 0;
+    }
+
+    .available-post-list__main {
+        height: auto;
+        overflow: visible;
+        padding: 0;
+    }
+
+    .available-post-list__rows {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .available-post-list__rows {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .available-post-list__rows {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Post Locations are Stationary field (AvailablePostList & PostPositionByStatusList modals): light red text, gap, align value with label */
+
+.available-post-list__data-display--highlight .data-display__label,
+.available-post-list__data-display--highlight .data-display__separator,
+.available-post-list__data-display--highlight .data-display__value,
+.available-post-list__data-display--highlight .data-display__icon {
+    color: #e57373;
+}
+
+/* Request files / attachments in Post Details modal (icon-only, document-style) */
+.available-post-list__request-files {
+    grid-column: 1 / -1;
+    padding-top: var(--spacing-md);
+    overflow: visible;
+}
+.available-post-list__request-files-label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-secondary, #64748b);
+}
+.available-post-list__request-files-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-sm);
+    overflow: visible;
+}
+.available-post-list__request-files-item {
+    position: relative;
+    display: inline-flex;
+    overflow: visible;
+}
+.available-post-list__request-files-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 6px;
+    color: #fff;
+    flex-shrink: 0;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+}
+.available-post-list__request-files-icon:hover {
+    opacity: 0.9;
+}
+.available-post-list__request-files-icon-svg {
+    font-size: 1.75rem !important;
+}
+/* Stone brand file-type buttons — match smsatoms SMSFileTypeBadge palette (fileAttachmentIcons) */
+.available-post-list__request-files-icon--pdf { background-color: #B22222; }
+.available-post-list__request-files-icon--doc { background-color: #1E4976; }
+.available-post-list__request-files-icon--xls { background-color: #B8860B; }
+.available-post-list__request-files-icon--image { background-color: #001F3F; }
+.available-post-list__request-files-icon--txt { background-color: #0A1A2B; }
+.available-post-list__request-files-icon--file { background-color: #B8860B; }
+
+/* -------------------------------------------------------------------------- */
+/* SMSAvailablePostList — responsive SMSDataTable (Employee Dashboard tab)   */
+/* -------------------------------------------------------------------------- */
+
+.sms-available-post-list {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.sms-available-post-list__main {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.sms-available-post-list__data-table.data-table .data-table__container {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.sms-available-post-list__data-table.data-table .data-table__table {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0 !important;
+    table-layout: fixed !important;
+}
+
+.sms-available-post-list__data-table.data-table .data-table__th,
+.sms-available-post-list__data-table.data-table .data-table__td {
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.sms-available-post-list__data-table.data-table .data-table__th {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.sms-available-post-list__data-table.data-table .data-table__td {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    vertical-align: middle;
+}
+
+/*
+ * Column keys (SMSDataTable): startDate, postStartTime, __postEndTime,
+ * lengthOfWork, payCodeValue, rank, requestTitle, postTitle, availablePositions, [cancelledBy], action
+ */
+.sms-available-post-list__data-table.data-table .data-table__col--startdate {
+    width: 9%;
+    min-width: 6.25rem;
+    max-width: 7rem;
+}
+
+.sms-available-post-list__data-table.data-table .data-table__col--startdate.data-table__th,
+.sms-available-post-list__data-table.data-table .data-table__col--startdate.data-table__td {
+    padding-right: var(--spacing-md);
+}
+
+.sms-available-post-list__data-table.data-table .data-table__col--poststarttime.data-table__th,
+.sms-available-post-list__data-table.data-table .data-table__col--poststarttime.data-table__td {
+    padding-left: var(--spacing-md);
+}
+
+.sms-available-post-list__data-table.data-table .data-table__col--poststarttime,
+.sms-available-post-list__data-table.data-table .data-table__col--__postendtime {
+    width: 7%;
+    max-width: 4.75rem;
+}
+
+.sms-available-post-list__data-table.data-table .data-table__col--lengthofwork {
+    width: 9%;
+    min-width: 6.25rem;
+}
+
+.sms-available-post-list__data-table.data-table .data-table__col--paycodevalue {
+    width: 8%;
+    min-width: 5.25rem;
+}
+
+.sms-available-post-list__data-table.data-table .data-table__col--lengthofwork .data-table__cell,
+.sms-available-post-list__data-table.data-table .data-table__col--paycodevalue .data-table__cell {
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: clip;
+}
+
+.sms-available-post-list__data-table.data-table .data-table__col--rank {
+    width: 5%;
+    max-width: 4rem;
+}
+
+.sms-available-post-list__data-table.data-table .data-table__col--requesttitle {
+    width: 14%;
+}
+
+.sms-available-post-list__data-table.data-table .data-table__col--posttitle {
+    width: 14%;
+}
+
+.sms-available-post-list__data-table.data-table .data-table__col--availablepositions {
+    width: 6.5%;
+    min-width: 4.5rem;
+}
+
+.sms-available-post-list__data-table.data-table .data-table__col--availablepositions.data-table__th {
+    white-space: nowrap;
+    word-break: normal;
+}
+
+.sms-available-post-list__data-table.data-table .data-table__col--availablepositions.data-table__th .data-table__th-label {
+    white-space: nowrap;
+}
+
+.sms-available-post-list__data-table.data-table .data-table__col--action {
+    width: 13%;
+    min-width: 6.5rem;
+    max-width: 10.5rem;
+}
+
+.sms-available-post-list__data-table.data-table .data-table__col--action .data-table__cell {
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    overflow: visible;
+}
+
+.sms-available-post-list__data-table.data-table .data-table__col--requesttitle .data-table__cell,
+.sms-available-post-list__data-table.data-table .data-table__col--posttitle .data-table__cell {
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    white-space: normal;
+}
+
+/* Cancelled Jobs sub-tab: extra "Cancelled By" column — cap Title, reserve Date & Cancelled By */
+.sms-available-post-list__data-table--cancelled-jobs.data-table .data-table__col--startdate {
+    width: 9%;
+    min-width: 6.25rem;
+    max-width: 7rem;
+}
+
+.sms-available-post-list__data-table--cancelled-jobs.data-table .data-table__col--lengthofwork {
+    width: 9%;
+    min-width: 6.25rem;
+}
+
+.sms-available-post-list__data-table--cancelled-jobs.data-table .data-table__col--paycodevalue {
+    width: 8%;
+    min-width: 5.25rem;
+}
+
+.sms-available-post-list__data-table--cancelled-jobs.data-table .data-table__col--availablepositions {
+    width: 6.5%;
+    min-width: 4.5rem;
+}
+
+.sms-available-post-list__data-table--cancelled-jobs.data-table .data-table__col--availablepositions.data-table__th {
+    white-space: nowrap;
+    word-break: normal;
+}
+
+.sms-available-post-list__data-table--cancelled-jobs.data-table .data-table__col--action {
+    width: 12%;
+    min-width: 6.25rem;
+    max-width: 10rem;
+}
+
+.sms-available-post-list__data-table--cancelled-jobs.data-table .data-table__col--rank {
+    width: 6%;
+    max-width: 4.5rem;
+}
+
+.sms-available-post-list__data-table--cancelled-jobs.data-table .data-table__col--requesttitle {
+    width: 12%;
+    max-width: 9rem;
+}
+
+.sms-available-post-list__data-table--cancelled-jobs.data-table .data-table__col--posttitle {
+    width: 10%;
+    max-width: 9rem;
+}
+
+.sms-available-post-list__data-table--cancelled-jobs.data-table .data-table__col--requesttitle .data-table__cell,
+.sms-available-post-list__data-table--cancelled-jobs.data-table .data-table__col--posttitle .data-table__cell {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    white-space: normal;
+}
+
+.sms-available-post-list__data-table--cancelled-jobs.data-table .data-table__col--cancelledby {
+    width: 14%;
+    min-width: 7.5rem;
+}
+
+.sms-available-post-list__data-table--cancelled-jobs.data-table .data-table__col--cancelledby .data-table__cell {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    white-space: normal;
+}

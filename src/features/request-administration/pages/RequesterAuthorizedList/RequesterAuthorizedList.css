@@ -1,0 +1,126 @@
+/* Reuse SkillsList styling so master-data lists match the Skills UX exactly */
+@import '../../../department-administration/pages/SkillsList/SkillsList.css';
+
+/* Override specific styles for requester authorized list */
+.requester-authorized-list {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: var(--spacing-2xl);
+}
+
+.requester-authorized-list__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-2xl);
+  gap: var(--spacing-lg);
+}
+
+/* Back button (same style as FormPage / add employee) */
+.requester-authorized-list__back-button {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+.requester-authorized-list__back-button:hover {
+  background-color: var(--bg-secondary);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.requester-authorized-list__back-button:active {
+  transform: scale(0.95);
+}
+
+.requester-authorized-list__title {
+  flex: 1;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.requester-authorized-list__add-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  white-space: nowrap;
+}
+
+.requester-authorized-list__table {
+  width: 100%;
+  min-width: 0;
+}
+
+.requester-authorized-list__error {
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  background: var(--danger-bg, #fde8e8);
+  color: var(--danger-color);
+  border-radius: var(--radius-sm);
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .requester-authorized-list {
+    padding: var(--spacing-md);
+  }
+
+  .requester-authorized-list__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+
+  .requester-authorized-list__title {
+    font-size: 1.5rem;
+  }
+
+  .requester-authorized-list__add-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .requester-authorized-list__filters-row.data-table__toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-md);
+  }
+
+  .data-table__search {
+    width: 100%;
+  }
+}
+
+/* Short viewports / browser zoom: reclaim vertical space above the scrollable grid */
+@media (max-height: 720px) {
+  .requester-authorized-list {
+    padding: var(--spacing-lg);
+  }
+
+  .requester-authorized-list__header {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .requester-authorized-list__title {
+    font-size: 1.5rem;
+  }
+
+  .requester-authorized-list__filters-row.data-table__toolbar {
+    margin-bottom: var(--spacing-sm);
+  }
+}

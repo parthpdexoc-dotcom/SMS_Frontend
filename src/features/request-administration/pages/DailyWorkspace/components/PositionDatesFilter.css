@@ -1,0 +1,419 @@
+.position-dates-filter {
+  --pdf-surface: var(--bg-card);
+  --pdf-surface-muted: var(--bg-secondary);
+  --pdf-surface-strong: var(--bg-tertiary);
+  --pdf-text: var(--text-primary);
+  --pdf-text-muted: var(--text-secondary);
+  --pdf-text-faint: var(--text-tertiary);
+  --pdf-border: var(--border-color);
+  --pdf-accent: var(--color-primary);
+  --pdf-accent-hover: var(--color-primary-hover);
+  --pdf-accent-soft: var(--primary-light);
+  --pdf-inverse: var(--text-inverse);
+
+  box-sizing: border-box;
+  width: min(380px, calc(100vw - 24px));
+  padding: 14px;
+  border: 1px solid var(--pdf-border);
+  border-radius: 12px;
+  background: var(--pdf-surface);
+  color: var(--pdf-text);
+  font-size: 14px;
+}
+
+.position-dates-filter *,
+.position-dates-filter *::before,
+.position-dates-filter *::after {
+  box-sizing: border-box;
+}
+
+.position-dates-filter button,
+.position-dates-filter select {
+  font: inherit;
+}
+
+.position-dates-filter__header,
+.position-dates-filter__month-nav,
+.position-dates-filter__month-actions,
+.position-dates-filter__summary {
+  display: flex;
+  align-items: center;
+}
+
+.position-dates-filter__header {
+  justify-content: space-between;
+  min-height: 32px;
+  margin-bottom: 8px;
+}
+
+.position-dates-filter__header h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--pdf-text);
+}
+
+.position-dates-filter__icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--pdf-text-muted);
+  cursor: pointer;
+}
+
+.position-dates-filter__icon-button:hover:not(:disabled) {
+  border-color: var(--pdf-border);
+  background: var(--pdf-surface-muted);
+  color: var(--pdf-accent);
+}
+
+.position-dates-filter__icon-button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.position-dates-filter__month-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-height: 66px;
+  margin-bottom: 10px;
+  padding-right: 4px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+.position-dates-filter__month-chips button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 28px;
+  padding: 3px 10px;
+  border: 1px solid var(--pdf-border);
+  border-radius: 999px;
+  background: var(--pdf-surface);
+  color: var(--pdf-text);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.position-dates-filter__month-chips button span {
+  opacity: 0.75;
+  font-weight: 500;
+}
+
+.position-dates-filter__month-chips button:hover,
+.position-dates-filter__month-chips button[data-active='true'] {
+  border-color: var(--pdf-accent);
+  background: var(--pdf-accent);
+  color: var(--pdf-inverse);
+}
+
+.position-dates-filter__empty {
+  margin: 8px 0 0;
+  color: var(--pdf-text-muted);
+  font-size: 13px;
+}
+
+.position-dates-filter__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.position-dates-filter__mode {
+  display: inline-flex;
+  padding: 2px;
+  margin: 0;
+  border: 1px solid var(--pdf-border);
+  border-radius: 7px;
+  background: var(--pdf-surface-muted);
+}
+
+.position-dates-filter__mode button {
+  min-height: 26px;
+  padding: 3px 10px;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--pdf-text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.position-dates-filter__mode button[data-active='true'] {
+  background: var(--pdf-accent);
+  color: var(--pdf-inverse);
+}
+
+.position-dates-filter__month-nav {
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 34px;
+}
+
+.position-dates-filter__month-label {
+  flex: 1;
+  min-height: 30px;
+  padding: 3px 8px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--pdf-text);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.position-dates-filter__month-label:hover {
+  border-color: var(--pdf-border);
+  background: var(--pdf-surface-muted);
+}
+
+.position-dates-filter__month-nav select {
+  flex: 1;
+  height: 30px;
+  border: 1px solid var(--pdf-border);
+  border-radius: 6px;
+  background: var(--pdf-surface);
+  color: var(--pdf-text);
+  text-align: center;
+}
+
+.position-dates-filter__month-actions {
+  justify-content: space-between;
+  min-height: 28px;
+  margin-bottom: 4px;
+}
+
+.position-dates-filter__month-actions > span {
+  color: var(--pdf-text-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.position-dates-filter__month-actions > div {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.position-dates-filter__month-actions button {
+  padding: 3px 0;
+  border: none;
+  background: transparent;
+  color: var(--pdf-accent);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.position-dates-filter__month-actions button:hover {
+  color: var(--pdf-accent-hover);
+  text-decoration: underline;
+}
+
+.position-dates-filter__compact-view {
+  min-height: 76px;
+}
+
+.position-dates-filter__available-dates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-height: 114px;
+  padding: 4px 4px 4px 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+.position-dates-filter__month-chips::-webkit-scrollbar,
+.position-dates-filter__available-dates::-webkit-scrollbar {
+  width: 6px;
+}
+
+.position-dates-filter__month-chips::-webkit-scrollbar-thumb,
+.position-dates-filter__available-dates::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: var(--pdf-border);
+}
+
+.position-dates-filter__month-chips::-webkit-scrollbar-track,
+.position-dates-filter__available-dates::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.position-dates-filter__available-dates button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 58px;
+  min-height: 34px;
+  padding: 5px 9px;
+  border: 1px solid var(--pdf-border);
+  border-radius: 8px;
+  background: var(--pdf-surface);
+  color: var(--pdf-text);
+  cursor: pointer;
+}
+
+.position-dates-filter__available-dates button span {
+  color: var(--pdf-text-muted);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.position-dates-filter__available-dates button strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.position-dates-filter__available-dates button:hover {
+  border-color: var(--pdf-accent);
+  background: var(--pdf-accent-soft);
+  color: var(--pdf-accent);
+}
+
+.position-dates-filter__available-dates button[data-selected='true'] {
+  border-color: var(--pdf-accent);
+  background: var(--pdf-accent);
+  color: var(--pdf-inverse);
+}
+
+.position-dates-filter__available-dates button[data-selected='true'] span {
+  color: inherit;
+  opacity: 0.85;
+}
+
+.position-dates-filter__calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+}
+
+.position-dates-filter__weekday {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  color: var(--pdf-text-faint);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.position-dates-filter__day {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  height: 34px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--pdf-text);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.position-dates-filter__day:disabled {
+  opacity: 0.35;
+  color: var(--pdf-text-faint);
+  cursor: not-allowed;
+}
+
+.position-dates-filter__day:hover:not(:disabled):not([data-selected='true']) {
+  background: var(--pdf-accent-soft);
+  color: var(--pdf-accent);
+}
+
+.position-dates-filter__day[data-selected='true'] {
+  border-color: var(--pdf-accent);
+  background: var(--pdf-accent);
+  color: var(--pdf-inverse);
+}
+
+.position-dates-filter__day[data-today='true']::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border: 1px solid currentColor;
+  border-radius: 5px;
+  pointer-events: none;
+}
+
+.position-dates-filter__day-empty {
+  height: 34px;
+}
+
+.position-dates-filter__day:focus-visible,
+.position-dates-filter button:focus-visible,
+.position-dates-filter select:focus-visible {
+  outline: 2px solid var(--pdf-accent);
+  outline-offset: 1px;
+}
+
+.position-dates-filter__summary {
+  gap: 8px;
+  min-height: 38px;
+  margin-top: 10px;
+  padding: 7px 10px;
+  border: 1px solid var(--pdf-border);
+  border-radius: 8px;
+  background: var(--pdf-surface-muted);
+  color: var(--pdf-text-muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.position-dates-filter__summary .icon {
+  flex: 0 0 auto;
+  color: var(--pdf-accent);
+}
+
+@media (max-width: 420px) {
+  .position-dates-filter {
+    width: calc(100vw - 16px);
+    padding: 10px;
+  }
+
+  .position-dates-filter__month-chips {
+    gap: 4px;
+  }
+
+  .position-dates-filter__month-chips button {
+    padding-inline: 8px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .position-dates-filter {
+    --pdf-surface: var(--color-primary-hover);
+    --pdf-surface-muted: var(--color-primary);
+    --pdf-surface-strong: var(--color-primary-soft);
+    --pdf-text: var(--text-inverse);
+    --pdf-text-muted: var(--border-color);
+    --pdf-text-faint: var(--text-tertiary);
+    --pdf-border: var(--color-primary-soft);
+    --pdf-accent: var(--text-inverse);
+    --pdf-accent-hover: var(--border-color);
+    --pdf-accent-soft: var(--color-primary);
+    --pdf-inverse: var(--color-primary);
+  }
+}

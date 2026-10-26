@@ -1,0 +1,32 @@
+.sms-initial-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--user-initial-avatar-bg, var(--color-primary, #243f63));
+  color: #ffffff;
+  font-weight: 700;
+  font-family: var(--font-family);
+  line-height: 1;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.sms-initial-avatar--sm {
+  width: 34px;
+  height: 34px;
+  font-size: 0.875rem;
+}
+
+.sms-initial-avatar--md {
+  width: 48px;
+  height: 48px;
+  font-size: 1.25rem;
+}
+
+.sms-initial-avatar--lg {
+  width: 64px;
+  height: 64px;
+  font-size: 1.625rem;
+}

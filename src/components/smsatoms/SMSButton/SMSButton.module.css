@@ -1,0 +1,17 @@
+/* Minimal CSS for SMSButton - default (medium) height matches SMSTextField/SMSDatePicker via theme (40px / --sms-input-height) */
+.button {
+  font-weight: 500;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.button :global(.MuiButton-label) {
+  white-space: nowrap;
+}
+
+/* Loading state */
+.button.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+

@@ -1,0 +1,215 @@
+/* Reuse SkillsList styling so master-data lists match the Skills UX exactly */
+@import '../SkillsList/SkillsList.css';
+
+/* Override specific styles for department defined fields list */
+.department-defined-fields-list {
+  width: 100%;
+  min-height: 100%;
+  padding: var(--spacing-2xl);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.department-defined-fields-list__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-2xl);
+  gap: var(--spacing-lg);
+}
+
+.department-defined-fields-list__back-button {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  padding: 0 !important;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all var(--transition-base);
+}
+
+.department-defined-fields-list__back-button:hover {
+  background-color: var(--bg-secondary);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.department-defined-fields-list__back-button:active {
+  transform: scale(0.95);
+}
+
+.department-defined-fields-list__title {
+  flex: 1;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: left;
+  align-self: flex-start;
+}
+
+.department-defined-fields-list__tabs {
+  margin-bottom: var(--spacing-xl);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 20rem;
+}
+
+/* SMSTabs wrapper: align with page chrome */
+.department-defined-fields-list__sms-tabs {
+  display: inline-flex;
+  max-width: 28rem;
+  border: 1px solid var(--border-dark, #374151);
+  border-radius: var(--radius-md);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  background-color: var(--bg-primary);
+}
+
+.department-defined-fields-list__add-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  white-space: nowrap;
+}
+
+.department-defined-fields-list__error {
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  background: var(--danger-color, #dc3545);
+  color: white;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+}
+
+.department-defined-fields-list__error-hint {
+  opacity: 0.9;
+  font-size: 0.8125rem;
+}
+
+.department-defined-fields-list__loading {
+  padding: var(--spacing-lg);
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.department-defined-fields-list__content {
+  width: 100%;
+  flex: 1;
+  margin-top: var(--spacing-md);
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.department-defined-fields-list__tab-panel {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.department-defined-fields-list__table {
+  width: 100%;
+}
+
+/* Ensure proper vertical alignment for all table cells */
+.department-defined-fields-list__table .data-table__td {
+  vertical-align: middle;
+}
+
+.department-defined-fields-list__actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+}
+
+.department-defined-fields-list__edit-button,
+.department-defined-fields-list__delete-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  white-space: nowrap;
+
+  /* Make action buttons minimal (no background) */
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
+  box-shadow: none !important;
+  padding: var(--spacing-xs);
+  min-width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+
+  /* Ensure consistent sizing */
+  flex-shrink: 0;
+}
+
+.department-defined-fields-list__edit-button {
+  color: var(--primary-color) !important;
+}
+
+.department-defined-fields-list__edit-button:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.department-defined-fields-list__delete-button {
+  color: var(--danger-color) !important;
+}
+
+.department-defined-fields-list__delete-button:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Hide active/inactive toggle buttons for DepartmentDefinedFields list */
+.department-defined-fields-list .skills-list__segmented {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .department-defined-fields-list {
+    padding: var(--spacing-md);
+  }
+
+  .department-defined-fields-list__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .department-defined-fields-list__title {
+    font-size: 1.5rem;
+  }
+
+  .department-defined-fields-list__add-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .department-defined-fields-list__actions {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--spacing-xs);
+  }
+
+  .department-defined-fields-list__edit-button,
+  .department-defined-fields-list__delete-button {
+    width: 100%;
+    justify-content: center;
+    min-height: 36px;
+  }
+}

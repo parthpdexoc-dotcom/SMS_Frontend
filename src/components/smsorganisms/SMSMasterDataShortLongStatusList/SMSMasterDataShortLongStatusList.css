@@ -1,0 +1,175 @@
+.master-data-list {
+  width: 100%;
+  padding: var(--spacing-xl) var(--spacing-2xl);
+}
+
+/* SMS card shell for DataTable (replaces legacy Card wrapper from DataTable) */
+.master-data-list__table-card {
+  width: 100%;
+}
+
+.master-data-list__table-card .data-table__table {
+  width: 100%;
+  min-width: 0;
+  table-layout: auto;
+}
+
+@media (max-width: 768px) {
+  .master-data-list {
+    padding: var(--spacing-md);
+  }
+}
+
+.master-data-list-header {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.master-data-list-title {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .master-data-list-title {
+    font-size: 1.5rem;
+  }
+}
+
+.master-data-list-add-button {
+  white-space: nowrap;
+}
+
+.master-data-list-muted-text {
+  color: var(--text-primary);
+}
+
+.master-data-list-muted-text-inactive {
+  color: var(--text-tertiary);
+}
+
+.master-data-list-muted-text-readonly {
+  color: var(--text-tertiary);
+}
+
+.master-data-list-table .data-table__tr.master-data-list-row--readonly,
+.master-data-list-table .data-table__card.master-data-list-row--readonly {
+  opacity: 0.55;
+  background-color: color-mix(in srgb, var(--bg-secondary, #f5f5f5) 70%, transparent);
+}
+
+.master-data-list-table .data-table__tr.master-data-list-row--readonly .master-data-list-status-chip {
+  opacity: 0.75;
+}
+
+.master-data-list-stamp {
+  position: relative;
+  min-width: 140px;
+}
+
+.master-data-list-stamp:hover .master-data-list-stamp-time-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.master-data-list-stamp-name {
+  font-size: 0.8125rem;
+  line-height: 1.2;
+}
+
+.master-data-list-stamp-date {
+  font-size: 0.75rem;
+  line-height: 1.2;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+.master-data-list-stamp-time-tooltip {
+  font-size: 0.75rem;
+  line-height: 1.2;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  position: absolute;
+  left: 0;
+  top: calc(100% + 2px);
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 4px 8px;
+  box-shadow: var(--shadow-md);
+  z-index: 5;
+  opacity: 0;
+  transform: translateY(-2px);
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.master-data-list-status-chip {
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  padding: 2px 8px;
+  opacity: 0.9;
+}
+
+.master-data-list-status-chip-active {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #2e7d32;
+  border: 1px solid rgba(76, 175, 80, 0.25);
+}
+
+.master-data-list-status-chip-inactive {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: #c62828;
+  border: 1px solid rgba(244, 67, 54, 0.25);
+}
+
+/* Spacing between edit/delete — keep in sync with SMSStack spacing on master-data-list-action-buttons */
+.master-data-list-action-buttons {
+  gap: 3px;
+}
+
+/* Layout only — icon colors come from SMSIconButton `tone` + theme.css variables */
+.master-data-list-action-button {
+  min-width: 28px;
+  height: 28px;
+  padding: 4px;
+  box-shadow: none !important;
+}
+
+/* Column width adjustments - Title narrower, Description wider */
+.skills-list__table th:first-child,
+.skills-list__table td:first-child {
+  width: 15%;
+  min-width: 120px;
+  max-width: 200px;
+}
+
+.skills-list__table th:nth-child(2),
+.skills-list__table td:nth-child(2) {
+  width: 35%;
+  min-width: 200px;
+}
+
+/* SMSSegmentedStatusFilter: chrome comes from component; class only for layout in table toolbar */
+.master-data-list-toolbar {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Keep full Active/Inactive visible across all master-data pages. */
+.master-data-list-table .data-table__th.data-table__col--status,
+.master-data-list-table .data-table__td.data-table__col--status {
+  width: 7.5rem;
+  min-width: 7.5rem;
+  max-width: 7.5rem;
+}
+
+.master-data-list-table .data-table__td.data-table__col--status .master-data-list-status-chip {
+  min-width: 6.25rem;
+  justify-content: center;
+}

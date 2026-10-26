@@ -1,0 +1,230 @@
+/* Reuse SkillForm styles to keep consistent UX */
+.department-equipment-form {
+  width: 100%;
+}
+
+.department-equipment-form__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+.department-equipment-form__subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0 0 var(--spacing-lg) 0;
+}
+
+.department-equipment-form__error {
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  background: var(--danger-color);
+  color: white;
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.department-equipment-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+.department-equipment-form__form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+  align-items: start;
+}
+
+/* When a row contains a dropdown that spans full width, make it single column */
+.department-equipment-form__form-row:has(.dropdown-wrapper:only-child) {
+  grid-template-columns: 1fr;
+}
+
+.department-equipment-form__checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md) var(--spacing-xl);
+  align-items: center;
+}
+
+.department-equipment-form__checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.department-equipment-form__checkbox-label input[type="checkbox"] {
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+}
+
+.department-equipment-form__checkbox-label span {
+  user-select: none;
+}
+
+.department-equipment-form__checkbox-row {
+  margin-bottom: var(--spacing-md);
+}
+
+.department-equipment-form__section-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.department-equipment-form__section {
+  border: 1px solid var(--border-color, #e9ecef);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  background-color: var(--background-primary, #ffffff);
+}
+
+.department-equipment-form__section-header {
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-color-light, #f0f0f0);
+}
+
+.department-equipment-form__section-header .department-equipment-form__checkbox-label {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.department-equipment-form__audit-info {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background-color: var(--background-secondary, #f8f9fa);
+  border: 1px solid var(--border-color, #e9ecef);
+  border-radius: var(--radius-md);
+}
+
+.department-equipment-form__audit-info-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  flex-wrap: wrap;
+}
+
+.department-equipment-form__audit-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  white-space: nowrap;
+}
+
+.department-equipment-form__audit-label {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.department-equipment-form__audit-value {
+  color: var(--text-secondary);
+}
+
+.department-equipment-form__audit-date {
+  color: var(--text-tertiary);
+  font-size: 0.8125rem;
+}
+
+.department-equipment-form__audit-separator {
+  color: var(--text-tertiary);
+  font-weight: 400;
+  margin: 0 var(--spacing-sm);
+}
+
+.department-equipment-form__footer {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
+}
+
+.department-equipment-form__cancel-button,
+.department-equipment-form__submit-button {
+  min-width: 7.5rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Routing groups with Final Authority checkboxes - chip and checkbox in same row */
+.department-equipment-form__routing-groups-with-checkboxes {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.department-equipment-form__routing-group-row {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 1.75rem;
+  width: fit-content;
+}
+
+@media (max-width: 48rem) {
+  .department-equipment-form__form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .department-equipment-form__checkboxes {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .department-equipment-form__audit-info-row {
+    gap: var(--spacing-md);
+  }
+
+  .department-equipment-form__audit-item {
+    white-space: normal;
+  }
+
+  .department-equipment-form__footer {
+    flex-direction: column;
+  }
+
+  .department-equipment-form__cancel-button,
+  .department-equipment-form__submit-button {
+    width: 100%;
+  }
+
+  .department-equipment-form__routing-group-item {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .department-equipment-form__routing-group-name {
+    width: 100%;
+    flex: none;
+  }
+
+  .department-equipment-form__routing-group-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}

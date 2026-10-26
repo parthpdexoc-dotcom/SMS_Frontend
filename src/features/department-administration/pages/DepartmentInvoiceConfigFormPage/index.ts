@@ -1,0 +1,1 @@
+export { DepartmentInvoiceConfigFormPage } from './DepartmentInvoiceConfigFormPage';

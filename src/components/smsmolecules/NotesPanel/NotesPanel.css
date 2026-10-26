@@ -1,0 +1,308 @@
+/* Notes Panel Styles */
+.notes-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: var(--spacing-md);
+}
+
+.notes-panel__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary, #333);
+  margin: 0;
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-light, #e5e7eb);
+}
+
+.notes-panel__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  max-height: 70%;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.notes-panel__list::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.notes-panel__item {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: flex-start;
+  padding: var(--spacing-sm);
+  background-color: white;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light, #e5e7eb);
+  position: relative;
+}
+
+.notes-panel__number {
+  font-weight: 600;
+  color: var(--color-primary, #007bff);
+  flex-shrink: 0;
+  min-width: 24px;
+}
+
+.notes-panel__text {
+  flex: 1;
+  color: var(--text-primary, #333);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.notes-panel__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.notes-panel__content .notes-panel__text {
+  margin: 0;
+}
+
+.notes-panel__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.notes-panel__add-button {
+  width: 100%;
+}
+
+.notes-panel__textarea {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+}
+
+.notes-panel__textarea .form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.notes-panel__textarea textarea {
+  width: 100%;
+  max-height: 100px;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border: 1px solid #d4d4d4;
+}
+
+/* Add Comment Button */
+.notes-panel__add-comment-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid var(--border-color, #d4d4d4);
+  border-radius: var(--radius-sm, 4px);
+  background-color: var(--bg-primary, #fff);
+  color: var(--text-primary, #333);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.notes-panel__add-comment-button:hover {
+  background-color: var(--color-primary, #007bff);
+  color: white;
+  border-color: var(--color-primary, #007bff);
+  transform: scale(1.1);
+}
+
+.notes-panel__add-comment-button:active {
+  transform: scale(0.95);
+}
+
+.notes-panel__add-comment-button:focus {
+  outline: 2px solid var(--color-primary, #007bff);
+  outline-offset: 2px;
+}
+
+/* Tooltip */
+.notes-panel__add-comment-button::after {
+  content: 'Add comment';
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1f2937;
+  color: white;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  padding: 6px 10px;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.notes-panel__add-comment-button::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #1f2937;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 1001;
+}
+
+.notes-panel__add-comment-button:hover::after,
+.notes-panel__add-comment-button:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Remove Comment Button */
+.notes-panel__remove-comment-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid var(--border-color, #d4d4d4);
+  border-radius: var(--radius-sm, 4px);
+  background-color: var(--bg-primary, #fff);
+  color: var(--text-primary, #333);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.notes-panel__remove-comment-button:hover {
+  background-color: var(--color-danger, #dc3545);
+  color: white;
+  border-color: var(--color-danger, #dc3545);
+  transform: scale(1.1);
+}
+
+.notes-panel__remove-comment-button:active {
+  transform: scale(0.95);
+}
+
+.notes-panel__remove-comment-button:focus {
+  outline: 2px solid var(--color-danger, #dc3545);
+  outline-offset: 2px;
+}
+
+/* Tooltip for remove comment button */
+.notes-panel__remove-comment-button::after {
+  content: 'Remove comment';
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1f2937;
+  color: white;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  padding: 6px 10px;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.notes-panel__remove-comment-button::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #1f2937;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 1001;
+}
+
+.notes-panel__remove-comment-button:hover::after,
+.notes-panel__remove-comment-button:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* View Comment Button */
+.notes-panel__view-comment-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-sm, 4px);
+  background-color: transparent;
+  color: var(--text-primary, #333);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.notes-panel__view-comment-button:hover {
+  transform: scale(1.1);
+}
+
+.notes-panel__view-comment-button:active {
+  transform: scale(0.95);
+}
+
+.notes-panel__view-comment-button:focus {
+  outline: 2px solid var(--color-primary, #007bff);
+  outline-offset: 2px;
+}
+
+/* Expanded Comment Display */
+.notes-panel__comment-expanded {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: #f8f9fa;
+  border-left: 3px solid var(--color-primary, #007bff);
+  border-radius: var(--radius-sm);
+}
+
+.notes-panel__comment-label {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--text-secondary, #666);
+  margin-bottom: var(--spacing-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.notes-panel__comment-text {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text-primary, #333);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  word-break: break-word;
+}

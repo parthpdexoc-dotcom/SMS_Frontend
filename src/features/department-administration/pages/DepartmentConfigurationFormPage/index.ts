@@ -1,0 +1,1 @@
+export { DepartmentConfigurationFormPage } from './DepartmentConfigurationFormPage';

@@ -1,0 +1,1011 @@
+/* Request Form Styles */
+/* Most layout styles are handled by src/styles/forms.css (app-form classes) */
+/* This file contains only RequestForm-specific overrides */
+
+.request-form {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Tighter vertical rhythm vs global app-form__section (row-gap 1rem + padding 1rem) */
+.request-form .request-form__step-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.request-form .app-form__section {
+  row-gap: 0.45rem;
+  padding: 0.65rem 0.75rem;
+  column-gap: 0.65rem;
+}
+
+.request-form .app-form__section-title {
+  margin-bottom: 0.25rem;
+  padding-bottom: 0.35rem;
+}
+
+.request-form__request-type {
+  position: relative;
+  z-index: 9999;
+}
+
+.request-form__start-date-field {
+  position: relative;
+  z-index: 2001;
+}
+
+/* Request Schedule table: keep readable at browser zoom by scrolling horizontally
+   instead of squeezing many columns into fixed layout width. */
+.request-form__schedule-table .data-table__container {
+  overflow-x: auto;
+}
+
+.request-form__schedule-table {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  padding-left: 6px !important;
+  padding-right: 6px !important;
+}
+
+.request-form__schedule-table .data-table__table {
+  table-layout: auto;
+  min-width: 62rem;
+}
+
+.request-form__schedule-table .data-table__th {
+  white-space: nowrap;
+}
+
+/* Schedule time band vs local "today": old (ended) / ongoing (spans today) / future */
+.request-form__schedule-table .data-table__tbody tr.request-form__schedule-row--old .data-table__td,
+.request-form__schedule-table .data-table__card.request-form__schedule-row--old {
+  background-color: #ffebee;
+}
+
+/* Ongoing (current) schedule: stronger fill + left accent so it stands out from old/future */
+.request-form__schedule-table .data-table__tbody tr.request-form__schedule-row--ongoing .data-table__td,
+.request-form__schedule-table .data-table__card.request-form__schedule-row--ongoing {
+  background-color: #ffe0b2;
+}
+
+.request-form__schedule-table .data-table__tbody tr.request-form__schedule-row--ongoing .data-table__td:first-of-type {
+  box-shadow: inset 4px 0 0 #f57c00;
+}
+
+.request-form__schedule-table .data-table__card.request-form__schedule-row--ongoing {
+  border-left: 4px solid #f57c00;
+}
+
+.request-form__schedule-table .data-table__tbody tr.request-form__schedule-row--future .data-table__td,
+.request-form__schedule-table .data-table__card.request-form__schedule-row--future {
+  background-color: #e8f5e9;
+}
+
+.request-form__schedule-table .data-table__tbody tr.request-form__schedule-row--old:hover .data-table__td,
+.request-form__schedule-table .data-table__card.request-form__schedule-row--old:hover {
+  background-color: #ffcdd2;
+}
+
+.request-form__schedule-table .data-table__tbody tr.request-form__schedule-row--ongoing:hover .data-table__td,
+.request-form__schedule-table .data-table__card.request-form__schedule-row--ongoing:hover {
+  background-color: #ffcc80;
+}
+
+.request-form__schedule-table .data-table__tbody tr.request-form__schedule-row--future:hover .data-table__td,
+.request-form__schedule-table .data-table__card.request-form__schedule-row--future:hover {
+  background-color: #c8e6c9;
+}
+
+/* Save validation: request start date moved forward past this schedule's start date */
+.request-form__schedule-table .data-table__tbody tr.request-form__schedule-row--outdated .data-table__td,
+.request-form__schedule-table .data-table__card.request-form__schedule-row--outdated {
+  background-color: #fff3e0 !important;
+}
+
+.request-form__schedule-table .data-table__tbody tr.request-form__schedule-row--outdated .data-table__td:first-of-type {
+  box-shadow: inset 4px 0 0 #e65100;
+}
+
+.request-form__schedule-table .data-table__card.request-form__schedule-row--outdated {
+  border-left: 4px solid #e65100;
+}
+
+.request-form__schedule-table .data-table__tbody tr.request-form__schedule-row--outdated:hover .data-table__td,
+.request-form__schedule-table .data-table__card.request-form__schedule-row--outdated:hover {
+  background-color: #ffe0b2 !important;
+}
+
+/* One row: Request Type | Start Date | End Date | Release As | Generate Schedule */
+.app-form__section .app-form__row--compact > .request-form__request-type-dates-row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  gap: 0.75rem;
+  width: 100%;
+  flex: 0 0 100% !important;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.request-form__request-type-dates-row > .app-form__field {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.request-form__request-type-dates-row__empty {
+  min-height: 1px;
+  pointer-events: none;
+}
+
+.request-form__generate-schedule-field {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  min-width: auto !important;
+  max-width: none !important;
+  padding-top: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+}
+
+.request-form__generate-schedule-field .MuiButton-root {
+  min-height: 40px;
+  width: auto;
+  white-space: nowrap;
+}
+/* Ensure no nested sections create separate boxes */
+.request-form__section--merged > * {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.request-form__section-content {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+}
+
+.request-form__form-row--5-columns {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 100%;
+  grid-column: 1 / -1;
+  box-sizing: border-box;
+}
+
+/* Row with exactly 2 columns (e.g. First Name, Last Name) - overrides display:contents */
+.request-form__step-1 .request-form__row-2col {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  grid-column: 1 / -1;
+  align-items: start;
+}
+
+/* Row with exactly 3 columns (Contact Details: Primary Email, Primary Phone, Cell Phone; then secondary) */
+.request-form__step-1 .request-form__row-3col {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  grid-column: 1 / -1;
+  align-items: start;
+}
+
+
+/* Link to Parent Request: checkbox above dropdown, stacked vertically */
+.request-form__link-parent-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.request-form__link-parent-row .dropdown-wrapper {
+  width: 100%;
+  min-width: 200px;
+}
+
+/* Compact row for date/time fields with reduced uniform gaps */
+.app-form__section .app-form__row--compact {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 0.5rem !important;
+  grid-column: 1 / -1;
+  align-items: flex-start;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+}
+
+/* Space above contact row (below schedule accordion / preceding fields) */
+.request-form .app-form__section .app-form__row--compact.request-form__contact-row {
+  margin-top: 0.5rem !important;
+}
+
+/* Target all direct children (DateInput, Input, Dropdown components) */
+.app-form__section .app-form__row--compact > * {
+  flex: 1 1 0;
+  min-width: 140px;
+  max-width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+}
+
+/* Remove any margins from wrapper components */
+.app-form__section .app-form__row--compact .date-input-wrapper,
+.app-form__section .app-form__row--compact .input-wrapper,
+.app-form__section .app-form__row--compact .dropdown-wrapper {
+  width: 100%;
+  min-width: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+}
+
+/* Ensure RecurrenceOptions in compact row also gets proper spacing */
+.app-form__row--compact > .recurrence-options-container {
+  flex: 1 1 100%;
+  min-width: 100%;
+  margin-top: 0.5rem;
+}
+
+.app-form__row--compact:has(.month-day-calendar__popover),
+.app-form__row--compact:has(.month-day-calendar__trigger.open) {
+  position: relative;
+  z-index: 10050;
+}
+
+/* Allow recurrence options container to overflow for dropdown visibility */
+.app-form__section .app-form__row .app-form__field .recurrence-options-container {
+  overflow: visible;
+  position: relative;
+}
+
+/* Ensure recurrence options container spans full width and doesn't overlap */
+.app-form__section .app-form__row .app-form__field:has(.recurrence-options-container),
+.app-form__section .app-form__row:has(.recurrence-options-container) {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.app-form__section .app-form__row .app-form__field:has(.recurrence-configuration-area),
+.app-form__section .app-form__row .app-form__field .recurrence-configuration-area,
+.app-form__section .app-form__row .recurrence-configuration-area {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+}
+
+/* Direct placement of RecurrenceOptions in row */
+.app-form__section .app-form__row > .recurrence-options-container {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+}
+
+/* Alternative for browsers without :has() support */
+.app-form__section .app-form__row .app-form__field--recurrence,
+.app-form__section .app-form__row--recurrence {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+}
+
+/* Allow dropdown fields to overflow so dropdown menu is visible */
+.app-form__section .app-form__row .app-form__field .dropdown-wrapper {
+  position: relative;
+  z-index: 1000;
+  overflow: visible;
+  /* Create a new stacking context to escape parent overflow */
+  isolation: isolate;
+}
+
+/* Ensure dropdown menu can overflow its parent container */
+.app-form__section .app-form__row .app-form__field .dropdown-wrapper .dropdown-menu {
+  overflow: visible;
+  position: absolute;
+  z-index: 1001;
+}
+
+/* Checkbox styles are handled by common forms.css */
+
+.request-form__audit-info {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+
+.request-form__audit-info-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.request-form__audit-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.request-form__audit-label {
+  font-weight: 600;
+  color: #666;
+}
+
+.request-form__audit-value {
+  color: #333;
+}
+
+.request-form__schedule-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.request-form__schedule-status--active {
+  background: var(--success-color-rgba-10);
+  border-color: var(--success-color-rgba-25);
+  color: var(--success-hover);
+}
+
+.request-form__schedule-status--inactive {
+  background: var(--danger-color-rgba-10);
+  border-color: var(--danger-color-rgba-25);
+  color: var(--danger-hover);
+}
+
+.request-form__audit-date {
+  color: #888;
+  font-size: 0.875rem;
+}
+
+.request-form__audit-separator {
+  color: #ccc;
+  font-weight: bold;
+}
+
+.request-form__footer {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.request-form__cancel-button {
+  flex: 0 0 auto;
+}
+
+.request-form__submit-button {
+  flex: 0 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .request-form__form-row--5-columns {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .request-form__form-row--5-columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .request-form__form-row--5-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Specific Request Form Styles (Calendar, Schedule, Nested Fields) */
+
+/* Nested Fields Styles (e.g., for vehicle counts) */
+.request-form__nested-fields {
+  background-color: #fcfcfc;
+  border-left: 2px solid #007bff;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  margin-top: 0.25rem;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Weekdays & Month Days */
+.request-form__weekdays {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.request-form__weekday-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+.request-form__weekday-checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.request-form__month-days-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 0.5rem;
+  margin-top: 1rem;
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background: #fafafa;
+}
+
+.request-form__help-text {
+  font-size: 0.875rem;
+  color: #666;
+  margin-top: 0.25rem;
+}
+
+.request-form__calendar-wrapper {
+  margin-top: 0.5rem;
+}
+
+.request-form__datepicker {
+  width: 100%;
+}
+
+.request-form__datepicker-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: white;
+  cursor: pointer;
+}
+
+.request-form__datepicker-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.request-form__datepicker-input:disabled {
+  background-color: #f8f9fa;
+  cursor: not-allowed;
+}
+
+/* Calendar customizations */
+
+.request-form__calendar {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: white;
+}
+
+.request-form__calendar .rmdp-wrapper {
+  font-family: inherit;
+}
+
+.request-form__calendar .rmdp-calendar {
+  width: 100%;
+  max-width: 300px;
+}
+
+.request-form__calendar .rmdp-day {
+  width: 32px;
+  height: 32px;
+}
+
+.request-form__calendar .rmdp-selected {
+  background-color: #007bff;
+  color: white;
+}
+
+.request-form__calendar .rmdp-today {
+  background-color: #e3f2fd;
+  color: #007bff;
+}
+
+.request-form__selected-dates-summary {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+}
+
+.request-form__selected-dates-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.request-form__selected-date-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.request-form__date-remove {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2em;
+  line-height: 1;
+  padding: 0;
+  margin-left: 0.25rem;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.request-form__date-remove:hover {
+  opacity: 1;
+}
+
+.request-form__date-remove:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Modal Overrides - ensure Edit Equipment modal sits above Request Type, Start/End/Schedule Date dropdowns and pickers */
+.modal-overlay:has(.add-equipment-modal) {
+  z-index: 10001;
+}
+
+.modal-overlay:has(.add-equipment-modal) .modal.add-equipment-modal {
+  z-index: 10002;
+}
+
+.add-equipment-modal {
+  overflow-y: visible !important;
+  max-height: 90vh;
+}
+
+.add-equipment-modal .equipment-allocation-checkboxes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.add-equipment-modal .equipment-allocation-checkboxes > div {
+  width: auto;
+  flex: 0 0 auto;
+}
+
+/* Vertical Checkboxes & Split Layout */
+.request-form__checkboxes--vertical {
+  display: flex;
+  flex-direction: column !important;
+  gap: 0 !important;
+}
+
+.request-form .request-form__checkboxes--vertical .app-form__form-checkbox {
+  min-height: 0;
+}
+
+.request-form .request-form__checkboxes--vertical .MuiCheckbox-root .request-form__additional-fields-checkbox {
+  padding: 2px;
+}
+
+/* Tighter vertical rhythm for request form checkboxes (matches post form) */
+.request-form .app-form__checkbox-label .MuiFormControlLabel-root {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.request-form__split-container {
+  display: flex;
+  gap: 2rem;
+  grid-column: 1 / -1;
+  align-items: flex-start;
+}
+
+.request-form__left-panel {
+  flex: 0 0 300px;
+  /* Fixed width for checkboxes, adjust as needed */
+  min-width: 250px;
+}
+
+.request-form__right-panel {
+  flex: 1;
+  background: #fafafa;
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid #eee;
+  min-height: 200px;
+}
+
+.request-form__fees-table {
+  margin-top: var(--spacing-md);
+}
+
+/* Field Grouping for Compact Layout */
+.app-form__field-group {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.app-form__field-group>* {
+  flex: 1;
+  min-width: 0;
+  /* Prevents flex items from overflowing */
+}
+
+/* Notes Side Panel Styles */
+.request-form__notes-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: var(--spacing-md);
+}
+
+.request-form__notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  max-height: 70%;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.request-form__notes-list::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.request-form__notes-item {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: flex-start;
+  padding: var(--spacing-sm);
+  background-color: white;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light, #e5e7eb);
+  position: relative;
+}
+
+.request-form__notes-number {
+  font-weight: 600;
+  color: var(--color-primary, #007bff);
+  flex-shrink: 0;
+  min-width: 24px;
+}
+
+.request-form__notes-text {
+  flex: 1;
+  color: var(--text-primary, #333);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.request-form__notes-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.request-form__notes-content .request-form__notes-text {
+  margin: 0;
+}
+
+.request-form__notes-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.request-form__notes-add-button {
+  width: 100%;
+}
+
+.request-form__notes-textarea {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+}
+
+.request-form__notes-textarea .form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.request-form__notes-textarea textarea {
+  width: 100%;
+  max-height: 100px;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border: 1px solid #d4d4d4;
+}
+
+.request-form__add-comment-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid var(--border-color, #d4d4d4);
+  border-radius: var(--radius-sm, 4px);
+  background-color: var(--bg-primary, #fff);
+  color: var(--text-primary, #333);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.request-form__add-comment-button:hover {
+  background-color: var(--color-primary, #007bff);
+  color: white;
+  border-color: var(--color-primary, #007bff);
+  transform: scale(1.1);
+}
+
+.request-form__add-comment-button:active {
+  transform: scale(0.95);
+}
+
+.request-form__add-comment-button:focus {
+  outline: 2px solid var(--color-primary, #007bff);
+  outline-offset: 2px;
+}
+
+/* Tooltip */
+.request-form__add-comment-button::after {
+  content: 'Add comment';
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1f2937;
+  color: white;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  padding: 6px 10px;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.request-form__add-comment-button::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #1f2937;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 1001;
+}
+
+.request-form__add-comment-button:hover::after,
+.request-form__add-comment-button:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.request-form__remove-comment-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid var(--border-color, #d4d4d4);
+  border-radius: var(--radius-sm, 4px);
+  background-color: var(--bg-primary, #fff);
+  color: var(--text-primary, #333);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.request-form__remove-comment-button:hover {
+  background-color: var(--color-danger, #dc3545);
+  color: white;
+  border-color: var(--color-danger, #dc3545);
+  transform: scale(1.1);
+}
+
+.request-form__remove-comment-button:active {
+  transform: scale(0.95);
+}
+
+.request-form__remove-comment-button:focus {
+  outline: 2px solid var(--color-danger, #dc3545);
+  outline-offset: 2px;
+}
+
+/* Tooltip for remove comment button */
+.request-form__remove-comment-button::after {
+  content: 'Remove comment';
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1f2937;
+  color: white;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  padding: 6px 10px;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.request-form__remove-comment-button::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #1f2937;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 1001;
+}
+
+.request-form__remove-comment-button:hover::after,
+.request-form__remove-comment-button:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* View Comment Button */
+.request-form__view-comment-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid var(--border-color, #d4d4d4);
+  border-radius: var(--radius-sm, 4px);
+  background-color: var(--bg-primary, #fff);
+  color: var(--text-primary, #333);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.request-form__view-comment-button:hover {
+  background-color: var(--color-primary, #007bff);
+  color: white;
+  border-color: var(--color-primary, #007bff);
+  transform: scale(1.1);
+}
+
+.request-form__view-comment-button:active {
+  transform: scale(0.95);
+}
+
+.request-form__view-comment-button:focus {
+  outline: 2px solid var(--color-primary, #007bff);
+  outline-offset: 2px;
+}
+
+/* Comment Tooltip */
+.request-form__comment-tooltip {
+  pointer-events: auto;
+}
+
+.request-form__comment-tooltip-content {
+  background-color: #1f2937;
+  color: white;
+  padding: 12px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  min-width: 200px;
+}
+
+.request-form__comment-tooltip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.875rem;
+  color: white;
+}
+
+.request-form__comment-tooltip-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
+}
+
+.request-form__comment-tooltip-close:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.request-form__comment-tooltip-text {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: white;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.request-form__comment-tooltip-arrow {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #1f2937;
+}

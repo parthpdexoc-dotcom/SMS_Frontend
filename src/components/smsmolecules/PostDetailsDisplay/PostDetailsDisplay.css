@@ -1,0 +1,32 @@
+.post-details-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+}
+
+.post-details-display__grid {
+  display: grid;
+  gap: 0.75rem 1.5rem;
+}
+
+/* CloseForm: let DataDisplay children flow into parent grid (close-form__details-container) */
+.post-details-display.post-details-display--form-inline {
+  display: contents;
+}
+
+/* Two-column layout for modal (matches available-post-list).
+   Span full width so DataDisplay children get adequate space. */
+.post-details-display.available-post-list__modal-section-content--two-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg) var(--spacing-2xl);
+  align-items: start;
+  width: 100%;
+  grid-column: 1 / -1;
+}
+
+/* Prevent value text from wrapping character-by-character when column is constrained */
+.post-details-display.available-post-list__modal-section-content--two-columns .data-display__value {
+  min-width: 10ch;
+  word-break: normal;
+}

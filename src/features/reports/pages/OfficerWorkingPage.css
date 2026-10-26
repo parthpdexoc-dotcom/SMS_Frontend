@@ -1,0 +1,166 @@
+/* Same table shell as PaymentList / InvoiceList */
+@import '../../request-administration/pages/RequesterList/RequesterList.css';
+
+.officer-working-page.settings {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.officer-working-page .settings__card {
+  overflow: visible;
+}
+
+.officer-working-page .requester-list__table {
+  min-width: 0;
+  width: 100%;
+}
+
+.officer-working-page .requester-list__table .data-table__search .MuiFormControl-root,
+.officer-working-page .requester-list__table .data-table__search .MuiTextField-root {
+  margin-top: 0 !important;
+}
+
+/* Wide grid: horizontal scroll inside data-table__scroll-x (matches payment-list) */
+.officer-working-page .requester-list__table .data-table__table {
+  table-layout: auto !important;
+  width: max-content;
+  min-width: 100%;
+  max-width: none;
+}
+
+.officer-working-page .requester-list__table .data-table__th {
+  white-space: normal;
+}
+
+.officer-working-page .requester-list__table .data-table__th,
+.officer-working-page .requester-list__table .data-table__td {
+  min-width: 6.5rem;
+  width: auto;
+  max-width: none;
+  vertical-align: top;
+}
+
+.officer-working-page .requester-list__table .data-table__cell {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.officer-working-page .requester-list__table .data-table__th.data-table__col--dateofwork,
+.officer-working-page .requester-list__table .data-table__td.data-table__col--dateofwork {
+  min-width: 5.5rem;
+}
+
+.officer-working-page .requester-list__table .data-table__th.data-table__col--starttime,
+.officer-working-page .requester-list__table .data-table__td.data-table__col--starttime,
+.officer-working-page .requester-list__table .data-table__th.data-table__col--endtime,
+.officer-working-page .requester-list__table .data-table__td.data-table__col--endtime,
+.officer-working-page .requester-list__table .data-table__th.data-table__col--hoursworked,
+.officer-working-page .requester-list__table .data-table__td.data-table__col--hoursworked,
+.officer-working-page .requester-list__table .data-table__th.data-table__col--payroll,
+.officer-working-page .requester-list__table .data-table__td.data-table__col--payroll,
+.officer-working-page .requester-list__table .data-table__th.data-table__col--callsign,
+.officer-working-page .requester-list__table .data-table__td.data-table__col--callsign {
+  min-width: 5rem;
+  max-width: 8rem;
+}
+
+.officer-working-page .requester-list__table .data-table__th.data-table__col--jobtitle,
+.officer-working-page .requester-list__table .data-table__td.data-table__col--jobtitle,
+.officer-working-page .requester-list__table .data-table__th.data-table__col--employeename,
+.officer-working-page .requester-list__table .data-table__td.data-table__col--employeename {
+  min-width: 9rem;
+}
+
+.officer-working-page .requester-list__table .data-table__th.data-table__col--schedulestate,
+.officer-working-page .requester-list__table .data-table__td.data-table__col--schedulestate {
+  min-width: 6.5rem;
+}
+
+.officer-working-page .requester-list__table .data-table__scroll-x {
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .officer-working-page.settings {
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .officer-working-page.settings {
+    padding: var(--spacing-md);
+  }
+
+  .officer-working-page .settings__header {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .officer-working-page .settings__title {
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+
+  .officer-working-page .settings__subtitle {
+    font-size: 0.875rem;
+    line-height: 1.45;
+  }
+
+  .officer-working-page .settings__card.MuiPaper-root {
+    padding: var(--spacing-md) !important;
+  }
+
+  .officer-working-page .requester-list__table .data-table__toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .officer-working-page .requester-list__table .data-table__search {
+    max-width: none;
+    min-width: 0;
+    width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .officer-working-page .requester-list__table .data-table__scroll-y {
+    max-height: min(52vh, 22rem) !important;
+  }
+
+  .officer-working-page .requester-list__table .data-table__col--schedulestate .MuiChip-root {
+    width: auto !important;
+    min-width: 5.5rem;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .officer-working-page.settings {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .officer-working-page .settings__title {
+    font-size: 1.25rem;
+  }
+
+  .officer-working-page .requester-list__table .data-table__th,
+  .officer-working-page .requester-list__table .data-table__td {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.8125rem;
+  }
+
+  .officer-working-page .requester-list__table .data-table__th {
+    font-size: 0.6875rem;
+  }
+
+  .officer-working-page .requester-list__table .data-table__scroll-y {
+    max-height: min(45vh, 18rem) !important;
+  }
+}

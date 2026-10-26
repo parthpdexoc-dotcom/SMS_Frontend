@@ -1,0 +1,7 @@
+/* My History sub-tabs (Closed Posts / Cancelled Posts) – match Available Post Release As layout */
+.my-history-tabs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+}

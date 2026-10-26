@@ -1,0 +1,199 @@
+diff a/src/App.tsx b/src/App.tsx	(rejected hunks)
+@@ -1,136 +0,147 @@
+-import { useEffect, useState } from 'react';
+-import { BrowserRouter } from 'react-router-dom';
+-import { Login } from '@/organisms/Login';
+-import { AppContent } from '@/components/AppContent';
+-import { ToastContainer } from '@/organisms/ToastContainer';
+-import { Icon } from '@/atoms/Icon';
+-import { MenuItem } from '@/types';
+-import { MENU_ITEMS, AVAILABLE_POST } from '@/constants/strings';
+-import { useAppDispatch, useAppSelector } from '@/store/hooks';
+-import { logout as logoutThunk, initializeAuth } from '@/store/slices/authSlice';
+-import { registerUnauthorizedCallback } from '@/utils/apiClient';
+-import './App.css';
++import { useEffect, useState } from "react";
++import { BrowserRouter } from "react-router-dom";
++import { Login } from "@/organisms/Login";
++import { AppContent } from "@/components/AppContent";
++import { ToastContainer } from "@/organisms/ToastContainer";
++import { Icon } from "@/atoms/Icon";
++import { MenuItem } from "@/types";
++import { MENU_ITEMS, AVAILABLE_POST } from "@/constants/strings";
++import { useAppDispatch, useAppSelector } from "@/store/hooks";
++import {
++  logout as logoutThunk,
++  initializeAuth,
++} from "@/store/slices/authSlice";
++import { registerUnauthorizedCallback } from "@/utils/apiClient";
++import "./App.css";
+ 
+ const menuItems: MenuItem[] = [
+   {
+-    id: 'admin',
++    id: "admin",
+     label: MENU_ITEMS.ADMIN_CONTROL,
+     icon: <Icon name="admin" size="sm" />,
+-    path: '/admin',
++    path: "/admin",
+     children: [
+       {
+-        id: 'add-skill',
++        id: "add-skill",
+         label: MENU_ITEMS.ADD_SKILL,
+         icon: <Icon name="skill" size="sm" />,
+-        path: '/admin/add-skill',
++        path: "/admin/add-skill",
+       },
+       {
+-        id: 'equipment-type',
++        id: "equipment-type",
+         label: MENU_ITEMS.EQUIPMENT_TYPE,
+         icon: <Icon name="equipment_type" size="sm" />,
+-        path: '/admin/equipment-type',
++        path: "/admin/equipment-type",
+       },
+       {
+-        id: 'business-type',
++        id: "business-type",
+         label: MENU_ITEMS.BUSINESS_TYPE,
+         icon: <Icon name="business_type" size="sm" />,
+-        path: '/admin/business-type',
++        path: "/admin/business-type",
+       },
+       {
+-        id: 'employee-status',
++        id: "routing-group",
++        label: MENU_ITEMS.ROUTING_GROUP,
++        icon: <Icon name="routing_group" size="sm" />,
++        path: "/admin/routing-group",
++      },
++      {
++        id: "employee-status",
+         label: MENU_ITEMS.EMPLOYEE_STATUS,
+         icon: <Icon name="employee_status" size="sm" />,
+-        path: '/admin/employee-status',
++        path: "/admin/employee-status",
+       },
+       {
+-        id: 'response-area',
++        id: "response-area",
+         label: MENU_ITEMS.RESPONSE_AREA,
+         icon: <Icon name="response_area" size="sm" />,
+-        path: '/employee/response-area',
++        path: "/employee/response-area",
+       },
+       {
+-        id: 'employee-type',
++        id: "employee-type",
+         label: MENU_ITEMS.EMPLOYEE_TYPE,
+         icon: <Icon name="employee_type" size="sm" />,
+-        path: '/employee/employee-type',
++        path: "/employee/employee-type",
+       },
+       {
+-        id: 'department-division',
++        id: "department-division",
+         label: MENU_ITEMS.DEPARTMENT_DIVISION,
+         icon: <Icon name="department_division" size="sm" />,
+-        path: '/employee/department-division',
++        path: "/employee/department-division",
+       },
+       {
+-        id: 'department-activity-type',
++        id: "department-activity-type",
+         label: MENU_ITEMS.DEPARTMENT_ACTIVITY_TYPE,
+         icon: <Icon name="department_activity_type" size="sm" />,
+-        path: '/employee/department-activity-type',
++        path: "/employee/department-activity-type",
+       },
+       {
+-        id: 'department-equipment',
++        id: "department-equipment",
+         label: MENU_ITEMS.DEPARTMENT_EQUIPMENT,
+         icon: <Icon name="equipment_type" size="sm" />,
+-        path: '/employee/department-equipment',
++        path: "/employee/department-equipment",
+       },
+       {
+-        id: 'admin-type',
++        id: "admin-type",
+         label: MENU_ITEMS.ADMIN_TYPE,
+         icon: <Icon name="admin" size="sm" />,
+-        path: '/admin/admin-type',
++        path: "/admin/admin-type",
+       },
+       {
+-        id: 'department',
++        id: "department",
+         label: MENU_ITEMS.DEPARTMENT,
+         icon: <Icon name="department_division" size="sm" />,
+-        path: '/admin/department',
++        path: "/admin/department",
+       },
+       {
+-        id: 'department-configuration',
++        id: "department-configuration",
+         label: MENU_ITEMS.DEPARTMENT_CONFIGURATION,
+         icon: <Icon name="department_division" size="sm" />,
+-        path: '/admin/department-configuration',
++        path: "/admin/department-configuration",
+       },
+     ],
+   },
+   {
+-    id: 'personnel',
++    id: "personnel",
+     label: MENU_ITEMS.PERSONNEL_ADMIN,
+     icon: <Icon name="employee" size="sm" />,
+-    path: '/personnel',
++    path: "/personnel",
+     children: [
+       {
+-        id: 'employee',
++        id: "employee",
+         label: MENU_ITEMS.EMPLOYEE,
+         icon: <Icon name="user" size="sm" />,
+-        path: '/personnel/employee',
++        path: "/personnel/employee",
+       },
+       {
+-        id: 'requester',
++        id: "requester",
+         label: MENU_ITEMS.REQUESTER,
+         icon: <Icon name="user" size="sm" />,
+-        path: '/personnel/requester',
++        path: "/personnel/requester",
+       },
+     ],
+   },
+ 
+   {
+-    id: 'available-posts',
++    id: "available-posts",
+     label: AVAILABLE_POST.TITLE,
+     icon: <Icon name="briefcase" size="sm" />,
+-    path: '/available-posts',
++    path: "/available-posts",
+   },
+   {
+-    id: 'settings',
++    id: "settings",
+     label: MENU_ITEMS.SETTINGS,
+     icon: <Icon name="settings" size="sm" />,
+-    path: '/settings',
++    path: "/settings",
+   },
+ ];
+ 
+ function App() {
+   const dispatch = useAppDispatch();
+-  const { isAuthenticated, isLoading, user } = useAppSelector((state) => state.auth);
+-  const [loginType, setLoginType] = useState<'employee' | 'admin'>('employee');
++  const { isAuthenticated, isLoading, user } = useAppSelector(
++    (state) => state.auth,
++  );
++  const [loginType, setLoginType] = useState<"employee" | "admin">("employee");
+ 
+   // Initialize authentication state and register unauthorized callback
+   useEffect(() => {

@@ -1,0 +1,271 @@
+/* Job Position Flow mock — uses app theme tokens only (light navy/gold SEMS theme). */
+
+.job-position-flow-page .audit-log-page__title {
+  color: var(--color-primary);
+}
+
+.job-position-flow-page .audit-log-page__placeholder {
+  color: var(--text-secondary);
+  margin-top: var(--spacing-xs);
+}
+
+.job-position-flow-page__data-table .data-table__table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.job-position-flow-page__data-table .data-table__col--jobtitle {
+  width: 34%;
+  min-width: 16rem;
+}
+
+.job-position-flow-page__data-table .data-table__col--jobtitle .data-table__cell {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.job-position-flow-page__data-table .data-table__col--workdate {
+  width: 8rem;
+  min-width: 7.5rem;
+  max-width: 9rem;
+}
+
+.job-position-flow-page__data-table .data-table__col--starttime {
+  width: 9.5rem;
+  min-width: 8.5rem;
+  max-width: 11rem;
+}
+
+.job-position-flow-page__data-table .data-table__col--employeename {
+  width: 14%;
+  min-width: 9rem;
+}
+
+.job-position-flow-page__data-table .data-table__col--currentstatus {
+  width: 11rem;
+  min-width: 9rem;
+  max-width: 13rem;
+}
+
+.job-position-flow-page__data-table .data-table__col--viewflow {
+  width: 5rem;
+  min-width: 4.5rem;
+  max-width: 5.5rem;
+}
+
+.job-position-flow__modal-body {
+  padding: 0 var(--spacing-sm) var(--spacing-md);
+  color: var(--text-primary);
+}
+
+.job-position-flow__meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-sm) var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-lg);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  font-size: var(--font-sm);
+  color: var(--text-primary);
+}
+
+.job-position-flow__meta-label {
+  display: block;
+  margin-bottom: 0.15rem;
+  color: var(--text-secondary);
+  font-size: var(--font-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.job-position-flow__section-title {
+  margin: 0 0 var(--spacing-md);
+  font-size: var(--font-md);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.job-position-flow__timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.job-position-flow__step {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: var(--spacing-sm);
+  min-height: 4.5rem;
+}
+
+.job-position-flow__rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.job-position-flow__dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  color: var(--primary-color);
+}
+
+.job-position-flow__step--assign .job-position-flow__dot {
+  color: var(--primary-color);
+}
+
+.job-position-flow__step--self .job-position-flow__dot {
+  color: var(--info-color);
+}
+
+.job-position-flow__step--close .job-position-flow__dot {
+  color: var(--success-hover);
+}
+
+.job-position-flow__step--split .job-position-flow__dot {
+  color: var(--secondary-hover);
+}
+
+.job-position-flow__step--cancel .job-position-flow__dot {
+  color: var(--danger-color);
+}
+
+.job-position-flow__step--warn .job-position-flow__dot {
+  color: var(--warning-hover);
+}
+
+.job-position-flow__step--neutral .job-position-flow__dot {
+  color: var(--text-secondary);
+}
+
+.job-position-flow__line {
+  flex: 1;
+  width: 2px;
+  margin: 0.25rem 0;
+  min-height: 1.25rem;
+  background: var(--border-color);
+}
+
+.job-position-flow__card {
+  margin-bottom: var(--spacing-md);
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.job-position-flow__step--latest .job-position-flow__card {
+  border: none;
+  box-shadow: none;
+}
+
+.job-position-flow__summary {
+  margin: 0 0 var(--spacing-sm);
+  font-size: var(--font-sm);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: var(--lh-tight, 1.2);
+}
+
+.job-position-flow__details {
+  margin: 0;
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+}
+
+.job-position-flow__detail-row {
+  display: grid;
+  grid-template-columns: minmax(7rem, 36%) 1fr;
+  gap: var(--spacing-xs);
+  padding: 0.2rem 0;
+  font-size: var(--font-sm);
+}
+
+.job-position-flow__detail-group {
+  margin: 0.15rem 0;
+}
+
+.job-position-flow__details-nested {
+  margin: 0 0 0.35rem 0.75rem;
+  padding: 0.35rem 0.5rem;
+  border-left: 2px solid var(--border-color);
+  background: color-mix(in srgb, var(--bg-primary) 70%, var(--bg-secondary));
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.job-position-flow__detail-row--nested {
+  grid-template-columns: minmax(5.5rem, 32%) 1fr;
+  font-size: var(--font-xs);
+}
+
+.job-position-flow__detail-row--nested dt {
+  text-transform: capitalize;
+}
+
+.job-position-flow__detail-row--when {
+  margin-top: var(--spacing-xs);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--border-light);
+}
+
+.job-position-flow__detail-row--when time {
+  font-variant-numeric: tabular-nums;
+  color: var(--text-secondary);
+}
+
+.job-position-flow__detail-row dt {
+  margin: 0;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.job-position-flow__detail-row dd {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.job-position-flow__assignment-type-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.job-position-flow-page__data-table .data-table__col--currentstatus .status-pill,
+.job-position-flow-page__data-table .data-table__col--currentstatus .status-pill * {
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
+  max-width: none !important;
+}
+
+.job-position-flow__modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--spacing-md);
+}
+
+.job-position-flow__loading {
+  margin: var(--spacing-md) 0;
+  color: var(--text-secondary);
+  font-size: var(--font-sm);
+}
+
+@media (max-width: 640px) {
+  .job-position-flow__meta {
+    grid-template-columns: 1fr;
+  }
+
+  .job-position-flow__detail-row {
+    grid-template-columns: 1fr;
+  }
+}

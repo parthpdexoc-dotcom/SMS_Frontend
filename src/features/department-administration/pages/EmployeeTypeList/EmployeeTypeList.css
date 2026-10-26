@@ -1,0 +1,46 @@
+.employee-type-list .master-data-list-table .data-table__th--drag,
+.employee-type-list .master-data-list-table .data-table__td.data-table__drag-cell {
+  width: 22px;
+  min-width: 22px;
+  max-width: 22px;
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+  text-align: center;
+}
+
+.employee-type-list .master-data-list-table .data-table__drag-handle {
+  padding: 0;
+  margin: 0;
+}
+
+.employee-type-list .master-data-list-table th:nth-child(2),
+.employee-type-list .master-data-list-table td:nth-child(2) {
+  width: 22%;
+}
+
+.employee-type-list .master-data-list-table th:nth-child(3),
+.employee-type-list .master-data-list-table td:nth-child(3) {
+  width: 46%;
+}
+
+.employee-type-list .master-data-list-table td:nth-child(3) .master-data-list-muted-text,
+.employee-type-list .master-data-list-table td:nth-child(3) .master-data-list-muted-text-inactive {
+  text-align: left;
+  display: block;
+}
+
+.employee-type-list .master-data-list-table th:nth-child(4),
+.employee-type-list .master-data-list-table td:nth-child(4) {
+  width: 8%;
+  text-align: right;
+}
+
+.employee-type-list .master-data-list-table th:nth-child(5),
+.employee-type-list .master-data-list-table td:nth-child(5) {
+  width: 12%;
+}
+
+.employee-type-list .master-data-list-table th:nth-child(6),
+.employee-type-list .master-data-list-table td:nth-child(6) {
+  width: 12%;
+}

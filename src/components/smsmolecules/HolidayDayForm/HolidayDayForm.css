@@ -1,0 +1,147 @@
+.holiday-day-form {
+  width: 100%;
+  position: relative;
+}
+
+.holiday-day-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.holiday-day-form__success {
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  background: var(--success-color);
+  color: white;
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-weight: 500;
+  animation: holidayDayFormFadeIn 0.3s ease-out;
+}
+
+.holiday-day-form__error {
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  background: var(--danger-color);
+  color: white;
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-weight: 500;
+  animation: holidayDayFormFadeIn 0.3s ease-out;
+}
+
+@keyframes holidayDayFormFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.holiday-day-form__checkbox {
+  margin-top: var(--spacing-xs);
+}
+
+.holiday-day-form__checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.holiday-day-form__checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.holiday-day-form__toggle {
+  margin-top: var(--spacing-xs);
+}
+
+/* Audit info – horizontal line (reference: ShortLongStatusForm) */
+.holiday-day-form__audit-info {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background-color: var(--background-secondary, var(--bg-tertiary));
+  border: 1px solid var(--border-color, #e9ecef);
+  border-radius: var(--radius-md);
+}
+
+.holiday-day-form__audit-info-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  flex-wrap: wrap;
+}
+
+.holiday-day-form__audit-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  white-space: nowrap;
+}
+
+.holiday-day-form__audit-label {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.holiday-day-form__audit-value {
+  color: var(--text-secondary);
+}
+
+.holiday-day-form__audit-date {
+  color: var(--text-tertiary);
+  font-size: 0.8125rem;
+}
+
+.holiday-day-form__audit-separator {
+  color: var(--text-tertiary);
+  font-weight: 400;
+  margin: 0 var(--spacing-sm);
+}
+
+@media (max-width: 768px) {
+  .holiday-day-form__audit-info-row {
+    gap: var(--spacing-md);
+  }
+
+  .holiday-day-form__audit-item {
+    white-space: normal;
+  }
+}
+
+.holiday-day-form__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.holiday-day-form__cancel-button,
+.holiday-day-form__submit-button {
+  min-width: 120px;
+}
+
+@media (max-width: 576px) {
+  .holiday-day-form__footer {
+    flex-direction: column;
+  }
+
+  .holiday-day-form__cancel-button,
+  .holiday-day-form__submit-button {
+    width: 100%;
+  }
+}

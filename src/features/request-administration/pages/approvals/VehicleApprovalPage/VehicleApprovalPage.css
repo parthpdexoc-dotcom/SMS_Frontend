@@ -1,0 +1,379 @@
+/* Main columns: SMSGrid on VehicleApprovalPage / SpecialEventApprovalPage */
+.vehicle-approval__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.1rem 0.25rem 0.05rem 0.25rem;
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.vehicle-approval__summary-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.vehicle-approval__summary-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.vehicle-approval__summary-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.vehicle-approval__summary-label {
+  font-weight: 600;
+}
+
+.vehicle-approval__summary-label::after {
+  content: ':';
+  margin-right: 0.25rem;
+}
+
+.vehicle-approval__summary-value {
+  font-weight: 500;
+}
+
+.vehicle-approval__status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background-color: #e0ecff;
+  color: #1d4ed8;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.vehicle-approval__request-status-chip.MuiChip-root {
+  height: 24px;
+  border-radius: 999px;
+  background-color: rgba(30, 73, 118, 0.12);
+  color: var(--color-primary, #1e4976);
+  border: 1px solid rgba(30, 73, 118, 0.25);
+  font-weight: 600;
+}
+
+.vehicle-approval__request-status-chip .MuiChip-icon {
+  color: var(--color-primary, #1e4976);
+  margin-left: 6px;
+}
+
+.vehicle-approval__status-icon {
+  font-size: 14px;
+}
+
+.vehicle-approval__summary-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.vehicle-approval__summary-icon {
+  font-size: 16px;
+  color: #9ca3af;
+}
+
+.vehicle-approval__summary-received-label {
+  font-weight: 500;
+}
+
+.vehicle-approval__summary-received-label::after {
+  content: ':';
+  margin-right: 0.15rem;
+}
+
+.vehicle-approval__summary-received-value {
+  font-weight: 500;
+  color: #111827;
+}
+
+.vehicle-approval__left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.vehicle-approval__right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.vehicle-approval__section {
+  padding: 0.4rem 0.85rem 0.55rem 0.85rem;
+  row-gap: 0.3rem;
+  width: 100%;
+  min-width: 0;
+  display: block;
+}
+
+.vehicle-approval__section .app-form__section-title {
+  margin-bottom: 0.45rem;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.vehicle-approval__details-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  width: 100%;
+}
+
+.vehicle-approval__data-display {
+  width: 100%;
+  min-width: 0;
+}
+
+.vehicle-approval__data-display .MuiStack-root {
+  min-width: 0;
+  align-items: baseline;
+}
+
+.vehicle-approval__data-display .MuiTypography-root {
+  overflow-wrap: anywhere;
+}
+
+.vehicle-approval__data-display .MuiTypography-body2:first-of-type {
+  min-width: 140px;
+  color: #4b5563;
+}
+
+.vehicle-approval__post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  grid-column: 1 / -1;
+}
+
+.vehicle-approval__post-card {
+  border-left: 3px solid #e5e7eb;
+  width: 100%;
+  background-color: #f4f6fb; /* slightly darker than section background */
+}
+
+.vehicle-approval__post-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.vehicle-approval__post-header-main {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.vehicle-approval__post-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.vehicle-approval__post-number {
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background-color: var(--color-primary, #1e4976);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1;
+  flex-shrink: 0;
+  align-self: center;
+  vertical-align: middle;
+}
+
+.vehicle-approval__post-start-time {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.vehicle-approval__post-subtitle {
+  font-size: 0.85rem;
+  color: #6b7280;
+  padding-left: calc(20px + 0.45rem);
+}
+
+.vehicle-approval__post-meta {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+  padding-left: calc(20px + 0.45rem);
+}
+
+.vehicle-approval__routing-card {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  width: 100%;
+}
+
+.vehicle-approval__routing-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.vehicle-approval__routing-title {
+  font-weight: 600;
+  color: #111827;
+}
+
+.vehicle-approval__routing-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.vehicle-approval__routing-item {
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  padding: 0.6rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease,
+    transform 0.05s ease;
+}
+
+.vehicle-approval__routing-item:hover {
+  border-color: #2563eb;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+}
+
+.vehicle-approval__routing-item--selected {
+  border-color: #2563eb;
+  background-color: #eff6ff;
+}
+
+.vehicle-approval__routing-item--approved {
+  border-color: #16a34a;
+  background-color: #ecfdf3;
+}
+
+.vehicle-approval__routing-item--rejected {
+  border-color: #dc2626;
+  background-color: #fef2f2;
+}
+
+.vehicle-approval__routing-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background-color: #e5f0ff;
+  color: #1d4ed8;
+  flex-shrink: 0;
+}
+
+.vehicle-approval__routing-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+}
+
+.vehicle-approval__routing-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.vehicle-approval__routing-description {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.vehicle-approval__comment-card {
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+  width: 100%;
+}
+
+.vehicle-approval__comment-header {
+  margin-bottom: 0.5rem;
+}
+
+.vehicle-approval__comment-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.vehicle-approval__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+  width: 100%;
+}
+
+.vehicle-approval__details-grid,
+.vehicle-approval__summary,
+.vehicle-approval__routing-list,
+.vehicle-approval__post-list {
+  width: 100%;
+  min-width: 0;
+}
+
+.vehicle-approval__details-grid .MuiGrid-item,
+.vehicle-approval__post-list .MuiCard-root,
+.vehicle-approval__routing-card,
+.vehicle-approval__comment-card {
+  min-width: 0;
+}
+
+.vehicle-approval__details-grid .MuiGrid-item {
+  display: flex;
+  align-items: flex-start;
+}
+
+.vehicle-approval__action-button {
+  font-weight: 600;
+  min-height: 38px;
+}
+
+.vehicle-approval__action-button--active {
+  box-shadow: 0 0 0 1px rgba(30, 73, 118, 0.3);
+}
+
+@media (max-width: 1024px) {
+  .vehicle-approval {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .vehicle-approval__right {
+    order: -1;
+  }
+}
+

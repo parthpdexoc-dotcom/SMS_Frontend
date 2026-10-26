@@ -1,0 +1,163 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-md, 12px);
+  margin-top: var(--spacing-md, 12px);
+  padding-top: var(--spacing-sm, 8px);
+  position: relative;
+  overflow: visible;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md, 12px);
+  flex-wrap: wrap;
+  flex: 1;
+  min-width: 0;
+  z-index: 1;
+}
+
+.info {
+  color: var(--text-secondary, #64748b);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.size {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm, 8px);
+  z-index: 1;
+}
+
+.sizeLabel,
+.root :global(.sms-pagination__size-label) {
+  color: var(--text-secondary, #64748b);
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.pageSizeDropdown {
+  min-width: 5rem;
+}
+
+.pageSizeDropdown :global(.dropdown-wrapper) {
+  min-width: 5rem !important;
+  max-width: 5rem !important;
+  width: 5rem !important;
+  position: relative !important;
+  flex-shrink: 0;
+  display: inline-block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+}
+
+.pageSizeDropdown :global(.dropdown) {
+  position: relative !important;
+  width: 100% !important;
+  display: block !important;
+  margin: 0 !important;
+}
+
+.pageSizeDropdown :global(.dropdown-trigger) {
+  padding: var(--spacing-xs, 4px) var(--spacing-sm, 8px);
+  font-size: 0.875rem;
+  min-height: 2rem;
+}
+
+.pageSizeDropdown :global(.dropdown-menu) {
+  position: absolute !important;
+  left: 0 !important;
+  right: auto !important;
+  min-width: 5rem;
+  width: 5rem;
+  z-index: 1000;
+  top: calc(100% + var(--spacing-xs, 4px)) !important;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.navBtn {
+  min-width: 2rem !important;
+  width: 2rem !important;
+  height: 2rem !important;
+  min-height: 2rem !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+.navBtn :global(.MuiButton-startIcon) {
+  margin: 0 !important;
+}
+
+.pages {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pageGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pageBtn {
+  min-width: 2rem !important;
+  height: 2rem !important;
+  min-height: 2rem !important;
+  padding: 0 6px !important;
+  font-size: 0.8125rem !important;
+  font-weight: 500;
+  box-shadow: none !important;
+}
+
+.ellipsis {
+  padding: 0 4px;
+  color: var(--text-secondary, #64748b);
+  font-size: 0.875rem;
+  user-select: none;
+}
+
+.compactPages {
+  min-width: 3.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary, #1e293b);
+  padding: 0 8px;
+}
+
+@media (max-width: 768px) {
+  .root {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .left {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .controls {
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .pages {
+    justify-content: center;
+  }
+}

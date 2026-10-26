@@ -1,0 +1,62 @@
+.department-invoice-config-form {
+  width: 100%;
+}
+
+.department-invoice-config-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.department-invoice-config-form__form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.department-invoice-config-form__checkbox-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-xl);
+}
+
+.department-invoice-config-form__form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.department-invoice-config-form__form-grid--3col {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 768px) {
+  .department-invoice-config-form__form-grid,
+  .department-invoice-config-form__form-grid--3col {
+    grid-template-columns: 1fr;
+  }
+}
+
+.department-invoice-config-form__actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: flex-end;
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
+}
+
+.department-invoice-config-form__form-row .MuiFormControl-root,
+.department-invoice-config-form__form-row .MuiTextField-root {
+  width: 100%;
+}
+
+.department-invoice-config-form__action-btn {
+  min-width: 120px;
+}
+
+.department-invoice-config-form__submit-error {
+  color: var(--danger-color, #dc3545);
+  font-size: 0.875rem;
+  margin-top: var(--spacing-sm);
+}

@@ -1,0 +1,22 @@
+.sms-email-details-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: 1.0625rem;
+  color: var(--text-primary);
+}
+
+.sms-email-details-bar__label {
+  font-weight: 700;
+  color: var(--primary-color, #1e4976);
+}
+
+.sms-email-details-bar__value {
+  color: var(--text-primary);
+}
+
+.sms-email-details-bar__separator {
+  color: var(--text-secondary);
+  margin: 0 var(--spacing-xs);
+}

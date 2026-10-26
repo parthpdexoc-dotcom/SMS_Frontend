@@ -1,0 +1,54 @@
+
+.waiting-list-general-blank {
+  min-height: 200px;
+}
+
+/* Override PostPositionByStatusList header (align-items: flex-start shrinks toolbar to tab width). */
+.post-position-by-status-list__header.waiting-list-tabs__header {
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+}
+
+.waiting-list-tabs__header .post-position-by-status-list__title {
+  order: 0;
+  width: 100%;
+}
+
+.waiting-list-tabs__toolbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  align-self: stretch;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  order: 1;
+}
+
+.waiting-list-tabs__toolbar-start {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.waiting-list-tabs__toolbar-end {
+  flex: 0 0 auto;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 1;
+}
+
+.waiting-list-tabs__with-history {
+  flex-shrink: 0;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.waiting-list-tabs__with-history .MuiFormControlLabel-root {
+  margin-right: 0;
+}

@@ -1,0 +1,543 @@
+/* ========== Design tokens ========== */
+.post-form {
+    --pf-border: 1px solid #c2d5f3;
+    --pf-border-color: #c2d5f3;
+    --pf-radius: 8px;
+    --pf-radius-sm: 4px;
+    --pf-bg-paper: var(--background-paper, #fff);
+    --pf-bg-subtle: #f5f5f5;
+    --pf-bg-panel: #fafafa;
+    --pf-text: #333;
+    --pf-text-muted: #64748b;
+    --pf-separator: #b0b0b0;
+    --pf-error-bg: #ffebee;
+    --pf-error-text: #c62828;
+    --pf-danger: var(--danger-color, #c33);
+    --pf-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    --pf-gap-sm: 0.5rem;
+    --pf-gap-md: 1rem;
+    --pf-font-sm: 0.875rem;
+    /* Dimensions */
+    --pf-w-input-narrow: 100px;
+    --pf-w-time: 115px;
+    --pf-w-time-wide: 140px;
+    /* Time row: fixed columns (do not grow to fill row — matches compact horizontal strip) */
+    --pf-w-time-slot: 125px;
+    --pf-w-time-duration-col: 118px;
+    /* Minimum Hours Required — wider than others, capped (not full-width) */
+    --pf-w-time-min-hours: 300px;
+    --pf-w-dropdown-min: 413px;
+    --pf-w-dropdown-sm: 320px;
+    --pf-w-dropdown: 400px;
+    --pf-w-vehicle: 280px;
+    --pf-w-vehicle-min: 220px;
+    --pf-ml-time: 3rem;
+    /* Spacing scale */
+    --pf-space-1: 0.5rem;
+    --pf-space-2: 1rem;
+}
+/* ========== Base utilities ========== */
+.post-form__bordered {
+    border: var(--pf-border);
+    border-radius: var(--pf-radius);
+}
+.post-form__flex,
+.post-form__checkbox-row,
+.post-form__audit-footer,
+.post-form__uniform-checkbox-wrap,
+.post-form__apply-premium-wrap {
+    display: flex;
+}
+.post-form__flex {
+    align-items: center;
+    gap: var(--pf-gap-sm);
+    flex-wrap: wrap;
+}
+.post-form__text-sm { font-size: var(--pf-font-sm); }
+.post-form__full-width { width:100%; max-width:100%; }
+.post-form__hidden { display:none; }
+
+/* ========== Layout containers ========== */
+.post-form__section-paper {
+    padding: 1.5rem;
+    background: var(--pf-bg-paper);
+    border: var(--pf-border);
+    border-radius: var(--pf-radius);
+    box-shadow: var(--pf-shadow);
+}
+
+.post-form__field-row { align-items:flex-start; margin-bottom:0; }
+
+.post-form__checkbox-row {
+    align-items:center;
+    min-height:32px;
+}
+
+/* Vertically stacked checkboxes — same rules as .request-form__checkboxes--vertical */
+.post-form__checkbox-stack {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+}
+
+.post-form__checkbox-stack .post-form__checkbox-row {
+    min-height: 0;
+}
+
+.post-form__checkbox-stack .MuiCheckbox-root {
+    padding: 2px;
+}
+
+/* Tighter vertical rhythm for all post-form checkboxes */
+.post-form .app-form__checkbox-label .MuiFormControlLabel-root {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.post-form__checkbox-small :is(.checkbox-label,.checkbox-text) {
+    font-size:var(--pf-font-sm);
+}
+
+.post-form__checkbox-shrink { flex-shrink:0; }
+
+/* Align checkbox labels with neighboring form-field baselines */
+.post-form__checkbox-align-top {
+    padding-top: 0.35rem;
+}
+
+.post-form__checkbox-align-top .MuiFormControlLabel-root {
+    align-items: flex-start;
+    margin-top: 0.2rem;
+}
+
+.post-form__checkbox-align-top .MuiCheckbox-root {
+    margin-top: 0.1rem;
+}
+
+.post-form__checkbox-align-top .MuiFormControlLabel-label {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    line-height: 1.2;
+    padding-top: 0.5rem;
+}
+
+/* ========== Width wrappers ========== */
+.post-form__parent-dropdown-wrap,
+.post-form__employee-type-wrap,
+.post-form__ptaeo-wrap {
+    min-width: var(--pf-w-dropdown-min);
+    flex: 1 1 auto;
+}
+.post-form__parent-dropdown-wrap { max-width: var(--pf-w-dropdown-sm); margin-top: 0.25rem; }
+.post-form__employee-type-wrap { max-width: var(--pf-w-dropdown); }
+.post-form__ptaeo-wrap { min-width: 390px; margin-bottom: 0.25rem; }
+.post-form__paycode-wrap .label {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+.post-form__skills-dropdown-col { max-width: var(--pf-w-dropdown); }
+.post-form__pay-rate-wrap { flex-shrink: 0; }
+.post-form__vehicle-col {
+    flex: 0 0 var(--pf-w-vehicle);
+    min-width: var(--pf-w-vehicle-min);
+}
+
+/* ========== Time fields ========== */
+.post-form__time-section {
+    width: 100%;
+}
+
+.post-form__clone-time-warning {
+    margin-bottom: var(--pf-gap-sm);
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: var(--pf-text);
+}
+
+.post-form__clone-time-warning p {
+    margin: 0;
+    color: inherit;
+}
+
+.post-form__clone-time-warning-icon {
+    flex-shrink: 0;
+    color: var(--warning-color, #f59c00);
+}
+
+.post-form__time-field { width: var(--pf-w-time); flex-shrink: 0; }
+.post-form__time-field--wide { width: var(--pf-w-time-wide); }
+.post-form__time-field--ml { margin-left: var(--pf-ml-time); }
+.post-form__time-field-ml,
+.post-form__time-field-wide-ml {
+    flex-shrink: 0;
+    margin-left: var(--pf-ml-time);
+}
+.post-form__time-field-ml { width: var(--pf-w-time); }
+.post-form__time-field-wide-ml { width: var(--pf-w-time-wide); }
+
+/* Four time pickers: fixed widths, left-aligned — extra space stays empty (no stretch to full area) */
+.post-form__time-row {
+    gap: var(--pf-gap-md);
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.post-form__time-row > * {
+    flex: 0 0 auto;
+    box-sizing: border-box;
+}
+.post-form__time-row > *:nth-child(1),
+.post-form__time-row > *:nth-child(2) {
+    width: var(--pf-w-time-slot);
+    max-width: var(--pf-w-time-slot);
+}
+.post-form__time-row > *:nth-child(3) {
+    width: var(--pf-w-time-duration-col);
+    max-width: var(--pf-w-time-duration-col);
+}
+.post-form__time-row > *:nth-child(4) {
+    width: var(--pf-w-time-min-hours);
+    max-width: var(--pf-w-time-min-hours);
+}
+.post-form__time-row .post-form__time-start,
+.post-form__time-row .post-form__time-end,
+.post-form__time-row .post-form__time-duration {
+    min-width: 0;
+}
+.post-form__time-row > *:nth-child(4) .MuiFormControl-root,
+.post-form__time-row > *:nth-child(4) .post-form__time-min-hours {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+/* Legacy time-picker-wrapper (old atom) – keep for any remaining usage */
+.post-form__time-row .post-form__time-start.time-picker-wrapper,
+.post-form__time-row .post-form__time-end.time-picker-wrapper,
+.post-form__time-row .post-form__time-duration.time-picker-wrapper,
+.post-form__time-row .post-form__time-min-hours.time-picker-wrapper {
+    flex: 0 0 auto;
+    width: auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: var(--pf-gap-sm);
+}
+.post-form__time-row .post-form__time-start.time-picker-wrapper .label,
+.post-form__time-row .post-form__time-end.time-picker-wrapper .label,
+.post-form__time-row .post-form__time-duration.time-picker-wrapper .label,
+.post-form__time-row .post-form__time-min-hours.time-picker-wrapper .label {
+    flex-shrink: 0;
+    padding-top: 0.4rem;
+    margin-bottom: 0;
+}
+.post-form__time-row .post-form__time-start.time-picker-wrapper .time-picker-container,
+.post-form__time-row .post-form__time-end.time-picker-wrapper .time-picker-container,
+.post-form__time-row .post-form__time-duration.time-picker-wrapper .time-picker-container,
+.post-form__time-row .post-form__time-min-hours.time-picker-wrapper .time-picker-container {
+    flex: 0 0 auto;
+    max-width: var(--pf-w-time-wide);
+}
+
+
+/* ========== Flex rows ========== */
+.post-form__flex-row {
+    display:flex;
+    flex-direction:row;
+    align-items:flex-start;
+    gap:var(--pf-gap-md);
+    width:100%;
+}
+
+.post-form__flex-row-wrap { flex-wrap:wrap; }
+.post-form__flex-align-end { align-items:flex-end; }
+
+/* ========== Panels ========== */
+.post-form__equipment-panel {
+    flex:1;
+    padding:0.5rem;
+    background:var(--pf-bg-panel);
+    border:var(--pf-border);
+    border-radius:var(--pf-radius);
+    min-height:200px;
+}
+
+.post-form__tab-content { animation:fadeIn 0.3s ease-in-out; }
+
+/* ========== Sections ========== */
+.post-form__show-fields-wrap { width:100%; margin:1rem 0 0.5rem; }
+.post-form__notes-section { width:100%; }
+
+/* ========== Footer / audit ========== */
+.post-form__audit-footer {
+    margin-top: var(--pf-space-1);
+    padding: 0.75rem var(--pf-space-2);
+    background: var(--pf-bg-subtle);
+    border: var(--pf-border);
+    border-radius: var(--pf-radius);
+    font-size: var(--pf-font-sm);
+    color: var(--pf-text-muted);
+    align-items: center;
+    gap: var(--pf-gap-sm);
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.post-form__audit-separator {
+    color:var(--pf-separator);
+    margin:0 0.25rem;
+}
+
+/* ========== Error banner ========== */
+.post-form__error-banner {
+    padding: var(--pf-space-1) var(--pf-space-2);
+    margin-bottom: var(--pf-space-1);
+    background: var(--pf-error-bg);
+    color: var(--pf-error-text);
+    border-radius: var(--pf-radius);
+    font-size: var(--pf-font-sm);
+}
+
+/* ========== Actions ========== */
+.post-form__actions-footer {
+    padding-top: var(--pf-space-1);
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--pf-gap-md);
+}
+.post-form__view-actions { margin-top: var(--pf-space-1); justify-content: flex-end; }
+
+/* ========== Lists ========== */
+.post-form__vehicle-list-wrap,
+.post-form__equipment-list-wrap { grid-column: 1 / -1; }
+.post-form__vehicle-list-wrap + .post-form__equipment-list-wrap { margin-top: var(--pf-space-2); }
+.post-form__list { padding-left: 1.5rem; margin: 0; }
+/* ========== Spacing utilities ========== */
+.post-form__mt-1 { margin-top: var(--pf-space-1); }
+.post-form__mt-2 { margin-top: var(--pf-space-2); }
+.post-form__pt-1-5 { padding-top: 0.75rem; }
+.post-form__pt-2 { padding-top: var(--pf-space-2); }
+.post-form__pt-2px { padding-top: 15px; }
+.post-form__grid-mb-1 { margin-bottom: var(--pf-space-1); }
+/* ========== Alignment utilities ========== */
+.post-form__align-start { align-items:flex-start; }
+.post-form__min-w-0 { min-width:0; }
+/* ========== Chips & selected skills ========== */
+.post-form__skill-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--pf-gap-sm);
+}
+.post-form__selected-skills { margin-top: var(--pf-space-2); grid-column: 1 / -1; }
+.post-form__selected-skills-label {
+    display: block;
+    font-size: var(--pf-font-sm);
+    color: var(--pf-text-muted);
+    margin-bottom: var(--pf-gap-sm);
+}
+.post-form__skill-chip {
+    background: var(--pf-bg-subtle);
+    padding: 2px 8px;
+    border-radius: var(--pf-radius-sm);
+    font-size: var(--pf-font-sm);
+}
+
+/* ========== Notes & loading states ========== */
+.post-form__loading-notes,
+.post-form__empty-notes {
+    display: block;
+    text-align: center;
+    padding: var(--pf-space-2);
+}
+.post-form__empty-notes { color: var(--pf-text-muted); }
+.post-form__notes-display .data-display__value {
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* post-form__rate-field, post-form__description-textarea: used in TSX for hooks; add rules here if needed */
+/* ========== Scoped form styles ========== */
+.post-form :is(.input-wrapper .input,
+    .input-wrapper .input--textarea,
+    .dropdown-wrapper .dropdown-trigger,
+    .time-picker-wrapper .time-picker-input) {
+    border: var(--pf-border) !important;
+}
+
+.post-form :is(.input-wrapper .input--error,
+    .dropdown-wrapper .dropdown--error .dropdown-trigger,
+    .time-picker-wrapper .time-picker-input--error) {
+    border: 1px solid var(--pf-danger) !important;
+}
+
+.post-form :is(.input-wrapper,
+    .dropdown-wrapper,
+    .time-picker-wrapper) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--pf-gap-sm);
+    width: 100%;
+    position: relative;
+}
+.post-form .post-form__post-title-field .input-wrapper {
+    gap: 0.125rem;
+    align-items: center;
+}
+.post-form .post-form__post-title-field .input-wrapper .label {
+    padding-top: 0;
+}
+.post-form :is(.input-wrapper .label,
+    .dropdown-wrapper .label,
+    .time-picker-wrapper .label) {
+    flex-shrink: 0;
+    min-width: 4.2rem;
+    padding-top: 0.4rem;
+    margin-bottom: 0;
+}
+.post-form :is(.input-wrapper .input-container,
+    .dropdown-wrapper > .dropdown,
+    .time-picker-wrapper .time-picker-container) {
+    flex: 1;
+    min-width: 0;
+    max-width: 100%;
+}
+.post-form :is(.input-wrapper .input-error,
+    .dropdown-wrapper .dropdown-error,
+    .time-picker-wrapper .time-picker-error) {
+    flex: 0 0 auto;
+    margin-top: 0;
+    margin-left: var(--pf-gap-sm);
+    align-self: flex-start;
+    max-width: var(--pf-w-dropdown-min);
+    /* Hide error message text on save validation – only highlight the box */
+    display: none;
+}
+/* Hide error message text in fields – only highlight the box (error state still applied) */
+.post-form :is(.input-wrapper .input-error,
+    .dropdown-wrapper .dropdown-error,
+    .time-picker-wrapper .time-picker-error) {
+    display: none;
+}
+/* Show error text for Pay rate and Total position */
+.post-form .post-form__pay-rate-wrap .input-wrapper .input-error,
+.post-form .post-form__total-positions-field.input-wrapper .input-error {
+    display: block;
+}
+.post-form .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--pf-gap-sm);
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--pf-text);
+    user-select: none;
+    padding-top: 9px;
+}
+.post-form .dropdown-wrapper .dropdown-selected-items {
+    flex-basis: 100%;
+    margin-left: 0;
+}
+
+/* Total Positions / narrow inputs */
+.post-form .post-form__total-positions-field.input-wrapper .input-container {
+    max-width: var(--pf-w-input-narrow);
+}
+.post-form .post-form__total-positions-cell .input-wrapper {
+    max-width: 100%;
+}
+.post-form .post-form__total-positions-field .input-error {
+    white-space: nowrap;
+}
+
+.post-form__call-signs-cell {
+    margin-top: var(--pf-space-1);
+}
+
+.post-form__call-signs-accordion {
+    width: 100%;
+}
+
+.post-form__call-signs-panel {
+    padding: 0 var(--pf-space-2) var(--pf-space-2);
+}
+
+/* Collapse TextField top clearance inside accordion — label float still has room via outlined notch */
+.post-form__call-signs-panel .MuiTextField-root {
+    margin-top: 0.25rem;
+}
+
+/* Vehicle/Equipment quantity – side-by-side label + input, only on Post form page */
+.post-form .post-equipment-list div:has(> .input-wrapper input[type="number"]) {
+    width: 140px;
+    min-width: 140px;
+}
+.post-form .post-equipment-list .input-wrapper:has(input[type="number"]) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: var(--pf-gap-sm);
+}
+.post-form .post-equipment-list .input-wrapper:has(input[type="number"]) .label {
+    flex-shrink: 0;
+    min-width: 0;
+    padding-top: 0.4rem;
+    margin-bottom: 0;
+}
+.post-form .post-equipment-list .input-wrapper:has(input[type="number"]) .input-container {
+    flex: 1;
+    min-width: 5em;
+}
+
+.post-form .post-equipment-list .data-table__col--equipmentperpostposition {
+    white-space: nowrap;
+    min-width: max-content;
+    padding-left: var(--spacing-sm);
+}
+
+.post-form .post-equipment-list .data-table__col--equipmentperpostposition .data-table__th-label {
+    white-space: nowrap;
+    flex-wrap: nowrap;
+}
+
+/* Responsive */
+@media (max-width:768px) {
+
+    .post-form :is(.input-wrapper,
+        .dropdown-wrapper,
+        .time-picker-wrapper) {
+        flex-direction: column;
+    }
+
+    .post-form :is(.input-wrapper .label,
+        .dropdown-wrapper .label,
+        .time-picker-wrapper .label) {
+        min-width: 0;
+        padding-top: 0;
+    }
+
+    .post-form :is(.input-wrapper .input-error,
+        .dropdown-wrapper .dropdown-error,
+        .time-picker-wrapper .time-picker-error) {
+        position: static;
+        flex-basis: 100%;
+        margin-left: 0;
+        margin-top: 0.25rem;
+        padding-top: 0;
+    }
+
+}
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

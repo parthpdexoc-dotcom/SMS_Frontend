@@ -1,0 +1,68 @@
+.block-date-form {
+  width: 100%;
+  position: relative;
+}
+
+.block-date-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  position: relative;
+  overflow: visible;
+}
+
+.block-date-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+/* Override dropdown menu height/scroll so all options show (inline maxHeight from JS can be too small in modals) */
+.block-date-form .block-date-form__dropdown-request-post .dropdown-menu,
+.block-date-form .dropdown-menu {
+  box-sizing: border-box;
+  max-height: 220px !important;
+  min-height: 120px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  z-index: 10000;
+}
+
+/* Ensure dropdown wrapper doesn't clip the menu */
+.block-date-form .block-date-form__dropdown-request-post.dropdown-wrapper,
+.block-date-form .dropdown-wrapper {
+  overflow: visible !important;
+}
+
+.block-date-form .block-date-form__dropdown-request-post .dropdown,
+.block-date-form .dropdown {
+  overflow: visible !important;
+}
+
+.block-date-form__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.block-date-form__cancel-button,
+.block-date-form__submit-button {
+  min-width: 120px;
+}
+
+@media (max-width: 576px) {
+  .block-date-form__row {
+    grid-template-columns: 1fr;
+  }
+
+  .block-date-form__footer {
+    flex-direction: column;
+  }
+
+  .block-date-form__cancel-button,
+  .block-date-form__submit-button {
+    width: 100%;
+  }
+}

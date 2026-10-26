@@ -1,0 +1,11 @@
+/* Manage Post column: shift right and align like Equipment Types extra column (Is Vehicle) */
+.admin-type-list .data-table__th:nth-child(3),
+.admin-type-list .data-table__td:nth-child(3) {
+  padding-left: var(--spacing-2xl);
+  text-align: center;
+}
+
+.admin-type-list .data-table__td:nth-child(3) .data-table__cell {
+  justify-content: center;
+  display: flex;
+}

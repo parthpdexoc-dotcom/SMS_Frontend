@@ -1,0 +1,196 @@
+/* Department Form Styles */
+.department-form {
+  width: 100%;
+}
+
+.department-form__error {
+  background-color: #fee;
+  border: 1px solid #fcc;
+  color: #c33;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.department-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.department-form__form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+  align-items: flex-start;
+}
+
+.department-form__form-row .MuiFormControl-root,
+.department-form__form-row .MuiTextField-root {
+  width: 100%;
+}
+
+.department-form__section > .MuiFormControl-root,
+.department-form__section > .MuiTextField-root {
+  width: 100%;
+}
+
+.department-form__form-checkbox {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-md) 0;
+}
+
+.department-form__checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.department-form__checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.department-form__audit-info {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background-color: var(--background-secondary, #f8f9fa);
+  border: 1px solid var(--border-color, #e9ecef);
+  border-radius: var(--radius-md);
+}
+
+.department-form__audit-info-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  flex-wrap: wrap;
+}
+
+.department-form__audit-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  white-space: nowrap;
+}
+
+.department-form__audit-label {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.department-form__audit-value {
+  color: var(--text-secondary);
+}
+
+.department-form__audit-date {
+  color: var(--text-tertiary);
+  font-size: 0.8125rem;
+}
+
+.department-form__audit-separator {
+  color: var(--text-tertiary);
+  font-weight: 400;
+  margin: 0 var(--spacing-sm);
+}
+
+.department-form__section {
+  padding: 0;
+  margin-bottom: var(--spacing-md);
+}
+
+.department-form__section-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--text-primary);
+}
+
+.department-form__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: var(--spacing-md);
+}
+
+.department-form__cancel-button {
+  min-width: 120px;
+}
+
+.department-form__submit-button {
+  min-width: 120px;
+}
+
+.department-form__logo-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.department-form__logo-label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.department-form__logo-input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.department-form__logo-preview {
+  flex-shrink: 0;
+}
+
+.department-form__logo-preview-img {
+  display: block;
+  max-width: 120px;
+  max-height: 80px;
+  object-fit: contain;
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 4px;
+}
+
+.department-form__logo-error {
+  font-size: 0.875rem;
+  color: var(--error-color, #b91c1c);
+}
+
+/* Responsive design */
+@media (max-width: 48rem) {
+  .department-form__form-row {
+    grid-template-columns: 1fr;
+  }
+
+
+  .department-form__audit-info-row {
+    gap: var(--spacing-md);
+  }
+
+  .department-form__audit-item {
+    white-space: normal;
+  }
+
+  .department-form__footer {
+    flex-direction: column;
+  }
+
+  .department-form__cancel-button,
+  .department-form__submit-button {
+    width: 100%;
+  }
+}
+

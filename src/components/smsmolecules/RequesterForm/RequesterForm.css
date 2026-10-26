@@ -1,0 +1,332 @@
+/* Requester Form Styles */
+.requester-form {
+  width: 100%;
+}
+
+/* Make requester form a bit denser than default app-form */
+.requester-form .app-form__form {
+  gap: 0.5rem;
+}
+
+.requester-form .app-form__section {
+  padding: 0.75rem;
+  column-gap: 0.5rem;
+  row-gap: 0.5rem;
+}
+
+/* Reduce extra space under section titles inside requester form */
+.requester-form .app-form__section-title {
+  margin-bottom: 0.1rem;
+  padding-bottom: 0.1rem;
+}
+
+/* Contact and Address Information: reduce vertical spacing between fields (like Billing/Payment) */
+.requester-form .requester-form__section-contact-address {
+  row-gap: 0.35rem;
+}
+.requester-form .requester-form__section-contact-address .app-form__flex-row + .app-form__flex-row {
+  margin-top: 0.35rem;
+}
+.requester-form .requester-form__section-contact-address .requester-form__section-footer {
+  margin-top: 0.35rem;
+}
+.requester-form .requester-form__section-contact-address .requester-form__footer-col {
+  gap: 0.5rem;
+}
+.requester-form .requester-form__section-contact-address .requester-form__footer-columns {
+  padding-bottom: 0.75rem;
+}
+
+/* Contact: checkboxes row only under Primary Contact and Phone (first 2 columns), don't spread */
+.requester-form .requester-form__contact-checkboxes-row {
+  max-width: 50%;
+}
+
+/* Reduce textarea height across the requester form */
+.requester-form textarea {
+  min-height: 2rem;
+  resize: vertical;
+}
+
+/* Footer checkboxes: good spacing between the three options */
+.requester-form .requester-form__footer-checkboxes {
+  gap: 2.5rem;
+}
+.requester-form .requester-form__footer-checkboxes > * {
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+/* Footer: three columns span full row — checkbox on top, input below (parallel, breathable) */
+.requester-form .requester-form__section-footer {
+  margin-top: 0.5rem;
+  grid-column: 1 / -1;
+  width: 100%;
+}
+.requester-form .requester-form__footer-columns {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e1e5e9;
+  width: 100%;
+}
+.requester-form .requester-form__footer-col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: stretch;
+}
+.requester-form .requester-form__footer-col .input-wrapper {
+  width: 100%;
+}
+
+.requester-form__error {
+  background-color: #fee;
+  border: 1px solid #fcc;
+  color: #c33;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.requester-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.requester-form__section {
+  background: white;
+  border: 1px solid #e1e5e9;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.requester-form__section-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #e1e5e9;
+  padding-bottom: 0.5rem;
+}
+
+.requester-form__form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.requester-form__form-row:last-child {
+  margin-bottom: 0;
+}
+
+.requester-form__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.requester-form__form-checkbox {
+  margin-bottom: 0.75rem;
+}
+
+.requester-form__form-checkbox:last-child {
+  margin-bottom: 0;
+}
+
+.requester-form__checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+.requester-form__checkbox-label input[type="checkbox"] {
+  margin: 0;
+  width: 1rem;
+  height: 1rem;
+}
+
+.requester-form__checkboxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.requester-form__audit-info {
+  background: #f7fafc;
+  border: 1px solid #e1e5e9;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.requester-form__audit-info-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: #718096;
+}
+
+.requester-form__audit-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.requester-form__audit-label {
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.requester-form__audit-value {
+  color: #2d3748;
+}
+
+.requester-form__audit-date {
+  color: #718096;
+  font-style: italic;
+}
+
+.requester-form__audit-separator {
+  color: #cbd5e0;
+  font-weight: bold;
+}
+
+.requester-form__footer {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e1e5e9;
+}
+
+.requester-form__cancel-button {
+  flex-shrink: 0;
+}
+
+.requester-form__submit-button {
+  flex-shrink: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .requester-form__form-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .requester-form__checkboxes {
+    grid-template-columns: 1fr;
+  }
+
+  .requester-form__footer {
+    flex-direction: column-reverse;
+  }
+
+  .requester-form__cancel-button,
+  .requester-form__submit-button {
+    width: 100%;
+  }
+
+  .requester-form__section {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .requester-form__section {
+    padding: 0.75rem;
+  }
+
+  .requester-form__audit-info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .requester-form__audit-separator {
+    display: none;
+  }
+}
+
+/* View Mode Styles - Professional Property-Value Grid */
+.requester-form__view-mode {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.requester-form__view-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem 1.5rem;
+  align-items: start;
+  justify-items: start;
+}
+
+.requester-form__view-full-row {
+  grid-column: 1 / -1;
+}
+
+/* Enhanced section styling for view mode */
+.requester-form__view-mode .requester-form__section {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1.25rem;
+}
+
+.requester-form__view-mode .requester-form__section-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+}
+
+/* Parent information styling */
+.requester-form__view-parent-info {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* Responsive adjustments for view mode grid */
+@media (max-width: 1024px) {
+  .requester-form__view-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.625rem 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .requester-form__view-mode {
+    gap: 1rem;
+  }
+
+  .requester-form__view-mode .requester-form__section {
+    padding: 1rem;
+  }
+
+  .requester-form__view-mode .requester-form__section-title {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.375rem;
+  }
+
+  .requester-form__view-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem 1rem;
+  }
+}

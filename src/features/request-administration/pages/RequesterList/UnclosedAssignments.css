@@ -1,0 +1,38 @@
+.requester-list__content.jobs-ready-to-close {
+  text-align: left;
+}
+
+.jobs-ready-to-close .requester-list__section-title {
+  text-align: left;
+}
+
+.jobs-ready-to-close__table {
+  width: 100%;
+}
+
+/* Avoid clipped headers; size columns from content, scroll horizontally when needed. */
+.jobs-ready-to-close .data-table__container {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.jobs-ready-to-close .data-table__table {
+  table-layout: auto;
+  width: max-content;
+  min-width: 100%;
+}
+
+.jobs-ready-to-close .data-table__th {
+  white-space: nowrap;
+}
+
+.jobs-ready-to-close__error {
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--danger-color);
+  font-size: 0.875rem;
+}
+
+.jobs-ready-to-close__actions {
+  align-items: center;
+  justify-content: flex-start;
+}

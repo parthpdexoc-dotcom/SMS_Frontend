@@ -1,0 +1,116 @@
+/* Same layout as DepartmentList */
+.form-templates-page {
+  width: 100%;
+  padding: var(--spacing-2xl);
+}
+
+.form-templates-page__header-tabs {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.form-templates-page__tab-content {
+  width: 100%;
+}
+
+.form-templates-page__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-2xl);
+  gap: var(--spacing-lg);
+}
+
+.form-templates-page__title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.form-templates-page__add-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  white-space: nowrap;
+}
+
+.form-templates-page__table {
+  width: 100%;
+}
+
+.form-templates-page__actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Table row actions — SMSIconButton + tone (same pattern as RequesterList / ActivityForm) */
+.form-templates-page__icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: var(--spacing-xs);
+  box-sizing: border-box;
+}
+
+.form-templates-page__error {
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  background-color: var(--danger-bg, #fef2f2);
+  color: var(--danger-color, #b91c1c);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+}
+
+/* Create options modal (Employee: Use template / Create new) */
+.form-templates-page__create-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.form-templates-page__create-choices {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.form-templates-page__create-choice {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.form-templates-page__create-choice input {
+  margin: 0;
+}
+
+.form-templates-page__template-dropdown {
+  margin-top: var(--spacing-sm);
+}
+
+.form-templates-page__no-templates {
+  margin: var(--spacing-sm) 0 0;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.form-templates-page__create-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-light);
+}

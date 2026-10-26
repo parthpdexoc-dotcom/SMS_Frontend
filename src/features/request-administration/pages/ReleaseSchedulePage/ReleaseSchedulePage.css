@@ -1,0 +1,255 @@
+@import '../../../../components/smsorganisms/SMSFormPage/SMSFormPage.css';
+
+.release-schedule .daily-workspace__body--stage-requests {
+  grid-template-columns: 400px;
+  justify-content: start;
+}
+
+.release-schedule .daily-workspace__body--stage-posts {
+  grid-template-columns: 400px 1fr;
+}
+
+.release-schedule__error {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  color: var(--error-color, #b42318);
+}
+
+.release-schedule .daily-workspace__top .daily-workspace__filters {
+  width: 100%;
+}
+
+.release-schedule__search-filter {
+  flex: 0 0 18.25rem;
+  width: 18.25rem;
+  min-width: 18.25rem;
+  max-width: 18.25rem;
+  align-self: flex-end;
+}
+
+.release-schedule__search-filter .MuiFormControl-root {
+  width: 100%;
+}
+
+.release-schedule__release-as-filter {
+  flex: 0 0 13.5rem;
+  width: 13.5rem;
+  min-width: 13.5rem;
+  max-width: 13.5rem;
+  align-self: flex-end;
+}
+
+.release-schedule__card-fields {
+  align-items: flex-start;
+  gap: 16px;
+  overflow: visible;
+}
+
+.release-schedule__card-fields > span {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 0;
+  font-weight: 400;
+  color: #334155;
+  white-space: normal;
+}
+
+.release-schedule__card-fields small {
+  color: var(--primary-color);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.release-schedule .daily-workspace__panel--requests .daily-workspace__panel-body {
+  flex: 1 1 0%;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.release-schedule__pagination.sms-pagination {
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  margin: 0;
+  padding: 10px 12px;
+  border-top: 1px solid var(--dw-border);
+  background: var(--dw-surface, #fff);
+}
+
+.release-schedule__pagination.sms-pagination .sms-pagination__left {
+  flex: 1 1 auto;
+  width: auto;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+
+.release-schedule__pagination.sms-pagination .sms-pagination__info,
+.release-schedule__pagination.sms-pagination .sms-pagination__size-label {
+  font-size: 0.75rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.release-schedule__pagination.sms-pagination .sms-pagination__controls {
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.release-schedule__pagination.sms-pagination .sms-pagination__controls .MuiButton-root {
+  min-width: 1.5rem !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  min-height: 1.5rem !important;
+  padding: 0 !important;
+}
+
+.release-schedule .daily-workspace__title-row .form-page__back-button {
+  flex: 0 0 auto;
+}
+
+.release-schedule__schedules {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  overflow: auto;
+}
+
+.release-schedule__schedule-legend {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.release-schedule__schedule-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--primary-color);
+  white-space: nowrap;
+}
+
+.release-schedule__legend-label,
+.release-schedule__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.release-schedule__legend-label {
+  text-transform: capitalize;
+}
+
+.release-schedule__swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.release-schedule__swatch--past {
+  background: #ffebee;
+  border: 1px solid #ffcdd2;
+}
+
+.release-schedule__swatch--current {
+  background: #ffe0b2;
+  border: 1px solid #ffcc80;
+  box-shadow: inset 4px 0 0 #f57c00;
+}
+
+.release-schedule__swatch--future {
+  background: #e8f5e9;
+  border: 1px solid #c8e6c9;
+}
+
+.release-schedule .daily-workspace__positions-group-body .daily-workspace__table {
+  min-width: 720px;
+}
+
+.release-schedule .daily-workspace__positions-group-body .daily-workspace__table tbody tr.release-schedule__row--old td,
+.release-schedule .daily-workspace__positions-group-body .daily-workspace__table tbody tr.release-schedule__row--old:hover td {
+  background-color: #ffebee;
+}
+
+.release-schedule .daily-workspace__positions-group-body .daily-workspace__table tbody tr.release-schedule__row--ongoing td,
+.release-schedule .daily-workspace__positions-group-body .daily-workspace__table tbody tr.release-schedule__row--ongoing:hover td {
+  background-color: #ffe0b2;
+}
+
+.release-schedule .daily-workspace__positions-group-body .daily-workspace__table tbody tr.release-schedule__row--ongoing td:first-child {
+  box-shadow: inset 4px 0 0 #f57c00;
+}
+
+.release-schedule .daily-workspace__positions-group-body .daily-workspace__table tbody tr.release-schedule__row--future td,
+.release-schedule .daily-workspace__positions-group-body .daily-workspace__table tbody tr.release-schedule__row--future:hover td {
+  background-color: #e8f5e9;
+}
+
+@media (max-width: 1200px) {
+  .release-schedule .daily-workspace__filters {
+    flex-wrap: wrap;
+  }
+
+  .release-schedule__search-filter {
+    flex: 1 1 12rem;
+    width: auto;
+    min-width: 0;
+    max-width: 18.25rem;
+  }
+
+  .release-schedule .daily-workspace__body--stage-requests,
+  .release-schedule .daily-workspace__body--stage-posts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .release-schedule .daily-workspace__body--stage-posts {
+    grid-template-rows: minmax(240px, 40%) minmax(280px, 1fr);
+  }
+
+  .release-schedule__pagination.sms-pagination,
+  .release-schedule__pagination.sms-pagination .sms-pagination__left {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .release-schedule .daily-workspace__body--stage-posts {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+
+  .release-schedule .daily-workspace__panel--requests,
+  .release-schedule .daily-workspace__panel--posts {
+    width: 100%;
+    min-height: 280px;
+    max-height: 70vh;
+  }
+
+  .release-schedule__search-filter,
+  .release-schedule__release-as-filter {
+    flex: 1 1 100%;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+  }
+}

@@ -1,0 +1,31 @@
+.requester-invoice-details-modal .MuiDialog-paper {
+  max-height: min(92vh, 900px);
+}
+
+.requester-invoice-details-modal .MuiDialogContent-root {
+  overflow-y: auto;
+}
+
+.requester-invoice-details-modal__data-table .data-table__col--invoicestate,
+.requester-invoice-details-modal__data-table .data-table__th.data-table__col--invoicestate,
+.requester-invoice-details-modal__data-table .data-table__td.data-table__col--invoicestate {
+  min-width: 5.5rem;
+  width: 5.5rem;
+}
+
+.requester-invoice-details-modal__data-table .data-table__th--narrow.data-table__col--invoicestate,
+.requester-invoice-details-modal__data-table .data-table__td--narrow.data-table__col--invoicestate {
+  min-width: 5.5rem;
+  width: 5.5rem;
+}
+
+.requester-invoice-details-modal__data-table .data-table__col--rowaction,
+.requester-invoice-details-modal__data-table .data-table__th.data-table__col--rowaction,
+.requester-invoice-details-modal__data-table .data-table__td.data-table__col--rowaction {
+  min-width: 4rem;
+  width: 4rem;
+}
+
+.requester-invoice-details-modal__data-table .data-table__td.data-table__col--rowaction .data-table__cell {
+  justify-content: center;
+}

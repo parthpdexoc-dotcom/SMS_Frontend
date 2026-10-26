@@ -1,0 +1,91 @@
+.routing-group-form {
+  width: 100%;
+  position: relative;
+}
+
+.routing-group-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  position: relative;
+  /* Allow dropdown menus to extend beyond the form without being cut off */
+  overflow: visible;
+  padding-bottom: var(--spacing-lg);
+}
+
+.routing-group-form__row {
+  display: flex;
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+.routing-group-form__col {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.routing-group-form__switch {
+  margin-top: var(--spacing-xs);
+}
+
+.routing-group-form__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.routing-group-form__cancel-button,
+.routing-group-form__submit-button {
+  min-width: 120px;
+}
+
+/* =============================== */
+/* MULTISELECT DROPDOWN FIX */
+/* =============================== */
+
+/* Anchor dropdown width to input */
+.routing-group-form .multi-select-dropdown,
+.routing-group-form .dropdown-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Force menu to match input width & open downward */
+.routing-group-form .multi-select-dropdown__menu,
+.routing-group-form .dropdown-menu,
+.routing-group-form [role="listbox"] {
+  position: absolute !important;
+
+  top: 100% !important;
+  bottom: auto !important;
+
+  left: 0 !important;
+  right: 0 !important;
+
+  width: auto !important;
+  min-width: unset !important;
+  box-sizing: border-box;
+
+  max-height: 220px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  z-index: 1000;
+}
+
+@media (max-width: 576px) {
+  .routing-group-form__row {
+    flex-direction: column;
+  }
+
+  .routing-group-form__footer {
+    flex-direction: column;
+  }
+
+  .routing-group-form__cancel-button,
+  .routing-group-form__submit-button {
+    width: 100%;
+  }
+}

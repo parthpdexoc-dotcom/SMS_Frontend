@@ -1,0 +1,135 @@
+@import '../RequesterList/RequesterList.css';
+@import '../../../../components/smsorganisms/SMSFormPage/SMSFormPage.css';
+
+.requester-payment-page__header {
+  justify-content: flex-start;
+  width: 100%;
+  margin-bottom: var(--spacing-2xl);
+  gap: var(--spacing-lg);
+}
+
+.requester-payment-page__title {
+  flex: 1;
+  min-width: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.25;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (max-width: 768px) {
+  .requester-payment-page__title {
+    font-size: 1.5rem;
+  }
+}
+
+.requester-payment-page__header-actions {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.requester-payment-page__add-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.requester-payment-page__table-header {
+  margin-bottom: var(--spacing-md);
+  gap: var(--spacing-md);
+}
+
+.requester-payment-page__refund-hint {
+  flex-shrink: 0;
+}
+
+.requester-payment-page__select-cell {
+  display: inline-flex;
+  justify-content: center;
+  min-width: 2.5rem;
+}
+
+.requester-payment-page__table-checkbox .MuiFormControlLabel-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.requester-payment-page .requester-payment-page__data-table .data-table__col--select {
+  width: 3rem;
+  min-width: 3rem;
+}
+
+.requester-payment-page__summary {
+  margin-bottom: var(--spacing-lg);
+}
+
+.requester-payment-page__filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.requester-payment-page__filter-field {
+  min-width: 11rem;
+  max-width: 14rem;
+}
+
+.requester-payment-page__filter-field .MuiFormControl-root {
+  margin-top: 0;
+}
+
+.requester-payment-page__table-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Reuses .requester-payment-page__title color (global [class*="__title"] + gradient) */
+.requester-payment-page__title--section {
+  flex: none;
+  margin: 0 0 var(--spacing-md);
+  font-size: 1.25rem;
+}
+
+.requester-payment-page .requester-payment-page__data-table .data-table__col--action {
+  min-width: 12.5rem;
+  width: 12.5rem;
+}
+
+.requester-payment-page__table-heading {
+  min-width: 0;
+}
+
+.requester-payment-page__history-tabs {
+  max-width: 100%;
+}
+
+.requester-payment-page .requester-payment-page__data-table--refunds .data-table__col--action {
+  min-width: 4rem;
+  width: 4rem;
+}
+
+.requester-payment-page__amount {
+  font-variant-numeric: tabular-nums;
+}
+
+.requester-payment-page__processed-by {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

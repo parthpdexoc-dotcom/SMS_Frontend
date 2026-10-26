@@ -1,0 +1,78 @@
+.block-date-list {
+  width: 100%;
+  padding: var(--spacing-2xl);
+}
+
+.block-date-list__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-2xl);
+  gap: var(--spacing-lg);
+}
+
+.block-date-list__title {
+  flex: 1;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.block-date-list__add-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  white-space: nowrap;
+}
+
+.block-date-list__table {
+  width: 100%;
+}
+
+/* Edit and Delete buttons – match RoutingGroup (SkillsList) reference */
+.block-date-list__actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.block-date-list__edit-button,
+.block-date-list__delete-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  white-space: nowrap;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  box-shadow: none !important;
+  padding: var(--spacing-xs);
+  min-width: 28px;
+  height: 28px;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.block-date-list__edit-button {
+  color: var(--primary-color) !important;
+}
+
+.block-date-list__delete-button {
+  color: var(--danger-color) !important;
+}
+
+@media (max-width: 768px) {
+  .block-date-list__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .block-date-list__edit-button,
+  .block-date-list__delete-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

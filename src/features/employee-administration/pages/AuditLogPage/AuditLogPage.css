@@ -1,0 +1,145 @@
+.audit-log-page {
+  flex: 1;
+  padding: var(--spacing-lg) var(--spacing-md);
+  overflow-y: auto;
+  background: var(--bg-secondary);
+}
+
+.audit-log-page__header {
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Table toolbar: search + entity filter; wrap on narrow widths so nothing clips */
+.audit-log-page__data-table .data-table__toolbar {
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.audit-log-page__toolbar-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--spacing-md);
+}
+
+.audit-log-page__toolbar-filters__date {
+  flex: 0 1 12rem;
+  min-width: 10.5rem;
+  max-width: 14rem;
+}
+
+.audit-log-page__toolbar-filters__clear {
+  flex: 0 0 auto;
+  align-self: flex-end;
+}
+
+@media (min-width: 481px) {
+  .audit-log-page__data-table .data-table__search {
+    flex: 0 1 18rem;
+    max-width: min(22rem, 42vw);
+    min-width: 11rem;
+    width: auto;
+  }
+
+  .audit-log-page__data-table .data-table__toolbar-right {
+    margin-left: 0;
+  }
+}
+
+.audit-log-page__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.audit-log-page__placeholder {
+  margin: 0;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.75));
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 42rem;
+}
+
+/* Closed Job Positions: keep Type + Action compact on the right; give name/title columns room. */
+.audit-log-page__data-table--closed-job-position .data-table__table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.audit-log-page__data-table--closed-job-position .data-table__col--employeename {
+  width: 15%;
+  min-width: 9.5rem;
+}
+
+.audit-log-page__data-table--closed-job-position .data-table__col--jobtitle {
+  width: 18%;
+  min-width: 10rem;
+}
+
+.audit-log-page__data-table--closed-job-position .data-table__col--date {
+  width: 6.5rem;
+  min-width: 6.5rem;
+  max-width: 6.5rem;
+}
+
+.audit-log-page__data-table--closed-job-position .data-table__col--type,
+.audit-log-page__data-table--closed-job-position .data-table__col--action {
+  width: 4.75rem;
+  min-width: 4.75rem;
+  max-width: 5.25rem;
+}
+
+.audit-log-page__data-table--closed-job-position .data-table__col--type.data-table__th,
+.audit-log-page__data-table--closed-job-position .data-table__col--type.data-table__td {
+  padding-left: var(--spacing-md);
+}
+
+.audit-log-page__data-table--closed-job-position .data-table__col--action.data-table__th,
+.audit-log-page__data-table--closed-job-position .data-table__col--action.data-table__td {
+  padding-right: var(--spacing-xs);
+}
+
+.audit-log-page__data-table--closed-job-position .data-table__col--changedon {
+  width: 6.25rem;
+  min-width: 6.25rem;
+  max-width: 6.25rem;
+}
+
+.audit-log-page__data-table--closed-job-position .data-table__col--changedon.data-table__th,
+.audit-log-page__data-table--closed-job-position .data-table__col--changedon.data-table__td {
+  padding-left: var(--spacing-xs);
+  padding-right: var(--spacing-sm);
+}
+
+.audit-log-page__data-table--closed-job-position .data-table__col--changedon .data-table__cell {
+  white-space: nowrap;
+}
+
+.audit-log-page__data-table--closed-job-position .data-table__col--auditchangedfields.data-table__th,
+.audit-log-page__data-table--closed-job-position .data-table__col--auditchangedfields.data-table__td {
+  padding-left: var(--spacing-sm);
+}
+
+.audit-log-page__data-table--closed-job-position .data-table__col--starttime,
+.audit-log-page__data-table--closed-job-position .data-table__col--endtime {
+  width: 4.75rem;
+  min-width: 4.75rem;
+  max-width: 4.75rem;
+}
+
+.audit-log-page__data-table--closed-job-position .data-table__col--hoursworked,
+.audit-log-page__data-table--closed-job-position .data-table__col--hoursrequired {
+  width: 6.25rem;
+  min-width: 6.25rem;
+  max-width: 7rem;
+}
+
+.audit-log-page__data-table--closed-job-position .data-table__col--auditchangedfields {
+  width: 4rem;
+  min-width: 4rem;
+  max-width: 4rem;
+}

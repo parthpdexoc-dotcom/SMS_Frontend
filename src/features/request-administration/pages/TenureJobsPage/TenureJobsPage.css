@@ -1,0 +1,109 @@
+/* ─── Page shell ─── */
+.tenure-jobs-page__intro {
+  margin-bottom: 0;
+}
+
+.tenure-jobs-page__subtitle {
+  margin-top: var(--spacing-xs);
+  max-width: 40rem;
+  line-height: 1.5;
+}
+
+/* ─── Filter row: controls left, Collapse all right ─── */
+.tenure-jobs-page__filters-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+.tenure-jobs-page__filters-inner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--spacing-md);
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.tenure-jobs-page__filters-collapse-all {
+  flex-shrink: 0;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/*
+ * Page-specific column-width tweaks for the nested grid rendered by
+ * `SMSExpandableGroupList`. Scoped under `.tenure-jobs-page` so they don't
+ * affect other pages that reuse the generic component.
+ *
+ * Column order (left → right):
+ *   Date Of Work | Start Time | End Time | Minimum Required Hours |
+ *   Total Positions | Post | Location | Action
+ *
+ * Widths are percentages of the table (100% total). `SMSDataTableWrapper` uses
+ * `table-layout: fixed` + `width: 100%` on `.data-table__table`, so these
+ * distribute predictably across viewports.
+ */
+
+.tenure-jobs-page .sms-expandable-group-list__data-table .data-table__col--startdate.data-table__th,
+.tenure-jobs-page .sms-expandable-group-list__data-table .data-table__col--startdate.data-table__td {
+  width: 8%;
+  box-sizing: border-box;
+  padding-left: var(--spacing-sm);
+  padding-right: var(--spacing-sm);
+  white-space: nowrap;
+}
+
+.tenure-jobs-page .sms-expandable-group-list__data-table .data-table__col--starttime.data-table__th,
+.tenure-jobs-page .sms-expandable-group-list__data-table .data-table__col--starttime.data-table__td,
+.tenure-jobs-page .sms-expandable-group-list__data-table .data-table__col--endtime.data-table__th,
+.tenure-jobs-page .sms-expandable-group-list__data-table .data-table__col--endtime.data-table__td {
+  width: 6.5%;
+  box-sizing: border-box;
+  padding-left: var(--spacing-sm);
+  padding-right: var(--spacing-sm);
+  white-space: nowrap;
+}
+
+.tenure-jobs-page .sms-expandable-group-list__data-table .data-table__col--minrequiredhours.data-table__th,
+.tenure-jobs-page .sms-expandable-group-list__data-table .data-table__col--minrequiredhours.data-table__td {
+  width: 12%;
+  box-sizing: border-box;
+  padding-left: var(--spacing-sm);
+  padding-right: var(--spacing-sm);
+  white-space: nowrap;
+}
+
+.tenure-jobs-page .sms-expandable-group-list__data-table .data-table__col--totalpositions.data-table__th,
+.tenure-jobs-page .sms-expandable-group-list__data-table .data-table__col--totalpositions.data-table__td {
+  width: 8%;
+  box-sizing: border-box;
+  padding-left: var(--spacing-sm);
+  padding-right: var(--spacing-sm);
+}
+
+.tenure-jobs-page .sms-expandable-group-list__data-table .data-table__col--post.data-table__th,
+.tenure-jobs-page .sms-expandable-group-list__data-table .data-table__col--post.data-table__td {
+  width: 22%;
+  box-sizing: border-box;
+}
+
+.tenure-jobs-page .sms-expandable-group-list__data-table .data-table__col--location.data-table__th,
+.tenure-jobs-page .sms-expandable-group-list__data-table .data-table__col--location.data-table__td {
+  width: 17%;
+  box-sizing: border-box;
+}
+
+.tenure-jobs-page .sms-expandable-group-list__data-table .data-table__col--interestedlist.data-table__th,
+.tenure-jobs-page .sms-expandable-group-list__data-table .data-table__col--interestedlist.data-table__td {
+  width: 20%;
+  box-sizing: border-box;
+  padding-left: var(--spacing-sm);
+  padding-right: var(--spacing-sm);
+  white-space: nowrap;
+}

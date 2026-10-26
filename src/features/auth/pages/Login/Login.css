@@ -1,0 +1,32 @@
+/* Minimal Login Layout - NO styling, only structure */
+.login-root {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  padding: 1rem;
+}
+
+.login-logo {
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form__success-alert {
+  margin-bottom: var(--spacing-xs);
+}
+
+@media (max-width: 768px) {
+  .login-logo {
+    width: 80px;
+    height: 80px;
+  }
+}

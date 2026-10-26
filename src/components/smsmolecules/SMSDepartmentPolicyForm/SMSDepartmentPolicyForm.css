@@ -1,0 +1,55 @@
+.department-policy-form .app-form__section-title {
+  margin-bottom: 0.3rem;
+}
+
+.department-policy-form .app-form__checkboxes--inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin-top: 0.75rem;
+}
+
+.department-policy-form .app-form__form-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.department-policy-form__checkbox-input-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.25rem;
+  flex: 0 0 auto;
+}
+
+.department-policy-form__checkbox-input-row .app-form__form-checkbox {
+  padding-bottom: 0.5rem;
+  flex: 0 0 auto;
+}
+
+.department-policy-form__checkbox-input-row .input-wrapper {
+  width: auto;
+  min-width: 220px;
+  max-width: 100%;
+}
+
+.department-policy-form__tenure-type-row {
+  min-width: 220px;
+  max-width: 320px;
+}
+
+.department-policy-form__tenure-type-row .MuiFormControl-root,
+.department-policy-form__tenure-type-row .MuiAutocomplete-root {
+  width: 100%;
+}
+
+.department-policy-form .input-label {
+  white-space: nowrap;
+}
+
+.department-policy-form__supervisor-input {
+  min-width: 280px;
+  max-width: 320px;
+}
+

@@ -1,0 +1,660 @@
+/* Activity Form Styles */
+
+.activity-form-page {
+  width: 100%;
+  padding: var(--spacing-lg);
+}
+
+/* Header */
+.activity-form__header {
+  margin-bottom: var(--spacing-xl);
+}
+
+.activity-form__title-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.activity-form__title {
+  font-size: var(--font-xl);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.activity-form__subtitle {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Delete/API error message */
+.activity-form__error {
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  background-color: var(--danger-bg, #fef2f2);
+  color: var(--danger-color, #b91c1c);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+}
+
+/* Main Content Card */
+.activity-form__content {
+  width: 100%;
+}
+
+.activity-form__main-card {
+  border-radius: var(--radius-lg);
+}
+
+/* Form Details Section */
+.activity-form__form-details {
+  position: relative;
+  cursor: pointer;
+  transition: box-shadow var(--transition-base);
+}
+
+.activity-form__form-details--active {
+  box-shadow: var(--shadow-md);
+}
+
+.activity-form__form-details--active::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  bottom: -1px;
+  width: 5px;
+  background-color: var(--primary-color);
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+
+/* Questions Section */
+.activity-form__questions-section {
+  margin-top: var(--spacing-lg);
+  width: 100%;
+}
+
+.activity-form__questions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.activity-form__questions-title {
+  font-size: var(--font-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.activity-form__questions-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  width: 100%;
+}
+
+.activity-form__no-questions {
+  padding: var(--spacing-2xl);
+  text-align: center;
+  background-color: var(--bg-secondary);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-lg);
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Add first question (empty state) – unchanged, primary button with text */
+.activity-form__add-first-question-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+/* Row / toolbar icon actions — same pattern as RequesterList (SMSIconButton + tone) */
+.activity-form__icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: var(--spacing-xs);
+  box-sizing: border-box;
+}
+
+/* Question Wrapper for Drag and Drop */
+.activity-form__question-wrapper {
+  position: relative;
+  transition: transform var(--transition-fast);
+  display: flex;
+  gap: var(--spacing-md);
+  width: 100%;
+  align-items: flex-start;
+}
+
+/* SMSCard uses className activity-form__question-card — legacy `.card` did not match the module-scoped class */
+.activity-form__question-wrapper .activity-form__question-card {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+}
+
+.activity-form__question-wrapper--drag-over {
+  transform: translateY(4px);
+}
+
+.activity-form__question-wrapper--drag-over::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--primary-color);
+  border-radius: var(--radius-full);
+}
+
+/* Floating Toolbar */
+.activity-form__floating-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  align-self: flex-start;
+  position: sticky;
+  top: var(--spacing-lg);
+  animation: floatingToolbarFadeIn 0.2s ease-out;
+}
+
+@keyframes floatingToolbarFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Question Card */
+.activity-form__question-card {
+  position: relative;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  transition: box-shadow var(--transition-base);
+  overflow: visible;
+}
+
+.activity-form__question-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.activity-form__question-card--active {
+  box-shadow: var(--shadow-md);
+}
+
+.activity-form__question-card--active::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  bottom: -1px;
+  width: 5px;
+  background-color: var(--primary-color);
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+}
+
+.activity-form__question-card--error::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  bottom: -1px;
+  width: 5px;
+  background-color: var(--danger-color);
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+}
+
+.activity-form__question-card--dragging {
+  opacity: 0.5;
+  transform: rotate(2deg);
+}
+
+/* Question Drag Handle */
+.activity-form__question-drag-handle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-sm) 0;
+  cursor: grab;
+  color: var(--text-tertiary);
+  transition: color var(--transition-fast);
+  border-bottom: 1px solid var(--border-light);
+  margin: calc(-1 * var(--spacing-md)) calc(-1 * var(--spacing-md)) var(--spacing-md) calc(-1 * var(--spacing-md));
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.activity-form__question-drag-handle:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-tertiary);
+}
+
+.activity-form__question-drag-handle:active {
+  cursor: grabbing;
+}
+
+.activity-form__question-body {
+  cursor: pointer;
+}
+
+.activity-form__question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.activity-form__question-number {
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.activity-form__question-error {
+  font-size: var(--font-sm);
+  font-weight: 500;
+  color: var(--danger-color);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.activity-form__question-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.activity-form__question-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-lg);
+  align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+  .activity-form__question-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.activity-form__question-text-field {
+  min-width: 0;
+}
+
+.activity-form__question-type-field {
+  min-width: 180px;
+}
+
+.activity-form__question-type-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.activity-form__question-type-value {
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+}
+
+.activity-form__question-footer--read-only .activity-form__question-required-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* Question Footer - Like Google Forms */
+.activity-form__question-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border-color);
+}
+
+.activity-form__question-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.activity-form__question-required {
+  display: flex;
+  align-items: center;
+}
+
+/* Question Preview */
+.activity-form__question-preview {
+  margin-top: var(--spacing-sm);
+}
+
+.activity-form__preview {
+  width: 100%;
+}
+
+.activity-form__preview-input,
+.activity-form__preview-textarea {
+  max-width: 100%;
+  opacity: 0.7;
+}
+
+/* Options (MultiChoice & Checkboxes) */
+.activity-form__options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.activity-form__option-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  cursor: grab;
+}
+
+.activity-form__option-item:hover {
+  background-color: var(--bg-secondary);
+}
+
+.activity-form__question-wrapper--read-only .activity-form__option-item {
+  cursor: default;
+}
+
+.activity-form__question-wrapper--read-only .activity-form__option-item:hover {
+  background-color: transparent;
+}
+
+.activity-form__option-item--dragging {
+  opacity: 0.5;
+  background-color: var(--bg-tertiary);
+}
+
+.activity-form__option-item--drag-over {
+  transform: translateY(2px);
+  border-top: 2px solid var(--primary-color);
+  margin-top: -2px;
+}
+
+.activity-form__option-drag-handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  cursor: grab;
+  padding: var(--spacing-xs);
+  transition: color var(--transition-fast), opacity var(--transition-fast);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.activity-form__option-item:hover .activity-form__option-drag-handle {
+  opacity: 1;
+  visibility: visible;
+}
+
+.activity-form__option-drag-handle:hover {
+  color: var(--text-primary);
+}
+
+.activity-form__option-drag-handle:active {
+  cursor: grabbing;
+}
+
+/* Keep drag handle visible while dragging */
+.activity-form__option-item--dragging .activity-form__option-drag-handle {
+  opacity: 1;
+  visibility: visible;
+}
+
+.activity-form__option-radio,
+.activity-form__option-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+}
+
+.activity-form__option-radio-input,
+.activity-form__option-checkbox-input {
+  width: 18px;
+  height: 18px;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.activity-form__option-input {
+  flex: 1;
+  min-width: 0;
+}
+
+.activity-form__add-option-btn {
+  align-self: flex-start;
+  margin-top: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+/* Form Actions – SMSStack spacing + border (RequesterForm-aligned footer) */
+.activity-form__actions {
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border-color);
+}
+
+.activity-form__cancel-button,
+.activity-form__submit-button {
+  min-width: 120px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .activity-form__question-wrapper {
+    flex-direction: column;
+  }
+
+  .activity-form__floating-toolbar {
+    flex-direction: row;
+    align-self: stretch;
+    justify-content: center;
+    position: relative;
+    top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .activity-form__questions-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+
+  .activity-form__question-type-field {
+    min-width: 100%;
+  }
+
+  .activity-form__question-footer {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: var(--spacing-md);
+  }
+
+  .activity-form__question-actions {
+    justify-content: flex-end;
+  }
+
+  .activity-form__question-required {
+    justify-content: flex-end;
+  }
+
+  .activity-form__actions {
+    flex-direction: column;
+  }
+
+  .activity-form__cancel-button,
+  .activity-form__submit-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .activity-form__actions {
+    flex-direction: column;
+  }
+
+  .activity-form__cancel-button,
+  .activity-form__submit-button {
+    width: 100%;
+  }
+}
+
+/* Fillable Preview (demo / respondent view) */
+.activity-form-fillable-preview {
+  width: 100%;
+}
+
+.activity-form-fillable-preview__intro {
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.activity-form-fillable-preview__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 var(--spacing-sm);
+  color: var(--text-primary);
+}
+
+.activity-form-fillable-preview__description {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  margin: 0 0 var(--spacing-sm);
+  white-space: pre-wrap;
+}
+
+.activity-form-fillable-preview__demo-hint {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+  font-style: italic;
+}
+
+.activity-form-fillable-preview__questions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.activity-form-fillable-preview__question {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+/* Keep question text normal color even when there's an error */
+.activity-form-fillable-preview__label {
+  display: block;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.activity-form-fillable-preview__label-text {
+  font-size: 0.9375rem;
+}
+
+.activity-form-fillable-preview__required {
+  color: var(--danger-color);
+}
+
+/* Error row: red exclamation icon + "This is a required question" (Google Forms style) */
+.activity-form-fillable-preview__error-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+  font-size: 0.875rem;
+  color: var(--danger-color);
+}
+
+/* Single red circle with red exclamation (icon only, no extra wrapper border) */
+.activity-form-fillable-preview__error-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--danger-color);
+}
+
+.activity-form-fillable-preview__error-icon .material-symbols-rounded {
+  font-size: 22px;
+  color: var(--danger-color);
+}
+
+.activity-form-fillable-preview__error-text {
+  color: var(--danger-color);
+}
+
+.activity-form-fillable-preview__input {
+  max-width: 100%;
+}
+
+.activity-form-fillable-preview__options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding-inline-start: 0.5rem;
+}
+
+.activity-form-fillable-preview__option {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+}
+
+.activity-form-fillable-preview__option input {
+  flex-shrink: 0;
+}
+
+.activity-form-fillable-preview__actions {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border-color);
+}

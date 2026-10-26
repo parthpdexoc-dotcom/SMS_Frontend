@@ -1,0 +1,79 @@
+/* Watch Commander + Archived Reports — fixed page, grid shrinks to data or scrolls at max. */
+
+.layout:has(.reports-list-page),
+.layout__main:has(.reports-list-page) {
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+}
+
+.layout__main:has(.reports-list-page) {
+  min-height: 0;
+}
+
+.layout__content:has(.reports-list-page) {
+  overflow: hidden;
+}
+
+.reports-list-page.settings {
+  --reports-list-scroll-max: calc(100dvh - var(--header-height) - 16rem);
+  box-sizing: border-box;
+  margin-inline: var(--spacing-xl);
+  max-width: 100%;
+}
+
+.reports-list-page .settings__header {
+  margin-bottom: var(--spacing-md);
+}
+
+.reports-list-page .settings__card {
+  margin-bottom: 0;
+}
+
+.reports-list-page__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.reports-list-page__table.data-table--scrollable .sms-pagination {
+  position: static;
+}
+
+.reports-list-page__table.data-table .data-table__container,
+.reports-list-page__table.data-table .data-table__scroll-x,
+.reports-list-page__table.data-table .data-table__scroll-y {
+  height: auto;
+  max-height: var(--reports-list-scroll-max);
+}
+
+.reports-list-page__table.data-table .data-table__scroll-x {
+  overflow-x: auto;
+}
+
+.reports-list-page__table.data-table .data-table__scroll-y {
+  overflow-y: auto;
+}
+
+.reports-list-page .data-table__th,
+.reports-list-page .data-table__td {
+  padding-block: calc(var(--spacing-md) + 2px);
+}
+
+.reports-list-page .data-table__cell {
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .reports-list-page.settings {
+    --reports-list-scroll-max: calc(100dvh - var(--header-height) - 13rem);
+  }
+
+  .layout:has(.reports-list-page),
+  .layout__main:has(.reports-list-page),
+  .layout__content:has(.reports-list-page) {
+    height: auto;
+    max-height: none;
+    overflow-y: auto;
+  }
+}

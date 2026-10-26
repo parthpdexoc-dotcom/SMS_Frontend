@@ -1,0 +1,15 @@
+/* MUI TextField helper under TimePicker — validation message */
+.helperError {
+  color: var(--mui-palette-error-main, #c41e3a) !important;
+}
+
+/* Reserved line when reserveHelperLine: keeps row height without showing text */
+.helperReserved {
+  min-height: 1.25rem;
+  visibility: hidden;
+  overflow: hidden;
+  margin-top: 3px;
+  margin-bottom: 0;
+  font-size: 0.875rem;
+  line-height: 1.25;
+}

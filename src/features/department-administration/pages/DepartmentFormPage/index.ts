@@ -1,0 +1,1 @@
+export { DepartmentFormPage } from './DepartmentFormPage';

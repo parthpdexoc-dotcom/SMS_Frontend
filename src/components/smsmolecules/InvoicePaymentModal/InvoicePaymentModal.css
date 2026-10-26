@@ -1,0 +1,101 @@
+.invoice-payment-modal .MuiDialogContent-root {
+  overflow: visible;
+  padding-top: 0.25rem;
+}
+
+.invoice-payment-modal.MuiPaper-root {
+  width: min(96vw, 72rem);
+  max-width: min(96vw, 72rem);
+}
+
+.invoice-payment-modal__header-paid-chip.MuiChip-root {
+  font-weight: 600;
+  color: var(--success-color, #15803d);
+  border-color: var(--success-color, #15803d);
+  background-color: color-mix(in srgb, var(--success-color, #15803d) 12%, white);
+}
+
+.invoice-payment-modal__transaction-chip--debit.MuiChip-root {
+  font-weight: 600;
+  color: var(--error-color, #dc2626);
+  border-color: var(--error-color, #dc2626);
+  background-color: color-mix(in srgb, var(--error-color, #dc2626) 12%, white);
+}
+
+.invoice-payment-modal__transaction-chip--credit.MuiChip-root {
+  font-weight: 600;
+  color: var(--success-color, #15803d);
+  border-color: var(--success-color, #15803d);
+  background-color: color-mix(in srgb, var(--success-color, #15803d) 12%, white);
+}
+
+.invoice-payment-modal__transaction-chip--discard.MuiChip-root {
+  font-weight: 600;
+  color: var(--warning-color, #f59e0b);
+  border-color: var(--warning-color, #f59e0b);
+  background-color: color-mix(in srgb, var(--warning-color, #f59e0b) 12%, white);
+}
+
+.invoice-payment-modal .MuiDialogActions-root {
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.invoice-payment-modal__history-table .data-table__col--paymentrowstatus,
+.invoice-payment-modal__history-table .data-table__th.data-table__col--paymentrowstatus,
+.invoice-payment-modal__history-table .data-table__td.data-table__col--paymentrowstatus,
+.invoice-payment-modal__history-table .data-table__col--transactiontype,
+.invoice-payment-modal__history-table .data-table__th.data-table__col--transactiontype,
+.invoice-payment-modal__history-table .data-table__td.data-table__col--transactiontype {
+  width: auto;
+  min-width: 6.5rem;
+  max-width: none;
+}
+
+.invoice-payment-modal__history-table .data-table__th--narrow.data-table__col--paymentrowstatus,
+.invoice-payment-modal__history-table .data-table__td--narrow.data-table__col--paymentrowstatus,
+.invoice-payment-modal__history-table .data-table__th--narrow.data-table__col--transactiontype,
+.invoice-payment-modal__history-table .data-table__td--narrow.data-table__col--transactiontype {
+  width: auto;
+  min-width: 6.5rem;
+  max-width: none;
+}
+
+.invoice-payment-modal__history-table .data-table__td.data-table__col--paymentrowstatus .data-table__cell,
+.invoice-payment-modal__history-table .data-table__td.data-table__col--transactiontype .data-table__cell {
+  overflow: visible;
+  justify-content: center;
+}
+
+.invoice-payment-modal__history-table .data-table__col--paymentrowaction,
+.invoice-payment-modal__history-table .data-table__th.data-table__col--paymentrowaction,
+.invoice-payment-modal__history-table .data-table__td.data-table__col--paymentrowaction {
+  width: auto;
+  min-width: 6.5rem;
+  max-width: none;
+}
+
+.invoice-payment-modal__processed-by {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.invoice-payment-modal__history-table .data-table__col--reason,
+.invoice-payment-modal__history-table .data-table__th.data-table__col--reason,
+.invoice-payment-modal__history-table .data-table__td.data-table__col--reason {
+  width: 4.5rem;
+  min-width: 4.5rem;
+  max-width: 4.5rem;
+}
+
+.invoice-payment-modal__history-table .data-table__td.data-table__col--reason .data-table__cell {
+  justify-content: center;
+  overflow: visible;
+}
+
+.invoice-payment-modal__view-reason-btn {
+  margin: 0 auto;
+}

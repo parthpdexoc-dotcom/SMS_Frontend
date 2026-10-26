@@ -1,0 +1,260 @@
+/* Upload File Modal - reusable upload UI */
+.upload-modal__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.upload-modal__row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.upload-modal__label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 0;
+  padding-top: 0.35rem;
+  color: var(--text-primary);
+  flex-shrink: 0;
+  min-width: 100px;
+}
+
+.upload-modal__zone-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.upload-modal__file-input {
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.upload-modal__zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  padding: 0.5rem;
+  border: 1px dashed var(--border-color, #c2d5f3);
+  border-radius: 8px;
+  background: var(--surface-alt, #fafafa);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.upload-modal__zone:hover {
+  border-color: var(--primary-light, #c2d5f3);
+  background: var(--surface-hover, #f0f7ff);
+}
+
+.upload-modal__zone--dragover {
+  border-color: var(--primary-color);
+  background: var(--surface-hover, #e3f2fd);
+}
+
+.upload-modal__zone-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  border-radius: 50%;
+  background: var(--primary-light, #e3f2fd);
+  color: var(--primary-color);
+}
+
+.upload-modal__icon {
+  font-size: 28px !important;
+}
+
+.upload-modal__zone-text {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.upload-modal__choose {
+  text-decoration: underline;
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.upload-modal__meta {
+  font-size: 0.85rem;
+  color: var(--text-secondary, #666);
+}
+
+.upload-modal__formats {
+  display: block;
+}
+
+.upload-modal__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.upload-modal__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  background: var(--surface-alt, #f5f5f5);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  border: 1px solid var(--border-color, #e0e0e0);
+}
+
+.upload-modal__item-icon {
+  flex-shrink: 0;
+  color: var(--text-secondary);
+  font-size: 20px !important;
+}
+
+.upload-modal__item-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+}
+
+.upload-modal__item-name {
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.upload-modal__item-size {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.upload-modal__item-actions {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* SMSIconButton: keep row alignment; component supplies border/hover */
+.upload-modal__item-preview,
+.upload-modal__item-delete {
+  flex-shrink: 0;
+}
+
+/* Preview overlay - inside modal */
+.upload-modal__preview-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.upload-modal__preview-header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--surface-alt, #1e1e1e);
+  border-bottom: 1px solid var(--border-color, #333);
+}
+
+.upload-modal__preview-title {
+  font-size: 0.9rem;
+  color: var(--text-primary, #fff);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.upload-modal__preview-header-btns {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.upload-modal__preview-download {
+  margin: 0;
+}
+
+.upload-modal__preview-close {
+  padding: 0.35rem;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: var(--text-secondary, #ccc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-modal__preview-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.upload-modal__preview-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  padding: 1rem;
+  overflow: auto;
+}
+
+.upload-modal__preview-iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  border: none;
+  background: #fff;
+}
+
+.upload-modal__preview-img {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+}
+
+.upload-modal__preview-unavailable {
+  text-align: center;
+  color: var(--text-secondary, #999);
+  padding: 2rem;
+}
+
+.upload-modal__preview-unavailable p {
+  margin: 0 0 1rem 0;
+  font-size: 0.95rem;
+}
+
+.upload-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}

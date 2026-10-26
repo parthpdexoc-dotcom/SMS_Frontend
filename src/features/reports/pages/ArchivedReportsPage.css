@@ -1,0 +1,114 @@
+/*
+ * Archived report: global data-table uses table-layout:fixed + width:100% on desktop,
+ * which crushes many columns into the viewport. Force auto layout + intrinsic width
+ * so min-width applies and .data-table__scroll-x scrolls horizontally.
+ */
+.archived-reports-data-table .data-table__table {
+  table-layout: auto !important;
+  width: max-content;
+  min-width: 100%;
+  max-width: none;
+}
+
+.archived-reports-data-table .data-table__th {
+  white-space: normal;
+}
+
+.archived-reports-data-table .data-table__th,
+.archived-reports-data-table .data-table__td {
+  min-width: 11rem;
+  width: auto;
+  max-width: none;
+  vertical-align: top;
+}
+
+/*
+ * Do not use overflow: visible here: with many narrow columns, text would paint on top of the
+ * next cell. Unset line-clamp and keep overflow contained so wrapping / overflow-wrap applies
+ * inside the cell only.
+ */
+.archived-reports-data-table .data-table__cell {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+  -webkit-box-orient: unset;
+}
+
+/*
+ * Column key classes live on the same <th>/<td> as data-table__th / data-table__td (not nested).
+ * Use chained selectors — descendant selectors (.col--x .data-table__th) match nothing.
+ */
+.archived-reports-data-table .data-table__th.data-table__col--callsign,
+.archived-reports-data-table .data-table__td.data-table__col--callsign,
+.archived-reports-data-table .data-table__th.data-table__col--vehicle,
+.archived-reports-data-table .data-table__td.data-table__col--vehicle,
+.archived-reports-data-table .data-table__th.data-table__col--onduty,
+.archived-reports-data-table .data-table__td.data-table__col--onduty,
+.archived-reports-data-table .data-table__th.data-table__col--postfor,
+.archived-reports-data-table .data-table__td.data-table__col--postfor,
+.archived-reports-data-table .data-table__th.data-table__col--postpayrate,
+.archived-reports-data-table .data-table__td.data-table__col--postpayrate,
+.archived-reports-data-table .data-table__th.data-table__col--emphrlyrate,
+.archived-reports-data-table .data-table__td.data-table__col--emphrlyrate,
+.archived-reports-data-table .data-table__th.data-table__col--ldrpc116,
+.archived-reports-data-table .data-table__td.data-table__col--ldrpc116,
+.archived-reports-data-table .data-table__th.data-table__col--ldrpc103,
+.archived-reports-data-table .data-table__td.data-table__col--ldrpc103,
+.archived-reports-data-table .data-table__th.data-table__col--ldrpc102,
+.archived-reports-data-table .data-table__td.data-table__col--ldrpc102,
+.archived-reports-data-table .data-table__th.data-table__col--pc102at125,
+.archived-reports-data-table .data-table__td.data-table__col--pc102at125,
+.archived-reports-data-table .data-table__th.data-table__col--pc102,
+.archived-reports-data-table .data-table__td.data-table__col--pc102,
+.archived-reports-data-table .data-table__th.data-table__col--pc102rate,
+.archived-reports-data-table .data-table__td.data-table__col--pc102rate,
+.archived-reports-data-table .data-table__th.data-table__col--vehiclenumber,
+.archived-reports-data-table .data-table__td.data-table__col--vehiclenumber,
+.archived-reports-data-table .data-table__th.data-table__col--vehiclehrs,
+.archived-reports-data-table .data-table__td.data-table__col--vehiclehrs,
+.archived-reports-data-table .data-table__th.data-table__col--agency,
+.archived-reports-data-table .data-table__td.data-table__col--agency,
+.archived-reports-data-table .data-table__th.data-table__col--closedby,
+.archived-reports-data-table .data-table__td.data-table__col--closedby,
+.archived-reports-data-table .data-table__th.data-table__col--invoice,
+.archived-reports-data-table .data-table__td.data-table__col--invoice,
+.archived-reports-data-table .data-table__th.data-table__col--isplaceholder,
+.archived-reports-data-table .data-table__td.data-table__col--isplaceholder,
+.archived-reports-data-table .data-table__th.data-table__col--isclosed,
+.archived-reports-data-table .data-table__td.data-table__col--isclosed,
+.archived-reports-data-table .data-table__th.data-table__col--vehicleclosedhours,
+.archived-reports-data-table .data-table__td.data-table__col--vehicleclosedhours,
+.archived-reports-data-table .data-table__th.data-table__col--personalrank,
+.archived-reports-data-table .data-table__td.data-table__col--personalrank,
+.archived-reports-data-table .data-table__th.data-table__col--shiftrank,
+.archived-reports-data-table .data-table__td.data-table__col--shiftrank {
+  min-width: 5.5rem;
+  max-width: 8rem;
+}
+
+/* Long text / Guid columns */
+.archived-reports-data-table .data-table__th.data-table__col--requestcode,
+.archived-reports-data-table .data-table__td.data-table__col--requestcode,
+.archived-reports-data-table .data-table__th.data-table__col--postcode,
+.archived-reports-data-table .data-table__td.data-table__col--postcode,
+.archived-reports-data-table .data-table__th.data-table__col--requesteraddress,
+.archived-reports-data-table .data-table__td.data-table__col--requesteraddress,
+.archived-reports-data-table .data-table__th.data-table__col--requestaddress,
+.archived-reports-data-table .data-table__td.data-table__col--requestaddress,
+.archived-reports-data-table .data-table__th.data-table__col--comments,
+.archived-reports-data-table .data-table__td.data-table__col--comments {
+  min-width: 18rem;
+  max-width: none;
+}
+
+/* Keep currency symbol and amount on one line (overflow-wrap: anywhere breaks "$65"). */
+.archived-reports-page__currency {
+  white-space: nowrap;
+}
+

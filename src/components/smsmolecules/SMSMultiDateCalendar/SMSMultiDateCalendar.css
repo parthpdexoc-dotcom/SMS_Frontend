@@ -1,0 +1,166 @@
+.sms-multi-date-calendar__popper {
+  z-index: 1300;
+}
+
+.sms-multi-date-calendar__paper {
+  border-radius: 12px !important;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.18) !important;
+}
+
+.sms-multi-date-calendar {
+  width: 340px;
+  max-width: calc(100vw - 24px);
+  padding: 0.75rem 0.85rem 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  background: #fff;
+}
+
+.sms-multi-date-calendar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.sms-multi-date-calendar__title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.sms-multi-date-calendar__rail-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sms-multi-date-calendar__rail-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.sms-multi-date-calendar__rail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.sms-multi-date-calendar__pill {
+  flex: 0 0 auto;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #334155;
+  border-radius: 999px;
+  padding: 0.28rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.sms-multi-date-calendar__pill:hover {
+  border-color: #94a3b8;
+  background: #f1f5f9;
+}
+
+.sms-multi-date-calendar__pill[data-active='true'] {
+  background: #1e3a5f;
+  border-color: #1e3a5f;
+  color: #fff;
+}
+
+.sms-multi-date-calendar__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
+  margin-top: 0.15rem;
+}
+
+.sms-multi-date-calendar__nav-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.sms-multi-date-calendar__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.sms-multi-date-calendar__weekdays,
+.sms-multi-date-calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.2rem;
+}
+
+.sms-multi-date-calendar__weekday {
+  text-align: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 0.02em;
+}
+
+.sms-multi-date-calendar__day {
+  aspect-ratio: 1;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #94a3b8;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: default;
+}
+
+.sms-multi-date-calendar__day[data-available='true'] {
+  color: #0f172a;
+  cursor: pointer;
+  background: #dbeafe;
+}
+
+.sms-multi-date-calendar__day[data-available='true']:hover {
+  background: #bfdbfe;
+}
+
+.sms-multi-date-calendar__day[data-selected='true'] {
+  background: #1e3a5f !important;
+  color: #fff !important;
+}
+
+.sms-multi-date-calendar__day--empty {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.sms-multi-date-calendar__footer {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.15rem;
+  padding: 0.45rem 0.55rem;
+  border-radius: 8px;
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.sms-multi-date-calendar--empty {
+  min-height: 120px;
+}
+
+.sms-multi-date-calendar__empty-label {
+  color: #64748b;
+  font-size: 0.85rem;
+  padding: 0.5rem 0 0.75rem;
+}

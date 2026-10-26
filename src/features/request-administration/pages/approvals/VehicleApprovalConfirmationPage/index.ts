@@ -1,0 +1,2 @@
+export { VehicleApprovalConfirmationPage } from './VehicleApprovalConfirmationPage';
+

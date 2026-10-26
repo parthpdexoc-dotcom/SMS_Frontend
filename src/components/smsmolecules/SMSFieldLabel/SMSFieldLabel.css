@@ -1,0 +1,10 @@
+.sms-field-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.sms-field-label__required {
+  color: var(--error-color, #dc2626);
+  margin-left: 2px;
+}

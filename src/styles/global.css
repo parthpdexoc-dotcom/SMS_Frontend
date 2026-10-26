@@ -1,0 +1,168 @@
+@import './theme.css';
+@import './variables.css';
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,200..700,0..1,-50..200&display=block');
+
+.material-symbols-rounded {
+  font-family: 'Material Symbols Rounded';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  display: inline-block;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+  line-height: var(--line-height-base);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Typography - Golden Ratio Scale */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: var(--line-height-tight);
+  color: var(--primary-color);
+}
+
+/* Keep app title classes visually consistent with heading color */
+[class*="__title"] {
+  color: var(--primary-color);
+}
+
+h1 {
+  font-size: var(--font-2xl); /* 4.236rem - φ³ */
+}
+
+h2 {
+  font-size: var(--font-xl); /* 2.618rem - φ² */
+}
+
+h3 {
+  font-size: var(--font-lg); /* 1.618rem - φ */
+}
+
+h4 {
+  font-size: var(--font-md); /* 1.236rem - √φ */
+}
+
+h5 {
+  font-size: var(--font-base); /* 1rem - base */
+}
+
+h6 {
+  font-size: var(--font-sm); /* 0.764rem - 1/√φ */
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover {
+  color: var(--primary-hover);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* Utility Classes */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Responsive Utilities - Golden Ratio Proportions */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px; /* Base font size for mobile */
+  }
+  
+  h1 {
+    font-size: var(--font-xl); /* 2.618rem - φ² */
+  }
+  
+  h2 {
+    font-size: var(--font-lg); /* 1.618rem - φ */
+  }
+  
+  h3 {
+    font-size: var(--font-md); /* 1.236rem - √φ */
+  }
+}
+
+/* Keep autocomplete text off the clear button and the arrow. */
+.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon .MuiOutlinedInput-root {
+  padding-right: 72px !important;
+}
+
+.MuiAutocomplete-input {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+

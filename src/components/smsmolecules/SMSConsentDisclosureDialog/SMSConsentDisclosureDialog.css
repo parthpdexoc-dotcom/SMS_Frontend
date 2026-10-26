@@ -1,0 +1,8 @@
+.sms-consent-disclosure-dialog__frame {
+  display: block;
+  width: 100%;
+  height: min(70vh, 40rem);
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: var(--radius-sm, 4px);
+  background: #f3f5f8;
+}

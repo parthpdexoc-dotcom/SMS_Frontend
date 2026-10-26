@@ -1,0 +1,122 @@
+@import '../RequesterList/RequesterList.css';
+@import '../../../../components/smsorganisms/SMSFormPage/SMSFormPage.css';
+
+.requester-statement-page__header {
+  justify-content: flex-start;
+  width: 100%;
+  margin-bottom: var(--spacing-2xl);
+  gap: var(--spacing-lg);
+}
+
+/* Reuses gradient title styling from requester payment page section headings */
+.requester-statement-page__title {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.requester-statement-page__title--section {
+  flex: none;
+  margin: 0 0 var(--spacing-md);
+  font-size: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .requester-statement-page__title {
+    font-size: 1.5rem;
+  }
+}
+
+.requester-statement-page__summary {
+  margin-bottom: var(--spacing-lg);
+}
+
+.requester-statement-page__filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.requester-statement-page__filter-field {
+  min-width: 11rem;
+  max-width: 14rem;
+}
+
+.requester-statement-page__filter-field .MuiFormControl-root {
+  margin-top: 0;
+}
+
+.requester-statement-page__table-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.requester-statement-page .requester-statement-page__data-table .data-table__table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.requester-statement-page .requester-statement-page__data-table .data-table__th:first-child,
+.requester-statement-page .requester-statement-page__data-table .data-table__td:first-child {
+  padding-left: var(--spacing-md);
+}
+
+.requester-statement-page
+  .requester-statement-page__data-table
+  .data-table__col--openingbalance {
+  width: 14%;
+  white-space: nowrap;
+}
+
+.requester-statement-page
+  .requester-statement-page__data-table
+  .data-table__col--openingbalance
+  .data-table__th-label {
+  white-space: nowrap;
+  flex-wrap: nowrap;
+}
+
+.requester-statement-page
+  .requester-statement-page__data-table
+  .data-table__col--transactiondatetime {
+  width: 11%;
+  white-space: nowrap;
+}
+
+.requester-statement-page .requester-statement-page__data-table .data-table__col--description {
+  width: 39%;
+  white-space: nowrap;
+}
+
+.requester-statement-page
+  .requester-statement-page__data-table
+  .data-table__col--amount,
+.requester-statement-page
+  .requester-statement-page__data-table
+  .data-table__col--payment,
+.requester-statement-page
+  .requester-statement-page__data-table
+  .data-table__col--balance {
+  width: 12%;
+  white-space: nowrap;
+}
+
+.requester-statement-page
+  .requester-statement-page__data-table
+  .data-table__col--description
+  .data-table__cell--no-clamp {
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.requester-statement-page__amount {
+  font-variant-numeric: tabular-nums;
+}

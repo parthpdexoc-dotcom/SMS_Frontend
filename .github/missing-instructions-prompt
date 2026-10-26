@@ -1,0 +1,6 @@
+
+I do not see an existing ~/.github/copilot-instructions.md. Creating the file is the first step to getting your Copilot working well. Good news! You can use copilot to generate one for you. Exit from here and ask copilot to create your instructions file. Here is a good starting prompt:
+
+---
+"Create a .github/copilot-instructions.md file for this repository. It should analyze the existing codebase and project structure to define coding standards, preferred frameworks, and project-specific conventions. Include examples for key components, and specify the desired tone and persona for Copilot interactions (e.g., a helpful, concise software engineer)."
+---

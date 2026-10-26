@@ -1,0 +1,66 @@
+.interested-list-modal__content {
+  padding-top: var(--spacing-xs) !important;
+}
+
+.interested-list-modal__body {
+  min-height: 0;
+}
+
+.interested-list-modal__table-shell {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  background: var(--bg-card);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Modal is portaled — no .tenure-jobs-page ancestor.
+   Uniform width across all columns; stat cells carry an "hrs" / "assignment(s)"
+   postfix, so width is sized for the widest expected value. */
+.interested-list-modal__data-table .data-table__th,
+.interested-list-modal__data-table .data-table__td {
+  width: 9rem;
+  min-width: 9rem;
+  max-width: 9rem;
+  box-sizing: border-box;
+  padding-left: var(--spacing-sm);
+  padding-right: var(--spacing-sm);
+}
+
+/* Keep row height consistent when Assign is hidden (matches small button rows). */
+.interested-list-modal__data-table .data-table__tbody .data-table__td {
+  min-height: 2.75rem;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  vertical-align: middle;
+}
+
+/* Employees already applied in tenure for this job (Open Jobs) */
+.interested-list-modal__data-table
+  .data-table__tbody
+  .data-table__tr.interested-list-modal__row--applied-in-tenure {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--warning-color, #f59e0b) 38%, white) 0%,
+    color-mix(in srgb, var(--warning-color, #f59e0b) 22%, white) 55%,
+    color-mix(in srgb, var(--warning-color, #f59e0b) 12%, white) 100%
+  );
+}
+
+.interested-list-modal__data-table
+  .data-table__tbody
+  .data-table__tr.interested-list-modal__row--applied-in-tenure
+  .data-table__td {
+  background: transparent;
+}
+
+.interested-list-modal__data-table
+  .data-table__tbody
+  .data-table__tr.interested-list-modal__row--applied-in-tenure:hover {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--warning-color, #f59e0b) 48%, white) 0%,
+    color-mix(in srgb, var(--warning-color, #f59e0b) 28%, white) 55%,
+    color-mix(in srgb, var(--warning-color, #f59e0b) 16%, white) 100%
+  );
+}

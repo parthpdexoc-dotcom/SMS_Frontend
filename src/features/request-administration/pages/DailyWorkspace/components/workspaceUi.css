@@ -1,0 +1,149 @@
+/**
+ * Daily Workspace design tokens & reusable UI primitives.
+ * Palette: navy primary, white/gray surfaces, green for assigned status only.
+ * Spacing scale: 8 / 16 / 24 / 32 px
+ * Type scale: 12 meta · 14 body · 16 card title · 20–24 page title
+ */
+
+.daily-workspace {
+  --dw-space-1: 8px;
+  --dw-space-2: 16px;
+  --dw-space-3: 24px;
+  --dw-space-4: 32px;
+  --dw-font-meta: 0.75rem; /* 12px */
+  --dw-font-body: 0.875rem; /* 14px */
+  --dw-font-title: 1rem; /* 16px */
+  --dw-font-page: 1.375rem; /* 22px */
+  --dw-navy: var(--color-primary, #243f63);
+  --dw-surface: #ffffff;
+  --dw-surface-muted: #f8fafc;
+  --dw-surface-subtle: #f1f5f9;
+  --dw-border: rgba(15, 23, 42, 0.1);
+  --dw-border-strong: rgba(15, 23, 42, 0.14);
+  --dw-text: #1e293b;
+  --dw-text-muted: #64748b;
+  --dw-text-faint: #94a3b8;
+  --dw-success-bg: var(--success-light, #d1fae5);
+  --dw-success-text: #065f46;
+  --dw-danger: var(--danger-color, #c41e3a);
+  --dw-elevation: 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+
+/* ── Status pill (filled) ─────────────────────────────────── */
+.dw-status-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: var(--dw-font-meta);
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.dw-status-pill--neutral {
+  background: var(--dw-surface-subtle);
+  color: var(--dw-text-muted);
+}
+
+.dw-status-pill--assigned {
+  background: var(--dw-success-bg);
+  color: var(--dw-success-text);
+}
+
+/* ── Meta / count badge (filled neutral) ──────────────────── */
+.dw-meta-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: var(--dw-font-meta);
+  font-weight: 500;
+  background: var(--dw-surface-subtle);
+  color: var(--dw-text-muted);
+}
+
+/* ── Outline badge (schedule-type, secondary counts) ──────── */
+.dw-outline-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid var(--dw-navy);
+  background: transparent;
+  color: var(--dw-navy);
+  font-size: var(--dw-font-meta);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* ── Icon button group ────────────────────────────────────── */
+.dw-icon-btn-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+/* Compact ghost icon buttons — no chip shell */
+.daily-workspace .dw-icon-btn.MuiIconButton-root,
+.daily-workspace .dw-icon-btn {
+  width: 30px !important;
+  height: 30px !important;
+  min-width: 30px !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 6px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.daily-workspace .dw-icon-btn .material-symbols-rounded,
+.daily-workspace .dw-icon-btn .icon {
+  font-size: 20px !important;
+}
+
+.daily-workspace .dw-icon-btn:hover {
+  background: rgba(15, 23, 42, 0.06) !important;
+}
+
+.daily-workspace .dw-icon-btn.MuiIconButton-colorError:hover,
+.daily-workspace .dw-icon-btn[class*='error']:hover {
+  background: rgba(196, 30, 58, 0.08) !important;
+}
+
+/* Schedule type + weekday overrides inside workspace cards */
+.daily-workspace__card-schedule .level-2-request__data-value--type {
+  background: transparent;
+  color: var(--dw-navy);
+  border: 1px solid var(--dw-navy);
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: var(--dw-font-meta);
+  font-weight: 500;
+}
+
+.daily-workspace__card-schedule .level-2-request__data-value--days .weekday-chip {
+  width: 28px;
+  height: 28px;
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  color: var(--dw-text-muted);
+}
+
+.daily-workspace__card-schedule .level-2-request__data-value--days .weekday-chip.selected {
+  background: var(--dw-navy);
+  border-color: var(--dw-navy);
+  color: #fff;
+}
+
+.daily-workspace__card-schedule .level-2-request__data-value--days .weekday-chip:not(.selected) {
+  background: transparent;
+  color: var(--dw-text-muted);
+}

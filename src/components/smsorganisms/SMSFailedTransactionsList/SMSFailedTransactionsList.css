@@ -1,0 +1,101 @@
+.failed-transactions-table.data-table--mode-table .data-table__table {
+  table-layout: fixed !important;
+}
+
+.failed-transactions-table .data-table__th,
+.failed-transactions-table .data-table__td {
+  vertical-align: middle;
+}
+
+.failed-transactions-table .data-table__th.data-table__col--recordeddate,
+.failed-transactions-table .data-table__td.data-table__col--recordeddate {
+  width: 12% !important;
+}
+
+.failed-transactions-table .data-table__th.data-table__col--recordedtime,
+.failed-transactions-table .data-table__td.data-table__col--recordedtime {
+  width: 8% !important;
+}
+
+.failed-transactions-table .data-table__th.data-table__col--actiontype,
+.failed-transactions-table .data-table__td.data-table__col--actiontype {
+  width: 13% !important;
+}
+
+.failed-transactions-table .data-table__th.data-table__col--posttitle,
+.failed-transactions-table .data-table__td.data-table__col--posttitle {
+  width: 25% !important;
+}
+
+.failed-transactions-table .data-table__th.data-table__col--requesttitle,
+.failed-transactions-table .data-table__td.data-table__col--requesttitle {
+  width: 30% !important;
+}
+
+.failed-transactions-table .data-table__th.data-table__col--failurereason,
+.failed-transactions-table .data-table__td.data-table__col--failurereason {
+  width: 8% !important;
+  text-align: center;
+}
+
+.failed-transactions-table .data-table__col--actiontype .data-table__cell--no-clamp,
+.failed-transactions-table .data-table__col--failurereason .data-table__cell--no-clamp {
+  min-height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.failed-transactions-table .data-table__cell {
+  display: block !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.failed-transactions-table .data-table__col--actiontype .data-table__cell--no-clamp,
+.failed-transactions-table .data-table__col--failurereason .data-table__cell--no-clamp {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+}
+
+.failed-transactions-table .data-table__col--failurereason .data-table__action-button {
+  margin-inline: auto;
+}
+
+@media (max-width: 900px) {
+  .failed-transactions-table.data-table--mode-table .data-table__table {
+    table-layout: auto !important;
+    width: max(100%, max-content);
+  }
+
+  .failed-transactions-table .data-table__th.data-table__col--recordeddate,
+  .failed-transactions-table .data-table__td.data-table__col--recordeddate {
+    min-width: 8.5rem;
+  }
+
+  .failed-transactions-table .data-table__th.data-table__col--recordedtime,
+  .failed-transactions-table .data-table__td.data-table__col--recordedtime {
+    min-width: 6.5rem;
+  }
+
+  .failed-transactions-table .data-table__th.data-table__col--actiontype,
+  .failed-transactions-table .data-table__td.data-table__col--actiontype {
+    min-width: 8rem;
+  }
+
+  .failed-transactions-table .data-table__th.data-table__col--posttitle,
+  .failed-transactions-table .data-table__td.data-table__col--posttitle {
+    min-width: 12rem;
+  }
+
+  .failed-transactions-table .data-table__th.data-table__col--requesttitle,
+  .failed-transactions-table .data-table__td.data-table__col--requesttitle {
+    min-width: 14rem;
+  }
+
+  .failed-transactions-table .data-table__th.data-table__col--failurereason,
+  .failed-transactions-table .data-table__td.data-table__col--failurereason {
+    min-width: 5rem;
+  }
+}

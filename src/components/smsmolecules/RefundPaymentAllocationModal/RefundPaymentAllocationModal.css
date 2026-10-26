@@ -1,0 +1,23 @@
+.refund-payment-allocation-modal .MuiDialogContent-root {
+  overflow: visible;
+  padding-top: 0.25rem;
+}
+
+.refund-payment-allocation-modal .MuiDialogActions-root {
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.refund-payment-allocation-modal__explanation {
+  margin: 0;
+  color: var(--sms-text-secondary, rgba(0, 0, 0, 0.7));
+  line-height: 1.5;
+}
+
+.refund-payment-allocation-modal__hint {
+  margin: 0;
+}
+
+.refund-payment-allocation-modal__refund-input {
+  max-width: 9rem;
+}

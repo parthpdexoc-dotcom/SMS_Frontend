@@ -1,0 +1,34 @@
+.super-user-edit-profile {
+  max-width: 480px;
+  padding: var(--spacing-lg);
+}
+
+.super-user-edit-profile--centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  min-height: 240px;
+}
+
+.super-user-edit-profile__header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.super-user-edit-profile__title {
+  margin: 0 0 var(--spacing-xs);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.super-user-edit-profile__subtitle {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.super-user-edit-profile__card {
+  padding: var(--spacing-lg);
+}

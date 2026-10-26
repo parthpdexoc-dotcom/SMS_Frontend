@@ -1,0 +1,165 @@
+/**
+ * Shared print layout for roster views printed via SMSPrintAction (hidden iframe).
+ * Mirrors the invoice print approach: force full page width and stable table columns
+ * so production bundle load timing does not break layout.
+ */
+
+@media print {
+  body:has(.roster-print-document) {
+    margin: 0 !important;
+    padding: 0 !important;
+    min-width: 0 !important;
+  }
+
+  /* SMSPrintAction iframe can measure narrow; avoid mobile/roster responsive rules. */
+  .roster-print-document {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .rosterContent.roster-print-document {
+    max-height: none !important;
+    padding: 0 !important;
+  }
+
+  .roster-page.roster-print-document {
+    padding: 0 !important;
+  }
+
+  .rosterModal__searchSection,
+  .roster-page__header-actions,
+  .roster-page__back-button {
+    display: none !important;
+  }
+
+  .rosterHeaderRow {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  .rosterHeaderSpacer {
+    flex-grow: 1 !important;
+  }
+
+  .sectionsWrap {
+    overflow: visible !important;
+  }
+
+  .section {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .sms-roster-section-sticky-head {
+    position: static !important;
+    border-bottom: none !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .roster-meta-row {
+    display: grid !important;
+    grid-template-columns: 18% 22% 12% 15% 33% !important;
+    align-items: center !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .tableContainer {
+    overflow: visible !important;
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .tableContainer table {
+    table-layout: fixed !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  .tableContainer table thead {
+    display: table-header-group !important;
+  }
+
+  .tableContainer thead .MuiTableCell-root {
+    position: static !important;
+    top: auto !important;
+    box-shadow: none !important;
+    z-index: auto !important;
+  }
+
+  .tableContainer table th,
+  .tableContainer table td {
+    box-sizing: border-box !important;
+    font-size: 13px !important;
+    padding: 6px 10px !important;
+    border: 1px solid #e0e0e0 !important;
+    vertical-align: top !important;
+  }
+
+  .tableContainer table thead th {
+    font-weight: 700 !important;
+    background-color: #f3f3f3 !important;
+    border-color: #cfcfcf !important;
+    white-space: nowrap !important;
+  }
+
+  .tableContainer table th:nth-child(1),
+  .tableContainer table td:nth-child(1) {
+    width: 18% !important;
+  }
+
+  .tableContainer table th:nth-child(2),
+  .tableContainer table td:nth-child(2) {
+    width: 22% !important;
+    text-align: left !important;
+  }
+
+  .tableContainer table th:nth-child(3),
+  .tableContainer table td:nth-child(3) {
+    width: 12% !important;
+  }
+
+  .tableContainer table th:nth-child(4),
+  .tableContainer table td:nth-child(4) {
+    width: 15% !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow: visible !important;
+    max-width: none !important;
+  }
+
+  .tableContainer table th:nth-child(5),
+  .tableContainer table td:nth-child(5) {
+    width: 33% !important;
+    text-align: left !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow: visible !important;
+    max-width: none !important;
+  }
+
+  .tableContainer table tbody tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .tableContainer table tbody tr td .MuiBox-root {
+    max-width: 100% !important;
+  }
+
+  .tableContainer table tbody tr td .MuiBox-root span {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+}

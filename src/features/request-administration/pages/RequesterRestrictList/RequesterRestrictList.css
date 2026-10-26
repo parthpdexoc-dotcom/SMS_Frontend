@@ -1,0 +1,107 @@
+@import '../../../department-administration/pages/SkillsList/SkillsList.css';
+
+.requester-restrict-list {
+  width: 100%;
+  padding: var(--spacing-2xl);
+}
+
+.requester-restrict-list__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-2xl);
+  gap: var(--spacing-lg);
+}
+
+/* Back button (same style as FormPage / add employee) */
+.requester-restrict-list__back-button {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+.requester-restrict-list__back-button:hover {
+  background-color: var(--bg-secondary);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.requester-restrict-list__back-button:active {
+  transform: scale(0.95);
+}
+
+.requester-restrict-list__title {
+  flex: 1;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.requester-restrict-list__add-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  white-space: nowrap;
+}
+
+.requester-restrict-list__table {
+  width: 100%;
+}
+
+.requester-restrict-list__actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.requester-restrict-list__edit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  box-shadow: none !important;
+  padding: var(--spacing-xs);
+  min-width: 28px;
+  height: 28px;
+  color: var(--primary-color) !important;
+}
+
+.requester-restrict-list__edit-button:disabled,
+.requester-restrict-list__edit-button.button--disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  color: var(--text-secondary) !important;
+}
+
+@media (max-width: 768px) {
+  .requester-restrict-list {
+    padding: var(--spacing-md);
+  }
+
+  .requester-restrict-list__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .requester-restrict-list__title {
+    font-size: 1.5rem;
+  }
+
+  .requester-restrict-list__add-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

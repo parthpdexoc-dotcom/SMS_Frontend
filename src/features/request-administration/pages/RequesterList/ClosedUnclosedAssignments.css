@@ -1,0 +1,37 @@
+.closed-unclosed-assignments {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.closed-unclosed-assignments__tabs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--spacing-md);
+  padding: 0 var(--spacing-xs);
+}
+
+.closed-unclosed-assignments__placeholder-toggle {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.closed-unclosed-assignments__panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.closed-unclosed-assignments__pane {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.closed-unclosed-assignments__pane[hidden] {
+  display: none !important;
+}

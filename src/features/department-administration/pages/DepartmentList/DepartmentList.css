@@ -1,0 +1,154 @@
+/* Reuse SkillsList styling so master-data lists match the Skills UX exactly */
+@import '../SkillsList/SkillsList.css';
+
+/* Override specific styles for department list */
+.department-list {
+  width: 100%;
+  padding: var(--spacing-2xl);
+}
+
+.department-list__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-2xl);
+  gap: var(--spacing-lg);
+}
+
+.department-list__title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.department-list__add-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  white-space: nowrap;
+}
+
+.department-list__table {
+  width: 100%;
+  min-width: 0;
+}
+
+.department-list__toolbar {
+  width: 100%;
+  margin-bottom: var(--spacing-md);
+}
+
+.department-list__search {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: min(25rem, 100%);
+}
+
+.department-list__fetch-error {
+  width: 100%;
+  margin-bottom: var(--spacing-md);
+}
+
+.department-list__sms-datatable .data-table__table {
+  width: 100%;
+  min-width: 0;
+  table-layout: auto;
+}
+
+/* Four icon actions + menu: keep column wide enough */
+.department-list__table .data-table__th:last-child,
+.department-list__table .data-table__td:last-child {
+  width: 240px;
+  min-width: 240px;
+  text-align: center;
+}
+
+/* Ensure proper vertical alignment for all table cells */
+.department-list__table .data-table__td {
+  vertical-align: middle;
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.department-list__actions {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--spacing-xs);
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+}
+
+.department-list__icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: var(--spacing-xs);
+  box-sizing: border-box;
+}
+
+/* Status container for proper alignment */
+.department-list__status-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 24px; /* Ensure consistent height */
+}
+
+/* More menu: inherits department-list__icon-btn sizing */
+.department-list__more-button {
+  flex-shrink: 0;
+}
+
+.department-row-action-menu__paper {
+  min-width: 180px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.department-row-action-menu__item {
+  font-size: 0.9rem;
+  color: var(--text-primary, #333);
+}
+
+.department-row-action-menu__item:hover {
+  background-color: var(--surface-hover, #f5f7fa);
+  color: var(--primary-main, #1a3c87);
+}
+
+@media (max-width: 768px) {
+  .department-list {
+    padding: var(--spacing-md);
+  }
+
+  .department-list__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .department-list__title {
+    font-size: 1.5rem;
+  }
+
+  .department-list__add-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .department-list__actions {
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+
+  /* Ensure status badges are properly aligned on mobile */
+  .department-list__status-container {
+    justify-content: center;
+  }
+}

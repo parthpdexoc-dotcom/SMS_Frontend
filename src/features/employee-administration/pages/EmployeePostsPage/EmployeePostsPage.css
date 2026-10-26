@@ -1,0 +1,151 @@
+.employee-posts-page {
+  --epp-gap: 1rem;
+  --epp-gap-sm: 0.5rem;
+  --epp-tab-width: 44rem;
+  --epp-bp-md: 768px;
+  --epp-bp-lg: 1024px;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--epp-gap);
+  min-width: 0;
+}
+
+.employee-posts-page__header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md, 0.75rem);
+}
+
+.employee-posts-page__modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--epp-gap);
+}
+
+.employee-posts-page__tabs-container {
+  width: min(100%, var(--epp-tab-width));
+  max-width: 100%;
+  min-width: 0;
+}
+
+.employee-posts-page__tab-content {
+  margin-top: var(--epp-gap-sm);
+}
+
+@media (max-width: 1024px) {
+  .employee-posts-page__tabs-container {
+    width: 100%;
+  }
+}
+
+.employee-posts-page .employee-list__filters-left {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-end;
+  gap: var(--spacing-md, 0.75rem);
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+}
+
+.employee-posts-page .employee-list__filters-left .data-table__search {
+  flex: 1 1 min(100%, 16rem);
+  min-width: 0;
+  max-width: 100%;
+}
+
+.employee-posts-page__type-filter {
+  flex: 1 1 min(100%, 14rem);
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .employee-posts-page .employee-list__filters-left .data-table__search,
+  .employee-posts-page__type-filter {
+    flex: 1 1 100%;
+    max-width: none;
+  }
+}
+
+.employee-posts-page .employee-list__table {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.employee-posts-page .employee-list__table .data-table__container {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.employee-posts-page .employee-posts-page__data-table.data-table .data-table__table {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0 !important;
+  table-layout: fixed !important;
+}
+
+.employee-posts-page .employee-posts-page__data-table.data-table .data-table__th,
+.employee-posts-page .employee-posts-page__data-table.data-table .data-table__td {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.employee-posts-page .employee-posts-page__data-table.data-table .data-table__th {
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.employee-posts-page .employee-posts-page__data-table.data-table .data-table__td {
+  padding: var(--spacing-xs) var(--spacing-lg);
+  vertical-align: middle;
+}
+
+/* Column keys: fullName, badgeNumber, employeeType, primaryEmail, action */
+.employee-posts-page .employee-posts-page__data-table.data-table .data-table__col--badgenumber {
+  width: 9%;
+  max-width: 5.5rem;
+}
+
+.employee-posts-page .employee-posts-page__data-table.data-table .data-table__col--fullname {
+  width: 20%;
+}
+
+.employee-posts-page .employee-posts-page__data-table.data-table .data-table__col--employeetype {
+  width: 28%;
+}
+
+.employee-posts-page .employee-posts-page__data-table.data-table .data-table__col--primaryemail {
+  width: 25%;
+}
+
+.employee-posts-page .employee-posts-page__data-table.data-table .data-table__col--action {
+  width: 18%;
+  min-width: 6.5rem;
+}
+
+.employee-posts-page .employee-posts-page__data-table.data-table .data-table__col--employeetype .data-table__cell,
+.employee-posts-page .employee-posts-page__data-table.data-table .data-table__col--primaryemail .data-table__cell {
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  white-space: normal;
+}
+
+/* -------------------------------------------------------------------------- */
+/* List: primary action                                                       */
+/* -------------------------------------------------------------------------- */
+
+.employee-posts-page__view-posts-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}

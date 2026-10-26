@@ -1,0 +1,95 @@
+/* Container for positioning */
+.department-form-page__container {
+  position: relative;
+}
+
+/* Custom FormPage styling for department form page */
+.department-form-page__form-page .form-page__header {
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  margin-top: 4rem; /* Space for step indicator */
+}
+
+.department-form-page__form-page .form-page__back-button {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 15;
+}
+
+.department-form-page__form-page .form-page__title-section {
+  text-align: center;
+  flex: none;
+}
+
+.department-form-page__form-page .form-page__title {
+  font-size: 1.75rem;
+}
+
+/* Step Indicator - positioned at top center */
+.department-form-page__step-indicator {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+
+
+/* Legacy card styles (kept for potential future use) */
+.department-form-page__cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.department-form-page__card {
+  height: fit-content;
+}
+
+
+.department-form-page__card--disabled {
+  opacity: 0.6;
+  pointer-events: none;
+  background-color: var(--color-background-secondary);
+}
+
+.department-form-page__card-title {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: 0.5rem;
+}
+
+.department-form-page__disabled-message {
+  padding: 2rem;
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .department-form-page__step-indicator {
+    top: 1rem;
+  }
+
+  .department-form-page__cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .department-form-page__step-indicator {
+    top: 0.8rem;
+  }
+
+
+}

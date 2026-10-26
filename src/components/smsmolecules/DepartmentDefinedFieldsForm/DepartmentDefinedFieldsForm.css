@@ -1,0 +1,162 @@
+/* Department Defined Fields Form Styles - full page layout */
+.department-defined-fields-form {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.department-defined-fields-form__success {
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  background: var(--success-color);
+  color: white;
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease-out;
+  flex-shrink: 0;
+}
+
+.department-defined-fields-form__error {
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  background: var(--danger-color);
+  color: white;
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease-out;
+  flex-shrink: 0;
+}
+
+.department-defined-fields-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
+.department-defined-fields-form__form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+  align-items: flex-start;
+}
+
+.department-defined-fields-form__form-row--full {
+  grid-template-columns: 1fr;
+}
+
+/* Section - fills available space */
+.department-defined-fields-form__section {
+  background: var(--bg-secondary, #f9fafb);
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xl);
+  flex: 1;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.department-defined-fields-form__section-title {
+  font-size: var(--font-size-lg, 1.125rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-xs) 0;
+  flex-shrink: 0;
+}
+
+.department-defined-fields-form__section-description {
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--text-secondary);
+  margin: 0 0 var(--spacing-lg) 0;
+  flex-shrink: 0;
+}
+
+.department-defined-fields-form__labels-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+  flex: 1;
+  min-height: 0;
+  align-content: start;
+}
+
+/* SMSTextField full width in grid */
+.department-defined-fields-form__labels-grid .MuiFormControl-root,
+.department-defined-fields-form__labels-grid .MuiTextField-root {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Label spacing */
+.department-defined-fields-form__form-row label {
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Input focus styles */
+.department-defined-fields-form__form-row input:focus,
+.department-defined-fields-form__form-row select:focus {
+  outline: 2px solid var(--primary-color, #007bff);
+  outline-offset: 2px;
+}
+
+/* Error message styles */
+.department-defined-fields-form__form-row .dropdown-error,
+.department-defined-fields-form__form-row .input-error {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: var(--spacing-xs);
+  display: block;
+}
+
+/* Form Actions - right bottom of form */
+.department-defined-fields-form__form .form-modal__footer {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: flex-end;
+  margin-top: auto;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-color, #e9ecef);
+}
+
+.department-defined-fields-form__form .form-modal__cancel-button,
+.department-defined-fields-form__form .form-modal__submit-button {
+  min-width: 120px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .department-defined-fields-form__form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .department-defined-fields-form__labels-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-modal__footer {
+    flex-direction: column;
+  }
+
+  .form-modal__cancel-button,
+  .form-modal__submit-button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,108 @@
+.send-email-modal__content {
+  padding-top: var(--spacing-sm) !important;
+}
+
+.send-email-modal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.send-email-modal__loading {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--text-secondary);
+}
+
+.send-email-modal__filters {
+  padding: 1rem 1.25rem;
+  background: #f8f9fa;
+  border: 1px solid var(--border-light, #cbd5e1);
+  border-radius: var(--radius-md, 8px);
+}
+
+.send-email-modal__filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.send-email-modal__filters--request .send-email-modal__filters-row {
+  align-items: flex-start;
+}
+
+.send-email-modal__filters-post {
+  flex: 0 0 35%;
+  min-width: 12rem;
+}
+
+.send-email-modal__filters .date-input-wrapper {
+  flex: 0 0 11.875rem;
+  min-width: 9.5rem;
+}
+
+.send-email-modal__btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.send-email-modal__btn--primary {
+  color: #fff;
+  background: var(--primary-color, #1a3c87);
+  margin-top: 0.6rem;
+}
+
+.send-email-modal__btn--primary:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.send-email-modal__btn--primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.send-email-modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.send-email-modal__field--message .rich-text-editor__label {
+  display: none;
+}
+
+.send-email-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xs);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-light);
+}
+
+.send-email-modal__attach-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  background: none;
+  border: none;
+  color: var(--primary-color, #1e4976);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: var(--spacing-xs) 0;
+  text-decoration: none;
+}
+
+.send-email-modal__footer-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-left: auto;
+}

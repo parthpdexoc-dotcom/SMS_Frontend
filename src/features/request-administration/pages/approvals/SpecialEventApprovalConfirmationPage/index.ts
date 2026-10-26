@@ -1,0 +1,2 @@
+export { SpecialEventApprovalConfirmationPage } from './SpecialEventApprovalConfirmationPage';
+

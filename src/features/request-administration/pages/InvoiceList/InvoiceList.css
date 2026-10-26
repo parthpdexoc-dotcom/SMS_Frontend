@@ -1,0 +1,160 @@
+/* Reuse RequesterList styling so invoice grid matches the requester grid */
+@import '../RequesterList/RequesterList.css';
+@import '../../../../components/smsorganisms/SMSFormPage/SMSFormPage.css';
+
+/* Invoice-specific overrides */
+.invoice-list__header {
+  justify-content: flex-start;
+  width: 100%;
+  margin-bottom: var(--spacing-2xl);
+  gap: var(--spacing-lg);
+}
+
+.invoice-list__title {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.invoice-list .requester-list__header.invoice-list__header--request-scoped {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.invoice-list__header--request-scoped .invoice-list__create-invoice {
+  margin-left: auto;
+  flex-shrink: 0;
+  min-width: 130px;
+}
+
+/* Dropdown beside search, not pushed to far right */
+.invoice-list .requester-list__table .data-table__toolbar {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.invoice-list__requester-dropdown {
+  flex: 0 1 240px;
+  min-width: 200px;
+  max-width: 280px;
+}
+
+.invoice-list__ispaid-dropdown {
+  flex: 0 1 180px;
+  min-width: 140px;
+  max-width: 220px;
+}
+
+.invoice-list__duedate-dropdown {
+  flex: 0 1 200px;
+  min-width: 160px;
+  max-width: 240px;
+}
+
+/* Align search + dropdowns on the same baseline (no extra top margin) */
+.invoice-list__search-field .MuiFormControl-root,
+.invoice-list__search-field .MuiTextField-root,
+.invoice-list__requester-dropdown .MuiBox-root,
+.invoice-list__requester-dropdown .MuiAutocomplete-root,
+.invoice-list__requester-dropdown .MuiFormControl-root,
+.invoice-list__ispaid-dropdown .MuiBox-root,
+.invoice-list__ispaid-dropdown .MuiAutocomplete-root,
+.invoice-list__ispaid-dropdown .MuiFormControl-root,
+.invoice-list__duedate-dropdown .MuiBox-root,
+.invoice-list__duedate-dropdown .MuiAutocomplete-root,
+.invoice-list__duedate-dropdown .MuiFormControl-root {
+  margin-top: 0 !important;
+  width: 100%;
+}
+
+.invoice-list__header--request-scoped {
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+  .invoice-list__title {
+    font-size: 1.5rem;
+  }
+}
+
+/* Grouped admin invoice list (SCRUM-917) */
+.invoice-list__grouped {
+  width: 100%;
+}
+
+.invoice-list__filters-bar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  width: 100%;
+}
+
+.invoice-list__search-field {
+  flex: 1 1 auto;
+  min-width: 180px;
+  max-width: 320px;
+}
+
+.invoice-list__filters-actions {
+  display: flex;
+  align-items: flex-end;
+  flex-shrink: 0;
+  margin-left: auto;
+  padding-bottom: 1px;
+}
+
+.invoice-list__empty {
+  padding: var(--spacing-xl);
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.invoice-list__pagination {
+  margin-top: var(--spacing-md);
+}
+
+.invoice-list__grouped .level-1-requester[data-expanded='false'] .level-2-requests {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+  overflow: hidden;
+}
+
+.invoice-list__nested-table {
+  width: 100%;
+}
+
+.invoice-list__nested-table .data-table__toolbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .invoice-list__filters-bar {
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+
+  .invoice-list__search-field,
+  .invoice-list__requester-dropdown,
+  .invoice-list__ispaid-dropdown,
+  .invoice-list__duedate-dropdown {
+    flex: 1 1 100%;
+    max-width: none;
+  }
+
+  .invoice-list__filters-actions {
+    width: 100%;
+    margin-left: 0;
+    justify-content: flex-end;
+  }
+}

@@ -1,0 +1,142 @@
+@import '../RequesterList/RequesterList.css';
+
+.open-jobs-page__filters-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+.open-jobs-page__filters-inner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--spacing-md);
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.open-jobs-page__filters-collapse-all {
+  flex-shrink: 0;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.open-jobs-page__action-cell {
+  min-height: 40px;
+  min-width: 40px;
+}
+
+/* Nested post grid: fixed layout so column % widths sum to 100% of the table. */
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+/* Nested post grid: left-align all columns except Action (center). */
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__th:not(.data-table__col--action),
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__td:not(.data-table__col--action) {
+  text-align: left;
+}
+
+.open-jobs-page
+  .sms-expandable-group-list__data-table
+  .data-table__th:not(.data-table__col--action)
+  .data-table__th-label {
+  justify-content: flex-start;
+}
+
+.open-jobs-page
+  .sms-expandable-group-list__data-table
+  .data-table__td:not(.data-table__col--action)
+  > .data-table__cell:not(.data-table__cell--no-clamp) {
+  text-align: left;
+}
+
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__col--action.data-table__th,
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__col--action.data-table__td {
+  text-align: center;
+}
+
+.open-jobs-page
+  .sms-expandable-group-list__data-table
+  .data-table__col--action.data-table__th
+  .data-table__th-label {
+  justify-content: center;
+}
+
+.open-jobs-page
+  .sms-expandable-group-list__data-table
+  .data-table__col--action
+  .data-table__cell--no-clamp.data-table__cell--align-center {
+  justify-content: center;
+}
+
+/* Group header: requester row meta (labels + values) */
+.open-jobs-page .sms-expandable-group-list .sms-expandable-group-list__primary,
+.open-jobs-page .sms-expandable-group-list .sms-expandable-group-list__cell-label,
+.open-jobs-page .sms-expandable-group-list .sms-expandable-group-list__cell-value {
+  text-align: left;
+}
+
+/* Post row columns — widths are % of table; must total 100%. Order: start date, times, day, title, counts, action. */
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__col--startdate.data-table__th,
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__col--startdate.data-table__td {
+  width: 9%;
+  box-sizing: border-box;
+}
+
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__col--starttimedisplay.data-table__th,
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__col--starttimedisplay.data-table__td {
+  width: 7%;
+  box-sizing: border-box;
+}
+
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__col--endtimedisplay.data-table__th,
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__col--endtimedisplay.data-table__td {
+  width: 7%;
+  box-sizing: border-box;
+}
+
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__col--dayofweek.data-table__th,
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__col--dayofweek.data-table__td {
+  width: 9%;
+  box-sizing: border-box;
+}
+
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__col--posttitle.data-table__th,
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__col--posttitle.data-table__td {
+  width: 15%;
+  box-sizing: border-box;
+}
+
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__col--totalpositions.data-table__th,
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__col--totalpositions.data-table__td {
+  width: 8%;
+  box-sizing: border-box;
+}
+
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__col--open.data-table__th,
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__col--open.data-table__td,
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__col--filled.data-table__th,
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__col--filled.data-table__td {
+  width: 8%;
+  box-sizing: border-box;
+}
+
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__col--pendingcancellation.data-table__th,
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__col--pendingcancellation.data-table__td {
+  width: 8%;
+  box-sizing: border-box;
+}
+
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__col--action.data-table__th,
+.open-jobs-page .sms-expandable-group-list__data-table .data-table__col--action.data-table__td {
+  width: 20%;
+  box-sizing: border-box;
+  white-space: nowrap;
+}

@@ -1,0 +1,9 @@
+.email-template-form-page__loading,
+.email-template-form-page__error {
+  margin: 0;
+  padding: var(--spacing-md);
+}
+
+.email-template-form-page__error {
+  color: var(--danger-color, #b91c1c);
+}

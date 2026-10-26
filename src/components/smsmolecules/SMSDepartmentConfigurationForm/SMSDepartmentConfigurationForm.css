@@ -1,0 +1,376 @@
+/* Department Configuration Form - matches RequesterForm layout */
+.app-form__actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Checkboxes in columns for better readability */
+.dept-config-form .app-form__checkboxes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem 2rem;
+  align-items: start;
+}
+
+/* Single column layout for Rates & Financial Settings checkboxes - stacked vertically in fourth column */
+.dept-config-form .app-form__checkboxes--single-column {
+  display: flex;
+  gap: 0.5rem;
+  grid-template-columns: none;
+  flex: 1;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.dept-config-form .app-form__form-checkbox {
+  min-width: 0;
+  break-inside: avoid;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.dept-config-form .app-form__form-checkbox.dept-config-form__employee-location {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  min-width: 0;
+}
+
+.dept-config-form .app-form__form-checkbox.dept-config-form__employee-location .app-form__checkbox-label {
+  align-self: flex-start;
+  margin: 0;
+  width: auto;
+}
+
+.dept-config-form .dept-config-form__home-location-container {
+  width: 100%;
+  min-width: 0;
+  margin-top: 0.5rem;
+}
+
+/* Checkbox spanning 2 columns in flex row */
+.dept-config-form__checkbox-span-2 {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Ensure flex rows align items to center for checkbox alignment */
+.dept-config-form .app-form__flex-row {
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .dept-config-form .app-form__checkboxes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .dept-config-form .app-form__checkboxes {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Cancel and Save buttons: right corner, consistent size */
+.dept-config-form .dept-config-form__actions-section {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.dept-config-form .dept-config-form__actions-section .app-form__actions {
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
+.dept-config-form .dept-config-form__actions-section .app-form__actions button {
+  min-width: 7rem;
+  padding: 0.5rem 1.25rem;
+}
+
+/* Tabs: browser-like tab bar; full-width tabs */
+.dept-config-form__tabs {
+  margin-top: var(--spacing-md, 1rem);
+  width: 100%;
+  min-width: 0;
+  align-self: stretch;
+}
+
+.dept-config-form__tabs .tabs__content {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.dept-config-form__tabs .tabs__header {
+  display: flex;
+  width: 100%;
+}
+
+.dept-config-form__tabs .tabs__header .tab {
+  flex: 1;
+  min-width: 0;
+  white-space: normal;
+  text-align: center;
+}
+
+.dept-config-form__tabs .app-form__section--tab-panel {
+  padding-top: 0;
+  border: none;
+  background: transparent;
+}
+
+.dept-config-form__tabs .app-form__section--tab-panel .app-form__checkboxes {
+  margin-top: 0;
+  grid-column: 1 / -1;
+}
+
+/* Last row: only Is Supervisor Required (col 1) + Number Of Positions Per Supervisor (col 2, reduced width); span full width */
+.dept-config-form__last-row {
+  grid-column: 1 / -1;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem 2rem;
+  align-items: start;
+  justify-items: start;
+}
+
+/* Cron Configuration tab — not inside .app-form__section grid, so the table can span the full content width */
+.dept-cron.dept-cron--tab {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.dept-cron__settings {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-md, 1rem);
+  margin-bottom: var(--spacing-sm, 0.5rem);
+  padding: var(--spacing-xs, 0.25rem) var(--spacing-sm, 0.5rem);
+  border: 1px solid var(--border-light, #e0e0e0);
+  border-radius: var(--radius-sm, 4px);
+  background: var(--bg-secondary, #f8f9fa);
+}
+
+.dept-cron__settings-title {
+  color: var(--text-primary, #333333);
+  font-size: var(--font-md, 1rem);
+  font-weight: 700;
+}
+
+.dept-cron__settings-list {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm, 0.5rem);
+}
+
+.dept-cron__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  width: 100%;
+  margin-bottom: var(--spacing-sm, 0.5rem);
+}
+
+.dept-cron__toolbar-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--spacing-sm, 0.5rem);
+}
+
+.dept-cron__toolbar .dept-cron__intro {
+  flex: 1 1 16rem;
+  margin-bottom: 0;
+  min-width: 0;
+}
+
+.dept-cron__add-job {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 0.75rem;
+}
+
+/* Cron Configuration tab */
+.dept-cron__intro,
+.dept-cron__hint {
+  margin: 0 0 var(--spacing-md, 1rem) 0;
+  color: var(--sms-text-secondary, #5f6368);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  max-width: 100%;
+}
+
+.dept-cron__loader {
+  min-height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.dept-cron__table-wrap,
+.dept-cron__table-outer {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  margin-top: 0.25rem;
+  box-sizing: border-box;
+}
+
+.dept-cron__table-outer .data-table__container--full {
+  width: 100%;
+  max-width: 100%;
+}
+
+.dept-cron__data-table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.dept-cron__data-table .dept-cron__col-job,
+.dept-cron__data-table th.dept-cron__col-job {
+  width: 40%;
+  min-width: 0;
+}
+
+.dept-cron__data-table .data-table__td--word-wrap {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.dept-cron__data-table .data-table__td--nowrap {
+  white-space: nowrap;
+}
+
+/* Modal: frequency + time in one row; time not full dialog width */
+.dept-cron__modal-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.dept-cron__modal-row .MuiFormControl-root:first-child {
+  flex: 1 1 200px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.dept-cron__time-field {
+  flex: 0 0 auto;
+  max-width: 9.5rem;
+  min-width: 7.5rem;
+  width: 9.5rem;
+}
+
+.dept-cron__interval-field {
+  flex: 0 0 auto;
+  max-width: 12rem;
+  min-width: 8.5rem;
+  width: 10rem;
+}
+
+.dept-cron__custom-cron-block {
+  width: 100%;
+  min-width: 0;
+  margin-top: 0.5rem;
+}
+
+.dept-cron__custom-cron-block .MuiFormControl-root {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Monthly: same pattern as request RecurrenceOptions — radio rows, no extra “monthly rule” dropdown */
+.dept-cron__monthly-recurrence {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  margin-top: 0.35rem;
+}
+
+.dept-cron__monthly-recurrence .recurrence-radio-group-vertical {
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.dept-cron__monthly-radio-line {
+  width: 100%;
+  min-width: 0;
+}
+
+.dept-cron__monthly-radio-line .recurrence-radio-row {
+  white-space: normal;
+  flex-wrap: wrap;
+  row-gap: 0.25rem;
+  column-gap: 0.35rem;
+  align-items: center;
+  max-width: 100%;
+}
+
+.dept-cron__monthly-radio-line .recurrence-radio-row--align-start {
+  align-items: flex-start;
+}
+
+.dept-cron__add-hint {
+  margin: 0.35rem 0 0 0;
+  font-size: 0.8125rem;
+  color: var(--sms-text-secondary, #5f6368);
+  line-height: 1.35;
+  max-width: 38rem;
+}
+
+.dept-cron__add-hint--warn {
+  color: var(--sms-text-warning, #b45309);
+}
+
+.dept-cron__row-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.dept-cron__row-fields .MuiFormControl-root {
+  min-width: 140px;
+  flex: 0 1 160px;
+}
+
+.dept-cron__modal-content {
+  padding-top: 0.25rem;
+}
+
+.dept-cron__modal-form {
+  padding-bottom: 0.25rem;
+  min-width: 0;
+}
+
+/* Weekday chips + label (Request schedule recurrence look) */
+.dept-cron__recurrence-block {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  flex-wrap: wrap;
+  min-width: 0;
+  flex: 1 1 240px;
+}
+
+

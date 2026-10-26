@@ -1,0 +1,58 @@
+██████╗ ██╗      █████╗ ███╗   ██╗
+██╔══██╗██║     ██╔══██╗████╗  ██║
+██████╔╝██║     ███████║██╔██╗ ██║
+██╔═══╝ ██║     ██╔══██║██║╚██╗██║
+██║     ███████╗██║  ██║██║ ╚████║
+╚═╝     ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝
+███████╗██╗██╗     ███████╗███████╗
+██╔════╝██║██║     ██╔════╝██╔════╝
+█████╗  ██║██║     █████╗  ███████╗
+██╔══╝  ██║██║     ██╔══╝  ╚════██║
+██║     ██║███████╗███████╗███████║
+╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝
+
+🚀 Plan Files Help You Manage Development With AI 🤖
+
+Getting Started:
+
+- "check plans" 👀
+  Copilot has all the context necessary to understand plan files when it starts. Just ask it what the current status is!
+
+- "let's make a plan" 📝
+  (followed by a description of what you would like to do)
+  This tells Copilot to follow the instructions for creating a plan. The TEMPLATE.md will guide Copilot to come up with a specific plan with clear success criteria, steps, etc.
+
+- "Let's implement plan <the-plan>" 🛠️
+  Get to work!
+
+- "Create a stop point" ⏸️
+  This directs Copilot to document all its work and write next steps to the plan file. You are then free to `/clear context` or exit.
+
+- "Continue plan <in-progress-plan>" 🔄
+  Does what it says.
+
+- "This plan is complete" ✅
+  Sets Copilot in motion to complete the plan.
+
+The AI understands natural language but these phrases will always work.
+
+---
+
+👋 HEADS UP! To use the github workflow to automatically move the file to completed, you need to reach out to IT:
+
+  See: https://github.com/Material-Dev/material-plan-files/blob/main/documentation/move_completed_plans.md
+
+
+To see this getting started message again, just invoke
+`material-plan-files --getting-started`
+
+👋 Heads Up! You should commit these new files to your repo.
+
+Thoughts, questions, suggestions are appreciated!
+stephen.philp@materialplus.io
+
+Any suggestions to add here?  Open a PR or issue! 🎉
+https://github.com/Material-Dev/material-plan-files
+
+✨ Have fun and happy coding! ✨
+

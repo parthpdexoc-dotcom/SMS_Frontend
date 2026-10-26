@@ -1,0 +1,1 @@
+export { EmailTemplateFormPage } from './EmailTemplateFormPage';

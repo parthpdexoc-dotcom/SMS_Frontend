@@ -1,0 +1,8 @@
+.payment-add-modal .MuiDialogContent-root.payment-add-modal__content {
+  overflow: visible;
+  padding: 1.5rem 1.5rem 1.25rem;
+}
+
+.payment-add-modal .MuiDialog-paper {
+  overflow: visible;
+}

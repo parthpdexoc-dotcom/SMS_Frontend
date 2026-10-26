@@ -1,0 +1,11 @@
+.payment-reason-view-modal__content {
+  padding-top: 0.25rem;
+}
+
+.payment-reason-view-modal__field .MuiOutlinedInput-root {
+  background-color: var(--bg-secondary, #f9fafb);
+}
+
+.payment-reason-view-modal__field .MuiInputBase-inputMultiline {
+  cursor: default;
+}

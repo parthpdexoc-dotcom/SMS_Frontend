@@ -1,0 +1,60 @@
+.requester-questionnaire-popup__content {
+  min-height: 200px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.requester-questionnaire-popup__loading,
+.requester-questionnaire-popup__empty {
+  text-align: center;
+  padding: 2rem;
+  color: var(--color-text-secondary);
+}
+
+.requester-questionnaire-popup__error {
+  background-color: var(--color-error-bg);
+  color: var(--color-error-text);
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.requester-questionnaire-popup__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.requester-questionnaire-popup__item {
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background-color: var(--color-surface);
+  transition: border-color 0.2s ease;
+}
+
+.requester-questionnaire-popup__item:hover {
+  border-color: var(--color-primary);
+}
+
+.requester-questionnaire-popup__item-description {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  padding-left: 1.5rem;
+}
+
+.requester-questionnaire-popup__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.requester-questionnaire-popup__cancel-button,
+.requester-questionnaire-popup__save-button {
+  min-width: 100px;
+}

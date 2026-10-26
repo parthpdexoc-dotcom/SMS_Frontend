@@ -1,0 +1,67 @@
+.requester-employee-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.requester-employee-form__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.requester-employee-form__field--checkbox {
+  display: flex;
+  align-items: flex-end;
+}
+
+.requester-employee-form__audit {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--background-secondary, #f8f9fa);
+  border: 1px solid var(--border-color, #e9ecef);
+  border-radius: var(--radius-md);
+}
+
+.requester-employee-form__audit-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  flex-wrap: wrap;
+}
+
+.requester-employee-form__audit-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  white-space: nowrap;
+}
+
+.requester-employee-form__audit-label {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.requester-employee-form__audit-value {
+  color: var(--text-secondary);
+}
+
+.requester-employee-form__audit-date {
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+}
+
+.requester-employee-form__audit-separator {
+  color: var(--border-color);
+}
+
+.requester-employee-form__actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: flex-end;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+}

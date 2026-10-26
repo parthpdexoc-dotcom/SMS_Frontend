@@ -1,0 +1,132 @@
+.request-equipment-list__empty-state {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 0.75rem;
+  row-gap: 0.75rem;
+  align-items: end;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #f8fafc;
+  box-sizing: border-box;
+}
+
+.request-equipment-list__empty-state-field {
+  min-width: 0;
+}
+
+.request-equipment-list__empty-state-field--vehicle,
+.request-equipment-list__empty-state-field--quantity,
+.request-equipment-list__empty-state-field--allocation,
+.request-equipment-list__empty-state-field--start,
+.request-equipment-list__empty-state-field--end,
+.request-equipment-list__empty-state-field--add {
+  grid-column: 1 / -1;
+}
+
+.request-equipment-list__empty-state-field--allocation,
+.request-equipment-list__empty-state-field--add {
+  padding-bottom: 2px;
+}
+
+.request-equipment-list__empty-state-field--quantity-hint {
+  grid-column: 1 / -1;
+  min-width: 0;
+  margin-top: -0.35rem;
+}
+
+.request-equipment-list__quantity-hint {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: #64748b;
+  white-space: normal;
+}
+
+.request-equipment-list__empty-state-field--add .MuiButton-root {
+  width: 100%;
+}
+
+/* Tablet: two-column rows */
+@media (min-width: 480px) {
+  .request-equipment-list__empty-state {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .request-equipment-list__empty-state-field--vehicle {
+    grid-column: 1 / -1;
+  }
+
+  .request-equipment-list__empty-state-field--quantity {
+    grid-column: 1;
+  }
+
+  .request-equipment-list__empty-state-field--allocation {
+    grid-column: 2;
+    justify-self: stretch;
+  }
+
+  .request-equipment-list__empty-state-field--start {
+    grid-column: 1;
+  }
+
+  .request-equipment-list__empty-state-field--end {
+    grid-column: 2;
+  }
+
+  .request-equipment-list__empty-state-field--add {
+    grid-column: 1 / -1;
+  }
+
+  .request-equipment-list__empty-state-field--add .MuiButton-root {
+    width: auto;
+    min-width: 6.25rem;
+  }
+}
+
+/* Desktop: aligned four-column grid */
+@media (min-width: 1024px) {
+  .request-equipment-list__empty-state {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr)
+      minmax(5rem, 6.25rem)
+      auto;
+  }
+
+  .request-equipment-list__empty-state-field--vehicle {
+    grid-column: 1 / 3;
+  }
+
+  .request-equipment-list__empty-state-field--quantity {
+    grid-column: 3;
+  }
+
+  .request-equipment-list__empty-state-field--allocation {
+    grid-column: 4;
+  }
+
+  .request-equipment-list__empty-state-field--start {
+    grid-column: 1;
+  }
+
+  .request-equipment-list__empty-state-field--end {
+    grid-column: 2;
+  }
+
+  .request-equipment-list__empty-state-field--add {
+    grid-column: 3;
+  }
+
+  .request-equipment-list__empty-state-field--add .MuiButton-root {
+    width: 100%;
+  }
+}
+
+@media (max-width: 479px) {
+  .request-equipment-list__empty-state .equipment-allocation-checkboxes {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+  }
+}

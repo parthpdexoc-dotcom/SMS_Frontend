@@ -1,0 +1,126 @@
+.roster-page {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+
+.roster-page__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #333;
+}
+
+.roster-page__header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.roster-page__header-actions {
+    display: flex;
+    align-items: center;
+}
+
+.roster-page__requester-name {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+}
+
+.roster-page__date {
+    font-size: 1rem;
+    color: #666;
+    font-weight: 400;
+}
+
+.roster-page__paycode {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #000;
+    align-self: flex-start;
+}
+
+.roster-page__content {
+    margin-top: 1.5rem;
+}
+
+/* Request Administration → Request Roster: use full main content width (not centered 1200px card) */
+.request-roster-print-area.roster-page {
+    max-width: none;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.roster-page__loading,
+.roster-page__error,
+.roster-page__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+    min-height: 400px;
+}
+
+.roster-page__loading p,
+.roster-page__error p,
+.roster-page__empty p {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #666;
+}
+
+.roster-page__error p {
+    color: #d32f2f;
+}
+
+.roster-page__back-button {
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9375rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.roster-page__back-button:hover {
+    background-color: #1565c0;
+}
+
+.roster-page__back-button:active {
+    background-color: #0d47a1;
+}
+
+@media (max-width: 768px) {
+    .roster-page {
+        padding: 1rem;
+    }
+
+    .roster-page__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .roster-page__paycode {
+        align-self: flex-end;
+    }
+
+    .roster-page__header-actions {
+        align-self: flex-end;
+    }
+
+    .roster-page__requester-name {
+        font-size: 1.5rem;
+    }
+}

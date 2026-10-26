@@ -1,0 +1,29 @@
+.notification-history-modal__heading {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary-color, #1e4976);
+  border-bottom: 2px solid var(--primary-color, #1e4976);
+  display: inline-block;
+  padding-bottom: 0.25rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.notification-history-modal__status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 4.5rem;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #166534;
+  background: #dcfce7;
+  border: 1px solid #86efac;
+}
+
+.notification-history-modal__sent-on {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.35;
+}

@@ -1,0 +1,44 @@
+.request-one-time-date-change-conflict-modal__table {
+  width: 100%;
+  min-width: 0;
+}
+
+.request-one-time-date-change-conflict-modal__table .data-table {
+  width: 100%;
+}
+
+.request-one-time-date-change-conflict-modal__transfer-cell {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.request-one-time-date-change-conflict-modal__status-cell {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.request-one-time-date-change-conflict-modal__loader {
+  min-height: min(55vh, 440px);
+  padding: 2rem 1rem;
+}
+
+.request-one-time-date-change-conflict-modal__status-chip {
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  height: auto;
+}
+
+.request-one-time-date-change-conflict-modal__status-chip--ready {
+  background-color: rgba(76, 175, 80, 0.12) !important;
+  color: #2e7d32 !important;
+  border: 1px solid rgba(76, 175, 80, 0.35) !important;
+}
+
+.request-one-time-date-change-conflict-modal__status-chip--conflict {
+  background-color: rgba(244, 67, 54, 0.12) !important;
+  color: #c62828 !important;
+  border: 1px solid rgba(244, 67, 54, 0.35) !important;
+}
