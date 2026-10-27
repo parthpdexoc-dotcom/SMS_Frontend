@@ -134,11 +134,13 @@ try {
     }
 
     # 5. Sync to IIS Directory with ROBOCOPY
-    Write-Step "Deploying build output to IIS directory: '$IisSitePath'..."
+    # STRICT EXCLUSION: web.config is NEVER overwritten or replaced
+    Write-Step "Deploying build output to IIS directory: '$IisSitePath' (protecting web.config)..."
     
     # Robocopy flags:
     # /E   : Copy all subdirectories, including empty ones.
     # /PURGE: Delete destination files that no longer exist in source (cleans up old hashed JS/CSS chunks).
+    # /XF  : Strictly exclude web.config so live IIS configuration is never replaced
     # /R:2 : Retry twice on lock.
     # /W:2 : Wait 2 seconds.
     # /NP  : No progress percentage.
@@ -149,7 +151,9 @@ try {
         "/PURGE",
         "/R:2",
         "/W:2",
-        "/NP"
+        "/NP",
+        "/XF",
+        "web.config"
     )
 
     & robocopy.exe @robocopyArgs | Out-Null
@@ -158,15 +162,19 @@ try {
     if ($roboExit -ge 8) {
         throw "Robocopy failed with exit code $roboExit."
     }
+    Write-Success "Static files deployed successfully. Server web.config remained untouched."
 
-    # 6. Verify web.config for React SPA Routing in IIS
+    # 6. Verify web.config for React SPA Routing in IIS (only created if missing on new install)
     $targetWebConfig = Join-Path $IisSitePath "web.config"
     if (-not (Test-Path $targetWebConfig)) {
         $sourceWebConfig = Join-Path $RepoDir "public\web.config"
         if (Test-Path $sourceWebConfig) {
-            Write-Step "Ensuring React SPA URL Rewrite web.config is present in IIS..."
+            Write-Step "Initial setup: Placing React SPA URL Rewrite web.config in IIS..."
             Copy-Item -Path $sourceWebConfig -Destination $targetWebConfig -Force
+            Write-Success "web.config created for first-time installation."
         }
+    } else {
+        Write-Host ">>> Existing live web.config preserved (not replaced)." -ForegroundColor DarkGray
     }
 
     Write-Success "=========================================================="
