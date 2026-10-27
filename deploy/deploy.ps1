@@ -69,47 +69,25 @@ try {
         }
     }
 
-    # Resolve default IIS Site Path per environment if not specified
+    # Resolve default IIS Site Path if not specified
     if ([string]::IsNullOrWhiteSpace($IisSitePath)) {
-        switch ($Environment) {
-            "Dev" {
-                if (Test-Path "C:\inetpub\wwwroot\sms") {
-                    $IisSitePath = "C:\inetpub\wwwroot\sms"
-                } elseif (Test-Path "C:\inetpub\wwwroot\SMS") {
-                    $IisSitePath = "C:\inetpub\wwwroot\SMS"
-                } else {
-                    $IisSitePath = "C:\inetpub\wwwroot\sms"
-                }
-            }
-            "UAT" {
-                if (Test-Path "C:\inetpub\wwwroot\sms_uat") {
-                    $IisSitePath = "C:\inetpub\wwwroot\sms_uat"
-                } else {
-                    $IisSitePath = "C:\inetpub\wwwroot\sms_uat"
-                }
-            }
-            "Prod" {
-                if (Test-Path "C:\inetpub\wwwroot\sms_prod") {
-                    $IisSitePath = "C:\inetpub\wwwroot\sms_prod"
-                } elseif (Test-Path "C:\inetpub\wwwroot\sms") {
-                    $IisSitePath = "C:\inetpub\wwwroot\sms"
-                } else {
-                    $IisSitePath = "C:\inetpub\wwwroot\sms"
-                }
-            }
+        if (Test-Path "D:\PublishedProject\wwwroot\sms") {
+            $IisSitePath = "D:\PublishedProject\wwwroot\sms"
+        } elseif (Test-Path "D:\PublishedProject\wwwroot\SMS") {
+            $IisSitePath = "D:\PublishedProject\wwwroot\SMS"
+        } elseif (Test-Path "C:\inetpub\wwwroot\sms") {
+            $IisSitePath = "C:\inetpub\wwwroot\sms"
+        } else {
+            $IisSitePath = "D:\PublishedProject\wwwroot\sms"
         }
     }
 
-    # Resolve default API Base URL per environment if not specified
+    # Resolve default API Base URL if not specified
     if ([string]::IsNullOrWhiteSpace($ApiBaseUrl)) {
-        switch ($Environment) {
-            "Dev"  { $ApiBaseUrl = "http://122.170.13.77:90/SMSapi/api" }
-            "UAT"  { $ApiBaseUrl = "https://api-uat.checkthesite.com/api" }
-            "Prod" { $ApiBaseUrl = "https://api.checkthesite.com/api" }
-        }
+        $ApiBaseUrl = "http://122.170.13.77:90/SMSapi/api"
     }
 
-    Write-Step "Starting SMS Frontend Deployment ($Environment Environment)..."
+    Write-Step "Starting SMS Frontend Deployment..."
     Write-Host "Environment:     $Environment"
     Write-Host "API Base URL:    $ApiBaseUrl"
     Write-Host "Target IIS Path: $IisSitePath"
@@ -128,19 +106,15 @@ try {
         if ($hasFiles) {
             $timestamp = Get-Date -Format "yyyyMMdd_HHmmss"
             $parentDir = Split-Path $IisSitePath -Parent
-            $backupBase = Join-Path $parentDir "Backups"
-            if (-not (Test-Path $backupBase)) {
-                New-Item -ItemType Directory -Path $backupBase -Force | Out-Null
-            }
             $targetFolderName = (Get-Item $IisSitePath).Name
-            $backupFolder = Join-Path $backupBase "${targetFolderName}_$timestamp"
+            $backupFolder = Join-Path $parentDir "${targetFolderName} - Copy ($timestamp)"
             
             Write-Step "CREATING BACKUP: Copying live UI files to '$backupFolder' before deployment..."
             New-Item -ItemType Directory -Path $backupFolder -Force | Out-Null
             
             # Fast recursive copy to backup folder
             & robocopy.exe "$IisSitePath" "$backupFolder" /E /R:1 /W:1 /NP | Out-Null
-            Write-Success "Full UI backup created successfully at: '$backupFolder'"
+            Write-Success "Full UI backup copy created successfully at: '$backupFolder'"
         }
     } else {
         Write-WarningMsg "Target directory '$IisSitePath' does not exist yet. Creating directory..."

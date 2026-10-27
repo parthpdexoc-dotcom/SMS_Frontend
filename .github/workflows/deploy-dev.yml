@@ -13,7 +13,7 @@ on:
       iis_site_path:
         description: 'Target IIS Site Directory on Windows Server'
         required: false
-        default: 'C:\inetpub\wwwroot\sms'
+        default: 'D:\PublishedProject\wwwroot\sms'
       api_base_url:
         description: 'Backend API Base URL for Dev'
         required: false
@@ -36,7 +36,7 @@ jobs:
         run: |
           $sitePath = "${{ github.event.inputs.iis_site_path }}"
           if ([string]::IsNullOrWhiteSpace($sitePath)) {
-            $sitePath = "C:\inetpub\wwwroot\sms"
+            $sitePath = "D:\PublishedProject\wwwroot\sms"
           }
 
           $apiUrl = "${{ github.event.inputs.api_base_url }}"
@@ -51,7 +51,7 @@ jobs:
           Write-Host " API Base URL:    $apiUrl"
           Write-Host " Branch:          ${{ github.ref_name }}"
           Write-Host " Protected:       web.config (never overwritten)"
-          Write-Host " Backup:          C:\inetpub\wwwroot\Backups"
+          Write-Host " Backup Copy:     $sitePath - Copy (timestamp)"
           Write-Host "=========================================================="
 
           $deployParams = @{
