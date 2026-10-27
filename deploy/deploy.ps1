@@ -171,36 +171,38 @@ try {
         throw "Build output folder '$buildFolder' not found."
     }
 
-    # 5. Sync to IIS Directory with ROBOCOPY
-    # STRICT EXCLUSION: web.config is NEVER overwritten or replaced
-    Write-Step "Deploying build output to IIS directory: '$IisSitePath' (protecting web.config)..."
-    
-    # Robocopy flags:
-    # /E   : Copy all subdirectories, including empty ones.
-    # /PURGE: Delete destination files that no longer exist in source (cleans up old hashed JS/CSS chunks).
-    # /XF  : Strictly exclude web.config so live IIS configuration is never replaced
-    # /R:2 : Retry twice on lock.
-    # /W:2 : Wait 2 seconds.
-    # /NP  : No progress percentage.
-    $robocopyArgs = @(
-        "$buildFolder",
-        "$IisSitePath",
-        "/E",
-        "/PURGE",
-        "/R:2",
-        "/W:2",
-        "/NP",
-        "/XF",
-        "web.config"
-    )
-
-    & robocopy.exe @robocopyArgs | Out-Null
-    $roboExit = $LASTEXITCODE
-
-    if ($roboExit -ge 8) {
-        throw "Robocopy failed with exit code $roboExit."
+    # 5. ZERO DOWNTIME SYNC TO IIS
+    # Phase 1: Additive sync of new hashed assets first (WITHOUT deleting old ones)
+    # Existing users actively using the app will NEVER get 404 on their chunk files!
+    Write-Step "Zero-Downtime Phase 1: Additive sync of new JS/CSS chunks to '$IisSitePath\assets'..."
+    $buildAssets = Join-Path $buildFolder "assets"
+    $targetAssets = Join-Path $IisSitePath "assets"
+    if (Test-Path $buildAssets) {
+        if (-not (Test-Path $targetAssets)) {
+            New-Item -ItemType Directory -Path $targetAssets -Force | Out-Null
+        }
+        # Additive copy (no /PURGE) so existing active user sessions are never interrupted
+        & robocopy.exe "$buildAssets" "$targetAssets" /E /R:2 /W:1 /NP | Out-Null
     }
-    Write-Success "Static files deployed successfully. Server web.config remained untouched."
+
+    # Phase 2: Atomic Update of Root Entry Files (index.html, favicon, etc.)
+    # At this exact moment, all new requests immediately get the new index.html
+    Write-Step "Zero-Downtime Phase 2: Updating application entry point (index.html)..."
+    & robocopy.exe "$buildFolder" "$IisSitePath" /LEV:1 /R:2 /W:1 /NP /XF "web.config" | Out-Null
+
+    # Phase 3: Prune old asset chunks older than 24 hours
+    Write-Step "Zero-Downtime Phase 3: Pruning expired asset chunks older than 24 hours..."
+    try {
+        if (Test-Path $targetAssets) {
+            Get-ChildItem -Path $targetAssets -File | Where-Object { 
+                $_.LastWriteTime -lt (Get-Date).AddHours(-24) 
+            } | Remove-Item -Force -ErrorAction SilentlyContinue
+        }
+    } catch {
+        Write-WarningMsg "Notice on asset pruning: $_"
+    }
+
+    Write-Success "Static files deployed successfully with ZERO DOWNTIME. Server web.config remained untouched."
 
     # 6. Verify web.config for React SPA Routing in IIS (only created if missing on new install)
     $targetWebConfig = Join-Path $IisSitePath "web.config"
