@@ -79,16 +79,16 @@ function App() {
     ]);
   }
 
-  if (!isSuperUser) {
-    menuItems = mergeMenuItems(menuItems, [
-      {
-        id: 'officer-working',
-        label: MENU_ITEMS.OFFICER_WORKING,
-        icon: <SMSIcon name="schedule" size="sm" />,
-        path: '/reports/officer-working',
-      } as MenuItem,
-    ]);
-  }
+  // if (!isSuperUser) {
+  //   menuItems = mergeMenuItems(menuItems, [
+  //     {
+  //       id: 'officer-working',
+  //       label: MENU_ITEMS.OFFICER_WORKING,
+  //       icon: <SMSIcon name="schedule" size="sm" />,
+  //       path: '/reports/officer-working',
+  //     } as MenuItem,
+  //   ]);
+  // }
 
   if (isSupervisorEmployeeType) {
     menuItems = mergeMenuItems(menuItems, [
