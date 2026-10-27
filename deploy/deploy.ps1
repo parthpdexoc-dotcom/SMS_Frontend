@@ -2,15 +2,11 @@
 .SYNOPSIS
     Automated CI/CD Deployment Script for SMS Frontend (Vite + React) on Windows Server (IIS).
 .DESCRIPTION
-    1. Validates repository, target branch, and environment (Dev, UAT, Prod).
-    2. Resolves environment-specific API Base URL:
-       - Dev:  http://122.170.13.77:90/SMSapi
-       - UAT:  https://api-uat.checkthesite.com/api
-       - Prod: https://api.checkthesite.com/api
-    3. Automatically creates a timestamped backup of the current live site folder.
-    4. Runs fast npm dependency check and optimized Vite production build for the target mode.
-    5. Syncs the production build artifacts ('dist' folder) to live IIS web directory.
-    6. Ensures React SPA URL Rewrite web.config is present.
+    1. Validates repository and target branch.
+    2. Automatically creates a timestamped backup of the current live site folder.
+    3. Runs fast npm dependency check and optimized Vite production build.
+    4. Syncs the production build artifacts ('dist' folder) to live IIS web directory.
+    5. Ensures React SPA URL Rewrite web.config is present.
 #>
 
 [CmdletBinding()]
@@ -19,14 +15,7 @@ param(
     [string]$TargetBranch = "develop",
 
     [Parameter(Mandatory = $false)]
-    [ValidateSet("Dev", "UAT", "Prod", "development", "uat", "prod", "production", "")]
-    [string]$Environment = "",
-
-    [Parameter(Mandatory = $false)]
-    [string]$IisSitePath = "",
-
-    [Parameter(Mandatory = $false)]
-    [string]$ApiBaseUrl = "",
+    [string]$IisSitePath = "C:\inetpub\wwwroot\SMS",
 
     [Parameter(Mandatory = $false)]
     [string]$RepoDir = $PSScriptRoot + "\..",
@@ -54,80 +43,19 @@ function Write-Failure ([string]$msg) {
 }
 
 try {
-    # 1. Resolve Environment from Branch or Parameter
-    if ([string]::IsNullOrWhiteSpace($Environment)) {
-        if ($TargetBranch -match "uat") {
-            $Environment = "UAT"
-        } elseif ($TargetBranch -in @("main", "master", "prod", "production")) {
-            $Environment = "Prod"
-        } else {
-            $Environment = "Dev"
-        }
-    } else {
-        # Normalize casing
-        if ($Environment -in @("uat", "UAT")) {
-            $Environment = "UAT"
-        } elseif ($Environment -in @("prod", "production", "Prod")) {
-            $Environment = "Prod"
-        } else {
-            $Environment = "Dev"
-        }
+    Write-Step "Starting SMS Frontend Deployment..."
+    
+    # Auto-detect path if Plexoc subdirectory is used
+    if (-not (Test-Path $IisSitePath) -and (Test-Path "C:\inetpub\wwwroot\Plexoc\SMS")) {
+        $IisSitePath = "C:\inetpub\wwwroot\Plexoc\SMS"
+    } elseif (-not (Test-Path $IisSitePath) -and (Test-Path "C:\inetpub\wwwroot\SMS_UI")) {
+        $IisSitePath = "C:\inetpub\wwwroot\SMS_UI"
     }
 
-    # 2. Determine Environment-Specific Defaults
-    $viteMode = "production"
-    $defaultApiUrl = ""
-    $defaultIisPath = ""
-
-    switch ($Environment) {
-        "Dev" {
-            $viteMode = "development"
-            $defaultApiUrl = "http://122.170.13.77:90/SMSapi"
-            if (-not (Test-Path $IisSitePath) -and (Test-Path "C:\inetpub\wwwroot\Plexoc\SMS")) {
-                $defaultIisPath = "C:\inetpub\wwwroot\Plexoc\SMS"
-            } elseif (-not (Test-Path $IisSitePath) -and (Test-Path "C:\inetpub\wwwroot\SMS_UI")) {
-                $defaultIisPath = "C:\inetpub\wwwroot\SMS_UI"
-            } else {
-                $defaultIisPath = "C:\inetpub\wwwroot\SMS"
-            }
-        }
-        "UAT" {
-            $viteMode = "uat"
-            $defaultApiUrl = "https://api-uat.checkthesite.com/api"
-            if (-not (Test-Path $IisSitePath) -and (Test-Path "C:\inetpub\wwwroot\Plexoc\SMS_UAT")) {
-                $defaultIisPath = "C:\inetpub\wwwroot\Plexoc\SMS_UAT"
-            } else {
-                $defaultIisPath = "C:\inetpub\wwwroot\SMS_UAT"
-            }
-        }
-        "Prod" {
-            $viteMode = "production"
-            $defaultApiUrl = "https://api.checkthesite.com/api"
-            if (-not (Test-Path $IisSitePath) -and (Test-Path "C:\inetpub\wwwroot\Plexoc\SMS_Prod")) {
-                $defaultIisPath = "C:\inetpub\wwwroot\Plexoc\SMS_Prod"
-            } elseif (-not (Test-Path $IisSitePath) -and (Test-Path "C:\inetpub\wwwroot\SMS_Prod")) {
-                $defaultIisPath = "C:\inetpub\wwwroot\SMS_Prod"
-            } else {
-                $defaultIisPath = "C:\inetpub\wwwroot\SMS"
-            }
-        }
-    }
-
-    if ([string]::IsNullOrWhiteSpace($ApiBaseUrl)) {
-        $ApiBaseUrl = $defaultApiUrl
-    }
-    if ([string]::IsNullOrWhiteSpace($IisSitePath)) {
-        $IisSitePath = $defaultIisPath
-    }
-
-    Write-Step "Starting SMS Frontend Deployment ($Environment Environment)..."
-    Write-Host "Environment:     $Environment (Mode: $viteMode)"
-    Write-Host "API Base URL:    $ApiBaseUrl"
     Write-Host "Target IIS Path: $IisSitePath"
-    Write-Host "Target Branch:   $TargetBranch"
     Write-Host "Repository Dir:  $RepoDir"
 
-    # 3. Verify Directories
+    # 1. Verify Directories
     if (-not (Test-Path $RepoDir)) {
         throw "Repository directory '$RepoDir' not found."
     }
@@ -159,7 +87,7 @@ try {
         New-Item -ItemType Directory -Path $IisSitePath -Force | Out-Null
     }
 
-    # 4. Update Source from Git (optional, skipped if handled by GitHub Actions runner)
+    # 2. Update Source from Git (optional, skipped if handled by GitHub Actions runner)
     Push-Location $RepoDir
     try {
         if (-not $SkipGitPull) {
@@ -169,7 +97,7 @@ try {
             git reset --hard "origin/$TargetBranch"
         }
         
-        # 5. Install Dependencies (smart check: verify node_modules and critical packages)
+        # 3. Install Dependencies (smart check: verify node_modules and dependencies)
         $nodeModules = Join-Path $RepoDir "node_modules"
         $telInputPkg = Join-Path $nodeModules "mui-tel-input"
         if (-not (Test-Path $nodeModules) -or -not (Test-Path $telInputPkg)) {
@@ -183,11 +111,11 @@ try {
             Write-Host ">>> node_modules is ready. Skipping redundant npm install." -ForegroundColor DarkGray
         }
 
-        # 6. Build Production Bundle (Vite with target mode & API base URL)
-        Write-Step "Building Vite React bundle for '$Environment' ($ApiBaseUrl)..."
+        # 4. Build Production Bundle (Vite output: dist)
+        Write-Step "Building Vite React production bundle (npm run build)..."
         $env:CI = "false"
-        $env:VITE_API_BASE_URL = $ApiBaseUrl
-        cmd.exe /c "npm run build -- --mode $viteMode"
+        $env:NODE_ENV = "production"
+        cmd.exe /c "npm run build"
         if ($LASTEXITCODE -ne 0) {
             throw "npm run build failed with exit code $LASTEXITCODE."
         }
@@ -205,7 +133,7 @@ try {
         throw "Build output folder '$buildFolder' not found."
     }
 
-    # 7. Sync to IIS Directory with ROBOCOPY
+    # 5. Sync to IIS Directory with ROBOCOPY
     Write-Step "Deploying build output to IIS directory: '$IisSitePath'..."
     
     # Robocopy flags:
@@ -231,7 +159,7 @@ try {
         throw "Robocopy failed with exit code $roboExit."
     }
 
-    # 8. Verify web.config for React SPA Routing in IIS
+    # 6. Verify web.config for React SPA Routing in IIS
     $targetWebConfig = Join-Path $IisSitePath "web.config"
     if (-not (Test-Path $targetWebConfig)) {
         $sourceWebConfig = Join-Path $RepoDir "public\web.config"
@@ -243,8 +171,7 @@ try {
 
     Write-Success "=========================================================="
     Write-Success " SMS Frontend Deployment Completed Successfully! "
-    Write-Success " Environment: $Environment | API URL: $ApiBaseUrl"
-    Write-Success " Target:      $IisSitePath"
+    Write-Success " Target: $IisSitePath"
     Write-Success " Live files backed up before sync."
     Write-Success "=========================================================="
     exit 0

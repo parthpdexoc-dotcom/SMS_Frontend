@@ -5,33 +5,18 @@ on:
     branches:
       - develop
       - Develop
-      - uat
-      - UAT
       - main
     paths-ignore:
       - 'README.md'
       - 'docs/**'
   workflow_dispatch:
     inputs:
-      environment:
-        description: 'Deployment Environment'
-        required: true
-        type: choice
-        options:
-          - Dev
-          - UAT
-          - Prod
-        default: 'Dev'
-      api_base_url:
-        description: 'Override API Base URL (leave blank for environment default)'
-        required: false
-        default: ''
       iis_site_path:
-        description: 'Override Target IIS Site Directory (leave blank for environment default)'
+        description: 'Target IIS Site Directory on Windows Server'
         required: false
-        default: ''
+        default: 'C:\inetpub\wwwroot\SMS'
       skip_deployment:
-        description: 'Build only (do not deploy to IIS)'
+        description: 'Build and validate only (do not deploy to IIS)'
         type: boolean
         default: false
 
@@ -49,44 +34,13 @@ jobs:
         env:
           CI: false
         run: |
-          # Determine environment from input or branch
-          $envName = "${{ github.event.inputs.environment }}"
-          if ([string]::IsNullOrWhiteSpace($envName)) {
-            $branch = "${{ github.ref_name }}"
-            if ($branch -match "uat") {
-              $envName = "UAT"
-            } elseif ($branch -in @("main", "master")) {
-              $envName = "Prod"
-            } else {
-              $envName = "Dev"
-            }
-          }
-
-          $apiUrl = "${{ github.event.inputs.api_base_url }}"
           $sitePath = "${{ github.event.inputs.iis_site_path }}"
+          if ([string]::IsNullOrWhiteSpace($sitePath)) { $sitePath = "C:\inetpub\wwwroot\SMS" }
 
           Write-Host "=========================================================="
           Write-Host " Triggering SMS Frontend IIS Deployment via GitHub Actions"
-          Write-Host " Environment:     $envName"
+          Write-Host " Target IIS Path: $sitePath"
           Write-Host " Branch:          ${{ github.ref_name }}"
-          if (-not [string]::IsNullOrWhiteSpace($apiUrl)) {
-            Write-Host " Custom API URL:  $apiUrl"
-          }
-          if (-not [string]::IsNullOrWhiteSpace($sitePath)) {
-            Write-Host " Custom IIS Path: $sitePath"
-          }
           Write-Host "=========================================================="
 
-          $deployArgs = @(
-            "-SkipGitPull",
-            "-Environment", "$envName",
-            "-TargetBranch", "${{ github.ref_name }}"
-          )
-          if (-not [string]::IsNullOrWhiteSpace($apiUrl)) {
-            $deployArgs += @("-ApiBaseUrl", "$apiUrl")
-          }
-          if (-not [string]::IsNullOrWhiteSpace($sitePath)) {
-            $deployArgs += @("-IisSitePath", "$sitePath")
-          }
-
-          & ".\deploy\deploy.ps1" @deployArgs
+          .\deploy\deploy.ps1 -SkipGitPull -IisSitePath "$sitePath" -TargetBranch "${{ github.ref_name }}"

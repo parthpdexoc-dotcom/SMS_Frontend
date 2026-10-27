@@ -9,31 +9,12 @@ import { tryHandleStaticApiRequest } from '@/static data/mockApi';
 import { buildPaginationQueryParams, PaginationParams } from '@/utils/paginationUtils';
 import { HttpStatus } from '@/constants/httpStatus';
 import { LOGIN } from '@/constants/strings';
-// Auto-detect API base URL based on environment (Dev, UAT, Prod)
-// Development server (npm run dev): Uses relative URL '/api' (proxied by Vite)
-// Production builds:
-// - Dev environment:  http://122.170.13.77:90/SMSapi
-// - UAT environment:  https://api-uat.checkthesite.com/api
-// - Prod environment: https://api.checkthesite.com/api
-const getApiBaseUrl = (): string => {
-  if (!import.meta.env.PROD) {
-    return '/api';
-  }
-  if (import.meta.env.VITE_API_BASE_URL) {
-    return import.meta.env.VITE_API_BASE_URL;
-  }
-  const mode = (import.meta.env.MODE || '').toLowerCase();
-  if (mode === 'uat') {
-    return 'https://api-uat.checkthesite.com/api';
-  }
-  if (mode === 'production' || mode === 'prod') {
-    return 'https://api.checkthesite.com/api';
-  }
-  // Default to Dev
-  return 'http://122.170.13.77:90/SMSapi';
-};
-
-const API_BASE_URL = getApiBaseUrl();
+// Auto-detect API base URL based on environment
+// Development: Uses relative URL '/api' (proxied by Vite to https://localhost:7144)
+// Production: Uses VITE_API_BASE_URL environment variable or defaults to http://localhost:90/ctsapi/api
+const API_BASE_URL = import.meta.env.PROD
+  ? (import.meta.env.VITE_API_BASE_URL || 'https://localhost:7144')
+  : '/api';
 
 // Static / fallback URLs for external map & geocoding services
 export const STATIC_PHOTON_API_URL = 'https://photon.komoot.io/api/';
