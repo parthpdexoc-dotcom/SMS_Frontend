@@ -97,17 +97,18 @@ try {
             git reset --hard "origin/$TargetBranch"
         }
         
-        # 3. Install Dependencies (fast check: skip if node_modules already exists)
+        # 3. Install Dependencies (smart check: verify node_modules and dependencies)
         $nodeModules = Join-Path $RepoDir "node_modules"
-        if (-not (Test-Path $nodeModules)) {
-            Write-Step "Installing npm dependencies (first time)..."
+        $telInputPkg = Join-Path $nodeModules "mui-tel-input"
+        if (-not (Test-Path $nodeModules) -or -not (Test-Path $telInputPkg)) {
+            Write-Step "Installing/updating npm dependencies..."
             $env:NODE_ENV = "development"
             cmd.exe /c "npm install --no-audit --prefer-offline"
             if ($LASTEXITCODE -ne 0) {
                 throw "npm install failed with exit code $LASTEXITCODE."
             }
         } else {
-            Write-Host ">>> node_modules already exists. Skipping redundant npm install." -ForegroundColor DarkGray
+            Write-Host ">>> node_modules is ready. Skipping redundant npm install." -ForegroundColor DarkGray
         }
 
         # 4. Build Production Bundle (Vite output: dist)
