@@ -1,0 +1,65 @@
+name: Deploy Frontend (Prod)
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths-ignore:
+      - 'README.md'
+      - 'docs/**'
+  workflow_dispatch:
+    inputs:
+      iis_site_path:
+        description: 'Target IIS Site Directory for Production'
+        required: false
+        default: 'C:\inetpub\wwwroot\sms'
+      api_base_url:
+        description: 'Backend API Base URL for Production'
+        required: false
+        default: 'https://api.checkthesite.com/api'
+
+jobs:
+  deploy:
+    name: Deploy to Production IIS
+    runs-on: [self-hosted, windows]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          clean: false
+
+      - name: Execute Prod Frontend Deployment
+        shell: powershell
+        env:
+          CI: false
+        run: |
+          $sitePath = "${{ github.event.inputs.iis_site_path }}"
+          if ([string]::IsNullOrWhiteSpace($sitePath)) {
+            $sitePath = "C:\inetpub\wwwroot\sms"
+          }
+
+          $apiUrl = "${{ github.event.inputs.api_base_url }}"
+          if ([string]::IsNullOrWhiteSpace($apiUrl)) {
+            $apiUrl = "https://api.checkthesite.com/api"
+          }
+
+          Write-Host "=========================================================="
+          Write-Host " Triggering SMS Frontend Prod IIS Deployment via GitHub Actions"
+          Write-Host " Environment:     Prod"
+          Write-Host " Target IIS Path: $sitePath"
+          Write-Host " API Base URL:    $apiUrl"
+          Write-Host " Branch:          ${{ github.ref_name }}"
+          Write-Host " Protected:       web.config (never overwritten)"
+          Write-Host " Backup:          C:\inetpub\wwwroot\Backups"
+          Write-Host "=========================================================="
+
+          $deployParams = @{
+            SkipGitPull  = $true
+            Environment  = "Prod"
+            TargetBranch = "${{ github.ref_name }}"
+            ApiBaseUrl   = $apiUrl
+            IisSitePath  = $sitePath
+          }
+
+          .\deploy\deploy.ps1 @deployParams

@@ -1,0 +1,65 @@
+name: Deploy Frontend (UAT)
+
+on:
+  push:
+    branches:
+      - uat
+      - UAT
+    paths-ignore:
+      - 'README.md'
+      - 'docs/**'
+  workflow_dispatch:
+    inputs:
+      iis_site_path:
+        description: 'Target IIS Site Directory for UAT'
+        required: false
+        default: 'C:\inetpub\wwwroot\sms_uat'
+      api_base_url:
+        description: 'Backend API Base URL for UAT'
+        required: false
+        default: 'https://api-uat.checkthesite.com/api'
+
+jobs:
+  deploy:
+    name: Deploy to UAT IIS
+    runs-on: [self-hosted, windows]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          clean: false
+
+      - name: Execute UAT Frontend Deployment
+        shell: powershell
+        env:
+          CI: false
+        run: |
+          $sitePath = "${{ github.event.inputs.iis_site_path }}"
+          if ([string]::IsNullOrWhiteSpace($sitePath)) {
+            $sitePath = "C:\inetpub\wwwroot\sms_uat"
+          }
+
+          $apiUrl = "${{ github.event.inputs.api_base_url }}"
+          if ([string]::IsNullOrWhiteSpace($apiUrl)) {
+            $apiUrl = "https://api-uat.checkthesite.com/api"
+          }
+
+          Write-Host "=========================================================="
+          Write-Host " Triggering SMS Frontend UAT IIS Deployment via GitHub Actions"
+          Write-Host " Environment:     UAT"
+          Write-Host " Target IIS Path: $sitePath"
+          Write-Host " API Base URL:    $apiUrl"
+          Write-Host " Branch:          ${{ github.ref_name }}"
+          Write-Host " Protected:       web.config (never overwritten)"
+          Write-Host " Backup:          C:\inetpub\wwwroot\Backups"
+          Write-Host "=========================================================="
+
+          $deployParams = @{
+            SkipGitPull  = $true
+            Environment  = "UAT"
+            TargetBranch = "${{ github.ref_name }}"
+            ApiBaseUrl   = $apiUrl
+            IisSitePath  = $sitePath
+          }
+
+          .\deploy\deploy.ps1 @deployParams

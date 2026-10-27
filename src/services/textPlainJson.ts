@@ -130,11 +130,11 @@ export function unwrapPagedList<T>(
   field:
     | T[]
     | {
-        data?: T[] | null;
-        Data?: T[] | null;
-        totalRecords?: number;
-        TotalRecords?: number;
-      }
+      data?: T[] | null;
+      Data?: T[] | null;
+      totalRecords?: number;
+      TotalRecords?: number;
+    }
     | null
     | undefined
 ): { data: T[]; totalRecords: number } {
@@ -305,6 +305,12 @@ export function getErrorMessageFromErrorResponse(responseText: string, fallback:
     if (messages.length > 0) return messages.join('\n');
   } catch {
     const trimmed = String(responseText ?? '').trim();
+    if (trimmed.startsWith('<!DOCTYPE') || trimmed.startsWith('<html') || /<title>\s*404/i.test(trimmed)) {
+      return 'Server Error (404): The API endpoint was not found on the server. Please check the backend service path.';
+    }
+    if (trimmed.startsWith('<') && trimmed.endsWith('>')) {
+      return 'Server Error: An unexpected server response was received. Please contact your system administrator.';
+    }
     if (trimmed) return trimmed;
   }
   return fallback;
@@ -370,10 +376,10 @@ export async function readResponseOkOrInvoiceRefund(
       const editPayload =
         rawEditPayload && typeof rawEditPayload === 'object'
           ? ({
-              ...(rawEditPayload as InvoiceConflictEditPayload),
-              ...(read409FeeField(data, rawEditPayload as Record<string, unknown>, 'totalVehicleFee', 'TotalVehicleFee')),
-              ...(read409FeeField(data, rawEditPayload as Record<string, unknown>, 'totalEquipmentFee', 'TotalEquipmentFee')),
-            } satisfies InvoiceConflictEditPayload)
+            ...(rawEditPayload as InvoiceConflictEditPayload),
+            ...(read409FeeField(data, rawEditPayload as Record<string, unknown>, 'totalVehicleFee', 'TotalVehicleFee')),
+            ...(read409FeeField(data, rawEditPayload as Record<string, unknown>, 'totalEquipmentFee', 'TotalEquipmentFee')),
+          } satisfies InvoiceConflictEditPayload)
           : undefined;
       throw new InvoiceRefundRequiredError({
         message: data.message?.trim() || data.error?.trim() || fallback,

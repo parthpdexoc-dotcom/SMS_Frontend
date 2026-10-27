@@ -9,7 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 export default defineConfig({
   plugins: [react()],
   // Set base to /cts/ to serve the app from the /cts subdirectory
-  base: '/',
+  base: '/sms/',
   server: {
     port: 5173,
     strictPort: false,

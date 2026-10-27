@@ -172,17 +172,29 @@ export const openEmployeeImpersonationTab = async (employeeId: string): Promise<
 const LOGIN_CLIENT_KEY = 'R4xu3Z0qpitTg9DM';
 const LOGIN_CLIENT_IV = 'sftqtIQ83aBrSAVi';
 
+// Precomputed AES-128-CBC encryption of 'web' with LOGIN_CLIENT_KEY and LOGIN_CLIENT_IV.
+// In non-secure HTTP contexts (e.g. http://122.170.13.77:90), browser crypto.subtle is undefined.
+const PRECOMPUTED_WEB_LOGIN_CLIENT = 'F2fPnBPdTmx8pu2iTCevEQ==';
+
 const encryptWebLoginClient = async (): Promise<string> => {
-  const encodedKey = new TextEncoder().encode(LOGIN_CLIENT_KEY);
-  const key = await crypto.subtle.importKey('raw', encodedKey.buffer as ArrayBuffer, { name: 'AES-CBC' }, false, ['encrypt']);
-  const encrypted = new Uint8Array(
-    await crypto.subtle.encrypt(
-      { name: 'AES-CBC', iv: new TextEncoder().encode(LOGIN_CLIENT_IV) },
-      key,
-      new TextEncoder().encode('web')
-    )
-  );
-  return btoa(String.fromCharCode(...encrypted));
+  try {
+    const subtle = typeof window !== 'undefined' ? window.crypto?.subtle : undefined;
+    if (subtle) {
+      const encodedKey = new TextEncoder().encode(LOGIN_CLIENT_KEY);
+      const key = await subtle.importKey('raw', encodedKey.buffer as ArrayBuffer, { name: 'AES-CBC' }, false, ['encrypt']);
+      const encrypted = new Uint8Array(
+        await subtle.encrypt(
+          { name: 'AES-CBC', iv: new TextEncoder().encode(LOGIN_CLIENT_IV) },
+          key,
+          new TextEncoder().encode('web')
+        )
+      );
+      return btoa(String.fromCharCode(...encrypted));
+    }
+  } catch (error) {
+    console.warn('WebCrypto AES encryption unavailable, using precomputed client token:', error);
+  }
+  return PRECOMPUTED_WEB_LOGIN_CLIENT;
 };
 
 /**
@@ -411,7 +423,7 @@ export const sendForgotPasswordOtp = async (
 
     // The API returns text/plain, so we need to handle it accordingly
     const responseText = await response.text();
-    
+
     // Try to parse as JSON if possible
     let data: ForgotPasswordResponse;
     try {

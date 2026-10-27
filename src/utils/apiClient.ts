@@ -11,10 +11,11 @@ import { HttpStatus } from '@/constants/httpStatus';
 import { LOGIN } from '@/constants/strings';
 // Auto-detect API base URL based on environment
 // Development: Uses relative URL '/api' (proxied by Vite to https://localhost:7144)
-// Production: Uses VITE_API_BASE_URL environment variable or defaults to http://localhost:90/ctsapi/api
-const API_BASE_URL = import.meta.env.PROD
-  ? (import.meta.env.VITE_API_BASE_URL || 'https://localhost:7144')
+// Production: Uses VITE_API_BASE_URL environment variable or defaults to http://122.170.13.77:90/SMSapi/api
+const RAW_API_BASE_URL = import.meta.env.PROD
+  ? (import.meta.env.VITE_API_BASE_URL || 'http://122.170.13.77:90/SMSapi/api')
   : '/api';
+const API_BASE_URL = RAW_API_BASE_URL.replace(/\/+$/, '');
 
 // Static / fallback URLs for external map & geocoding services
 export const STATIC_PHOTON_API_URL = 'https://photon.komoot.io/api/';

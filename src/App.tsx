@@ -224,11 +224,11 @@ function App() {
   }
 
   return (
-    <BrowserRouter basename="/">
+    <BrowserRouter basename="/sms/">
       <AppContent
         menuItems={menuItems}
         onSignOut={handleSignOut}
-       />
+      />
       <SMSToastContainer />
       <SessionMonitorManager />
     </BrowserRouter>

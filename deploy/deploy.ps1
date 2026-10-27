@@ -15,7 +15,14 @@ param(
     [string]$TargetBranch = "develop",
 
     [Parameter(Mandatory = $false)]
-    [string]$IisSitePath = "C:\inetpub\wwwroot\SMS",
+    [ValidateSet("Dev", "UAT", "Prod", "development", "uat", "prod", "production", "")]
+    [string]$Environment = "Dev",
+
+    [Parameter(Mandatory = $false)]
+    [string]$ApiBaseUrl = "",
+
+    [Parameter(Mandatory = $false)]
+    [string]$IisSitePath = "",
 
     [Parameter(Mandatory = $false)]
     [string]$RepoDir = $PSScriptRoot + "\..",
@@ -43,15 +50,68 @@ function Write-Failure ([string]$msg) {
 }
 
 try {
-    Write-Step "Starting SMS Frontend Deployment..."
-    
-    # Auto-detect path if Plexoc subdirectory is used
-    if (-not (Test-Path $IisSitePath) -and (Test-Path "C:\inetpub\wwwroot\Plexoc\SMS")) {
-        $IisSitePath = "C:\inetpub\wwwroot\Plexoc\SMS"
-    } elseif (-not (Test-Path $IisSitePath) -and (Test-Path "C:\inetpub\wwwroot\SMS_UI")) {
-        $IisSitePath = "C:\inetpub\wwwroot\SMS_UI"
+    # Normalize environment
+    if ([string]::IsNullOrWhiteSpace($Environment)) {
+        if ($TargetBranch -match "uat") {
+            $Environment = "UAT"
+        } elseif ($TargetBranch -in @("main", "master", "prod", "production")) {
+            $Environment = "Prod"
+        } else {
+            $Environment = "Dev"
+        }
+    } else {
+        if ($Environment -in @("uat", "UAT")) {
+            $Environment = "UAT"
+        } elseif ($Environment -in @("prod", "production", "Prod")) {
+            $Environment = "Prod"
+        } else {
+            $Environment = "Dev"
+        }
     }
 
+    # Resolve default IIS Site Path per environment if not specified
+    if ([string]::IsNullOrWhiteSpace($IisSitePath)) {
+        switch ($Environment) {
+            "Dev" {
+                if (Test-Path "C:\inetpub\wwwroot\sms") {
+                    $IisSitePath = "C:\inetpub\wwwroot\sms"
+                } elseif (Test-Path "C:\inetpub\wwwroot\SMS") {
+                    $IisSitePath = "C:\inetpub\wwwroot\SMS"
+                } else {
+                    $IisSitePath = "C:\inetpub\wwwroot\sms"
+                }
+            }
+            "UAT" {
+                if (Test-Path "C:\inetpub\wwwroot\sms_uat") {
+                    $IisSitePath = "C:\inetpub\wwwroot\sms_uat"
+                } else {
+                    $IisSitePath = "C:\inetpub\wwwroot\sms_uat"
+                }
+            }
+            "Prod" {
+                if (Test-Path "C:\inetpub\wwwroot\sms_prod") {
+                    $IisSitePath = "C:\inetpub\wwwroot\sms_prod"
+                } elseif (Test-Path "C:\inetpub\wwwroot\sms") {
+                    $IisSitePath = "C:\inetpub\wwwroot\sms"
+                } else {
+                    $IisSitePath = "C:\inetpub\wwwroot\sms"
+                }
+            }
+        }
+    }
+
+    # Resolve default API Base URL per environment if not specified
+    if ([string]::IsNullOrWhiteSpace($ApiBaseUrl)) {
+        switch ($Environment) {
+            "Dev"  { $ApiBaseUrl = "http://122.170.13.77:90/SMSapi/api" }
+            "UAT"  { $ApiBaseUrl = "https://api-uat.checkthesite.com/api" }
+            "Prod" { $ApiBaseUrl = "https://api.checkthesite.com/api" }
+        }
+    }
+
+    Write-Step "Starting SMS Frontend Deployment ($Environment Environment)..."
+    Write-Host "Environment:     $Environment"
+    Write-Host "API Base URL:    $ApiBaseUrl"
     Write-Host "Target IIS Path: $IisSitePath"
     Write-Host "Repository Dir:  $RepoDir"
 
@@ -115,6 +175,10 @@ try {
         Write-Step "Building Vite React production bundle (npm run build)..."
         $env:CI = "false"
         $env:NODE_ENV = "production"
+        if (-not [string]::IsNullOrWhiteSpace($ApiBaseUrl)) {
+            $env:VITE_API_BASE_URL = $ApiBaseUrl
+            Write-Host "Injected VITE_API_BASE_URL: $env:VITE_API_BASE_URL" -ForegroundColor Cyan
+        }
         cmd.exe /c "npm run build"
         if ($LASTEXITCODE -ne 0) {
             throw "npm run build failed with exit code $LASTEXITCODE."
