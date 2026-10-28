@@ -246,7 +246,7 @@ export const SMSDepartmentConfigurationForm: React.FC<SMSDepartmentConfiguration
                 ['showPtaeoCode', 'Show PTAEO Code'],
                 ['showPayCode', 'Show Pay Code'],
                 ['enablePolicyManagement', 'Enable Policy Management'],
-                // ['enableEmployeeLocation', DEPARTMENT_CONFIGURATION.ENABLE_EMPLOYEE_LOCATION],
+                ['enableEmployeeLocation', DEPARTMENT_CONFIGURATION.ENABLE_EMPLOYEE_LOCATION],
                 ['enableNormalEmployeeOneSession', DEPARTMENT_CONFIGURATION.ENABLE_NORMAL_EMPLOYEE_ONE_SESSION],
                 ['showRestrictWebLoginForNormalEmployee', DEPARTMENT_CONFIGURATION.SHOW_RESTRICT_WEB_LOGIN_FOR_NORMAL_EMPLOYEE],
               ].map(([key, label]) => {
