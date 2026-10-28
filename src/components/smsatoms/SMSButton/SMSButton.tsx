@@ -27,6 +27,7 @@ export interface SMSButtonProps extends Omit<ButtonProps, 'classes' | 'size'> {
   allowWhenSuspended?: boolean;
   /** When true, renders a standard edit (pen) icon as the leading icon if no other icon is provided. */
   editIcon?: boolean;
+
   backgroundColor?: string;
   hoverBackgroundColor?: string;
 }
