@@ -1,13 +1,6 @@
 name: Deploy Frontend (Dev)
 
 on:
-  push:
-    branches:
-      - develop
-      - Develop
-    paths-ignore:
-      - 'README.md'
-      - 'docs/**'
   workflow_dispatch:
     inputs:
       iis_site_path:
