@@ -8,7 +8,6 @@ export interface SMSBoxProps extends BoxProps {
 export const SMSBox: FC<SMSBoxProps> = memo(({ ...props }) => {
   return <Box {...props} />;
 });
-
 SMSBox.displayName = 'SMSBox';
 
 export default SMSBox;
