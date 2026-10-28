@@ -99,22 +99,34 @@ try {
     }
 
     # =========================================================================
-    # STEP: AUTOMATIC PRE-DEPLOYMENT BACKUP
+    # STEP: AUTOMATIC PRE-DEPLOYMENT BACKUP (STRICTLY KEEP ONLY 1 LATEST COPY)
     # =========================================================================
     if (Test-Path $IisSitePath) {
         $hasFiles = (Get-ChildItem -Path $IisSitePath | Measure-Object).Count -gt 0
         if ($hasFiles) {
-            $timestamp = Get-Date -Format "yyyyMMdd_HHmmss"
             $parentDir = Split-Path $IisSitePath -Parent
             $targetFolderName = (Get-Item $IisSitePath).Name
-            $backupFolder = Join-Path $parentDir "${targetFolderName} - Copy ($timestamp)"
             
-            Write-Step "CREATING BACKUP: Copying live UI files to '$backupFolder' before deployment..."
+            # Use the last write time of the existing live build
+            $lastBuildDate = (Get-Item $IisSitePath).LastWriteTime.ToString("yyyyMMdd_HHmmss")
+            $backupFolder = Join-Path $parentDir "${targetFolderName} - Copy ($lastBuildDate)"
+            
+            Write-Step "CREATING BACKUP: Preserving previous live build in '$backupFolder'..."
             New-Item -ItemType Directory -Path $backupFolder -Force | Out-Null
             
             # Fast recursive copy to backup folder
             & robocopy.exe "$IisSitePath" "$backupFolder" /E /R:1 /W:1 /NP | Out-Null
-            Write-Success "Full UI backup copy created successfully at: '$backupFolder'"
+            Write-Success "Previous build backup copy created successfully at: '$backupFolder'"
+
+            # STRICT POLICY: Secure ONLY 1 backup copy. Delete all older backup copies.
+            Write-Step "CLEANUP: Ensuring only 1 backup copy exists in '$parentDir'..."
+            $existingBackups = Get-ChildItem -Path $parentDir -Directory -Filter "${targetFolderName} - Copy*" |
+                               Where-Object { $_.FullName -ne $backupFolder }
+            foreach ($oldBackup in $existingBackups) {
+                Write-Host "  Removing older backup: $($oldBackup.Name)"
+                Remove-Item -Path $oldBackup.FullName -Recurse -Force -ErrorAction SilentlyContinue
+            }
+            Write-Success "Backup secured. Exactly 1 backup copy exists on disk."
         }
     } else {
         Write-WarningMsg "Target directory '$IisSitePath' does not exist yet. Creating directory..."
