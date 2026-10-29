@@ -3,6 +3,8 @@
  * Handles all API calls related to Admin Type
  */
 
+
+
 import { apiDelete, apiGetAll, apiPost } from '@/utils/apiClient';
 import {
   AdminTypePaginationParams,
