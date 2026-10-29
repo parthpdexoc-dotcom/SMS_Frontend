@@ -227,7 +227,7 @@ function App() {
     <BrowserRouter basename="/sms/">
       <AppContent
         menuItems={menuItems}
-        // onSignOut={handleSignOut}
+        onSignOut={handleSignOut}
       />
       <SMSToastContainer />
       <SessionMonitorManager />
