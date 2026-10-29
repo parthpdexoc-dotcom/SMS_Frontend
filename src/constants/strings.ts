@@ -108,7 +108,7 @@ export const HEADER = {
 
 // Sidebar
 export const SIDEBAR = {
-  TITLE: 'Dashboard',
+  TITLE: 'Changes For Testing....',
 };
 
 // Dashboard
