@@ -197,13 +197,13 @@ function App() {
   if (!isInitialized && isLoading) {
     return (
       <SMSBox
-      //   sx={{
-      //     display: 'flex',
-      //     justifyContent: 'center',
-      //     alignItems: 'center',
-      //     height: '100vh',
-      //   }}
-      // >
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+        }}
+      >
         <SMSLoader />
       </SMSBox>
     );
